@@ -203,7 +203,13 @@ def show_results():
 
         product_description = tk.Label(product_box, text=product["description"], bg="#222222", fg="white", font=("Arial", 12))
         product_description.pack(anchor="w")
-    
+
+        product_ingredients = tk.Label(product_box, text="Key ingredients: " + str(product["key_ingredients"]), bg="#222222", fg="white", font=("Arial", 12))
+        product_ingredients.pack(anchor="w")
+
+        product_price = tk.Label(product_box, text="Price: $" + str(product["price"]), bg="#222222", fg="white", font=("Arial", 12))
+        product_price.pack(anchor="w")
+        
     make_navigation(show_skin_concerns, "Save results", save_results)
 
 # Save the user's answers and results to a text file

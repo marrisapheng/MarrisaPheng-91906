@@ -1,7 +1,7 @@
 Personalised Skincare Checker Results
-Skin Type: sensitive
-Skin concerns: fine lines,clogged pores
+Skin Type: combination
+Skin concerns: fine lines,clogged pores,texture
 Recommended Products:
-- Barrier Repair Moisturiser: A moisturiser that strengthens the skin barrier and locks in moisture.
-Price: $25.0
-Key ingredients: ['Ceramides', 'Niacinamide', 'Panthenol']
+- Oil Control Foam Wash: A foaming cleanser that helps control oil and clogged pores.
+Price: $18.0
+Key ingredients: ['Salicylic Acid', 'Tea Tree Oil', 'Niacinamide']
