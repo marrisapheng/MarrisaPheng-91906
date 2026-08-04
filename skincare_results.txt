@@ -1,7 +1,19 @@
 Personalised Skincare Checker Results
-Skin Type: combination
-Skin concerns: fine lines,clogged pores,texture
+Skin Type: normal
+Skin concerns: acne
 Recommended Products:
-- Oil Control Foam Wash: A foaming cleanser that helps control oil and clogged pores.
-Price: $18.0
-Key ingredients: ['Salicylic Acid', 'Tea Tree Oil', 'Niacinamide']
+- COSRX Acne Pimple Master Patch: Pimple patches that protect spots and help reduce breakouts.
+Price: $6.9
+Key ingredients: Hydrocolloid patch
+- Dr.Althea 345 Relief Cream: A soothing cream for irritated, dry, or sensitive skin.
+Price: $49.9
+Key ingredients: Niacinamide, panthenol, centella asiatica
+- COSRX Low pH Good Morning Gel Cleanser: A gentle everyday cleanser for keeping skin balanced.
+Price: $16.9
+Key ingredients: Tea tree leaf oil, betaine salicylate
+- Skin1004 Madagascar Centella Ampoule: A calming ampoule that helps soothe sensitive or irritated skin.
+Price: $10.5
+Key ingredients: Centella asiatica extract
+- Beauty of Joseon Glow Serum: Propolis + Niacinamide: A glow serum that helps with dullness, texture, and blemish-prone skin.
+Price: $29.9
+Key ingredients: Propolis extract, niacinamide

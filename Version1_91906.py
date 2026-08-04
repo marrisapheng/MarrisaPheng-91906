@@ -190,8 +190,23 @@ def show_results():
     heading = make_label("Your Recommended Products", 18)
     heading.pack(pady=10)
 
-    product_frame = tk.Frame(main_frame, bg="#111111")
-    product_frame.pack(pady=10)
+    # Frame to hold the canvas and scrollbar
+    scroll_area = tk.Frame(main_frame, bg="#111111")
+    scroll_area.pack(fill=tk.BOTH, expand=True)
+
+    # Creates a canvas to display all recommended products
+    canvas = tk.Canvas(scroll_area, bg="#111111", height=400, width=420)
+    canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+
+    # Creates a scrollbar for the canvas
+    scrollbar = tk.Scrollbar(scroll_area, orient=tk.VERTICAL, command=canvas.yview)
+    scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
+
+    canvas.configure(yscrollcommand=scrollbar.set)
+
+    product_frame = tk.Frame(canvas, bg="#111111")
+    canvas.create_window((0, 0), window=product_frame, anchor="nw")
+
 
     # Displays each product in a simple box
     for product in recommended_products:
@@ -201,15 +216,20 @@ def show_results():
         product_name = tk.Label(product_box, text=product["name"], bg="#222222", fg="white", font=("Arial", 14))
         product_name.pack(anchor="w")
 
-        product_description = tk.Label(product_box, text=product["description"], bg="#222222", fg="white", font=("Arial", 12))
+        product_description = tk.Label(product_box, text=product["description"], bg="#222222", fg="white", font=("Arial", 12), wraplength=650, justify="left")
         product_description.pack(anchor="w")
 
-        product_ingredients = tk.Label(product_box, text="Key ingredients: " + str(product["key_ingredients"]), bg="#222222", fg="white", font=("Arial", 12))
+        product_ingredients = tk.Label(product_box, text="Key ingredients: " + str(product["key_ingredients"]), bg="#222222", fg="white", font=("Arial", 12), wraplength=650, justify="left")
         product_ingredients.pack(anchor="w")
 
         product_price = tk.Label(product_box, text="Price: $" + str(product["price"]), bg="#222222", fg="white", font=("Arial", 12))
         product_price.pack(anchor="w")
+
+    # Updates the scrollbar to match the size of the canvas
+    product_frame.update_idletasks()
+    canvas.configure(scrollregion=canvas.bbox("all"))
         
+    # Navigation buttons to go back or save results
     make_navigation(show_skin_concerns, "Save results", save_results)
 
 # Save the user's answers and results to a text file
