@@ -47,7 +47,7 @@ def get_skin_concerns():
             selected_concerns.append(concern)
     return selected_concerns
 
-def validate_skin_concerns():
+def validate_skin_concerns(answer):
     selected_concerns = get_skin_concerns()
     # Checks if at least one skin concern is selected
     if len(selected_concerns) > 0:
@@ -82,25 +82,25 @@ def clear_screen():
 
 def make_label(text, size):
     # Create a white label with background
-    label = tk.Label(main_frame, text=text, bg="111111", fg="white", font=("Arial", size))
+    label = tk.Label(main_frame, text=text, bg="#111111", fg="white", font=("Arial", size))
     label.pack(pady=10)
     return label
 
 def make_button(parent, text, command):
     # Create consistent buttons
-    button = tk.Button(parent, main_frame, command=command, text=text, bg="111111", fg="white", font=("Arial", 12))
+    button = tk.Button(parent, command=command, text=text, bg="#111111", fg="white", font=("Arial", 12))
     button.pack(pady=5)
     return button
 
-def make_navigation(back_command, next_command):
+def make_navigation(back_command, next_text, next_command):
     # Create navigation buttons
-    navigation_frame = tk.Frame(main_frame, bg="111111")
+    navigation_frame = tk.Frame(main_frame, bg="#111111")
     navigation_frame.pack(pady=10)
 
-    back_button = tk.Button(navigation_frame, text="Back", command=back_command, bg="111111", fg="white", font=("Arial", 12))
+    back_button = tk.Button(navigation_frame, text="Back", command=back_command, bg="#111111", fg="white", font=("Arial", 12))
     back_button.pack(side=tk.LEFT, padx=5)
 
-    next_button = tk.Button(navigation_frame, text="Next", command=next_command, bg="111111", fg="white", font=("Arial", 12))
+    next_button = tk.Button(navigation_frame, text=next_text, command=next_command, bg="#111111", fg="white", font=("Arial", 12))
     next_button.pack(side=tk.RIGHT, padx=5)
 
 # Home page
@@ -129,8 +129,10 @@ def show_skin_type():
     for option in skin_type_options:
         radio_button = tk.Radiobutton(
             main_frame,
+            text=option,
+            value=option,
             variable=skin_type_var,
-            bg="111111",
+            bg="#111111",
             fg="white",
         )
         radio_button.pack(anchor="w", padx=20)
@@ -139,6 +141,7 @@ def show_skin_type():
 
 # Checking if skin type is valid
 def check_skin_type():
+    global selected_skin_type
     selected_skin_type = get_skin_type()
     if validate_skin_type(selected_skin_type) == False:
         messagebox.showerror("Error", "Please select a skin type.")
@@ -163,7 +166,7 @@ def show_skin_concerns():
             main_frame,
             text=concern,
             variable=skin_concerns_var[concern],
-            bg="111111",
+            bg="#111111",
             fg="white",
         )
         checkbox.pack(anchor="w", padx=20)
@@ -187,18 +190,18 @@ def show_results():
     heading = make_label("Your Recommended Products", 18)
     heading.pack(pady=10)
 
-    product_frame = tk.Frame(main_frame, bg="111111")
+    product_frame = tk.Frame(main_frame, bg="#111111")
     product_frame.pack(pady=10)
 
     # Displays each product in a simple box
     for product in recommended_products:
-        product_box = tk.Frame(product_frame, bg="222222", padx=10, pady=10)
+        product_box = tk.Frame(product_frame, bg="#222222", padx=10, pady=10)
         product_box.pack(pady=5, fill=tk.X)
 
-        product_name = tk.Label(product_box, text=product["name"], bg="222222", fg="white", font=("Arial", 14))
+        product_name = tk.Label(product_box, text=product["name"], bg="#222222", fg="white", font=("Arial", 14))
         product_name.pack(anchor="w")
 
-        product_description = tk.Label(product_box, text=product["description"], bg="222222", fg="white", font=("Arial", 12))
+        product_description = tk.Label(product_box, text=product["description"], bg="#222222", fg="white", font=("Arial", 12))
         product_description.pack(anchor="w")
     
     make_navigation(show_skin_concerns, "Save results", save_results)
@@ -228,10 +231,10 @@ def main():
     window = tk.Tk()
     window.title("Personalised Skincare Checker")
     window.geometry("800x600")
-    window.configure(bg="111111")
+    window.configure(bg="#111111")
 
     # Create the main frame
-    main_frame = tk.Frame(window, bg="111111")
+    main_frame = tk.Frame(window, bg="#111111")
     main_frame.pack(padx=20, pady=20)
 
     # Variable to store the selected skin type
@@ -239,4 +242,5 @@ def main():
 
     show_home()
     window.mainloop()
-    main()
+
+main()
