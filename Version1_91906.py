@@ -4,8 +4,8 @@ from tkinter import messagebox
 from product_database import product_database
 
 # Skin types and Skin concerns lists
-skin_type = ["normal","dry","oily","combination","sensitive"]
-skin_concerns = [
+skin_type_options = ["normal","dry","oily","combination","sensitive"]
+skin_concern_options = [
     "acne",
     "dull",
     "dry",
@@ -22,9 +22,9 @@ main_frame = None
 skin_type_var = None
 skin_concerns_var = {}
 # Variables to store the user's answers
-skin_type = ""
-skin_concerns = []
-recommended_products = []  
+selected_skin_type = ""
+selected_skin_concerns = []
+recommended_products = []
 
 # Data and recommendation functions
 
@@ -35,7 +35,7 @@ def get_skin_type():
     return skin_type_var.get()
 
 def validate_skin_type(selected_skin_type):
-    if selected_skin_type in skin_type:
+    if selected_skin_type in skin_type_options:
         return True
     else:
         return False
@@ -103,3 +103,140 @@ def make_navigation(back_command, next_command):
     next_button = tk.Button(navigation_frame, text="Next", command=next_command, bg="111111", fg="white", font=("Arial", 12))
     next_button.pack(side=tk.RIGHT, padx=5)
 
+# Home page
+def show_home():
+    clear_screen()
+    welcome_label = make_label("Welcome to the Skincare Checker!", 20)
+    welcome_label.pack(pady=20)
+
+    instruction_label = make_label("Get started with building your personalised skincare routine.", 14)
+    instruction_label.pack(pady=10)
+
+    start_button = make_button(main_frame, "Get started", show_skin_type)
+    start_button.pack(pady=20)
+
+# Show skin type page
+def show_skin_type():
+    clear_screen()
+
+    heading = make_label("What is your skin type?", 18)
+    heading.pack(pady=10)
+
+    instruction_label = make_label("Select your skin type", 14)
+    instruction_label.pack(pady=10)
+
+    # Creates radio buttons for skin types
+    for option in skin_type_options:
+        radio_button = tk.Radiobutton(
+            main_frame,
+            variable=skin_type_var,
+            bg="111111",
+            fg="white",
+        )
+        radio_button.pack(anchor="w", padx=20)
+
+    make_navigation(show_home, "Next", check_skin_type)
+
+# Checking if skin type is valid
+def check_skin_type():
+    selected_skin_type = get_skin_type()
+    if validate_skin_type(selected_skin_type) == False:
+        messagebox.showerror("Error", "Please select a skin type.")
+    else:
+        skin_type_options = selected_skin_type
+        show_skin_concerns()
+
+# Skin concerns page
+def show_skin_concerns():
+    clear_screen()
+
+    heading = make_label("What are your skin concerns?", 18)
+    heading.pack(pady=10)
+
+    instruction_label = make_label("Select your skin concerns", 14)
+    instruction_label.pack(pady=10)
+
+    # Creates checkboxes for skin concerns
+    for concern in skin_concern_options:
+        skin_concerns_var[concern] = tk.BooleanVar()
+        checkbox = tk.Checkbutton(
+            main_frame,
+            text=concern,
+            variable=skin_concerns_var[concern],
+            bg="111111",
+            fg="white",
+        )
+        checkbox.pack(anchor="w", padx=20)
+
+    make_navigation(show_skin_type, "Next", check_skin_concerns)
+
+def check_skin_concerns():
+    global selected_skin_concerns, recommended_products
+    answer = get_skin_concerns()
+    if validate_skin_concerns(answer) == False:
+        messagebox.showerror("Error", "Please select at least one skin concern.")
+    else:
+        selected_skin_concerns = answer
+        recommended_products = get_recommended_products(selected_skin_type, selected_skin_concerns)
+        show_results()
+
+# Results page
+def show_results():
+    clear_screen()
+
+    heading = make_label("Your Recommended Products", 18)
+    heading.pack(pady=10)
+
+    product_frame = tk.Frame(main_frame, bg="111111")
+    product_frame.pack(pady=10)
+
+    # Displays each product in a simple box
+    for product in recommended_products:
+        product_box = tk.Frame(product_frame, bg="222222", padx=10, pady=10)
+        product_box.pack(pady=5, fill=tk.X)
+
+        product_name = tk.Label(product_box, text=product["name"], bg="222222", fg="white", font=("Arial", 14))
+        product_name.pack(anchor="w")
+
+        product_description = tk.Label(product_box, text=product["description"], bg="222222", fg="white", font=("Arial", 12))
+        product_description.pack(anchor="w")
+    
+    make_navigation(show_skin_concerns, "Save results", save_results)
+
+# Save the user's answers and results to a text file
+def save_results():
+    results_file = open("skincare_results.txt", "w")
+    results_file.write("Personalised Skincare Checker Results\n")
+    results_file.write("Skin Type: " + selected_skin_type)
+    results_file.write("Skin concerns: " + selected_skin_concerns)
+
+    results_file.write("Recommended Products:\n")
+
+    for product in recommended_products:
+        results_file.write("- " + product["name"] + ": " + product["description"] + "\n")
+        results_file.write("Price: $" + str(product["price"]) + "\n")
+        results_file.write("Key ingredients: " + product["key_ingredients"] + "\n")
+
+    results_file.close()
+    messagebox.showinfo("Results saved", "Your results have been saved")
+
+# Main program
+def main():
+    global window, main_frame, skin_type_var
+
+    # Create the main window
+    window = tk.Tk()
+    window.title("Personalised Skincare Checker")
+    window.geometry("800x600")
+    window.configure(bg="111111")
+
+    # Create the main frame
+    main_frame = tk.Frame(window, bg="111111")
+    main_frame.pack(padx=20, pady=20)
+
+    # Variable to store the selected skin type
+    skin_type_var = tk.StringVar()
+
+    show_home()
+    window.mainloop()
+    main()
