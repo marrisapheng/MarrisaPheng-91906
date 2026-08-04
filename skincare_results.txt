@@ -1,0 +1,7 @@
+Personalised Skincare Checker Results
+Skin Type: sensitive
+Skin concerns: fine lines,clogged pores
+Recommended Products:
+- Barrier Repair Moisturiser: A moisturiser that strengthens the skin barrier and locks in moisture.
+Price: $25.0
+Key ingredients: ['Ceramides', 'Niacinamide', 'Panthenol']

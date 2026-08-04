@@ -88,7 +88,7 @@ def make_label(text, size):
 
 def make_button(parent, text, command):
     # Create consistent buttons
-    button = tk.Button(parent, command=command, text=text, bg="#111111", fg="white", font=("Arial", 12))
+    button = tk.Button(parent, command=command, text=text, bg="white", fg="black", font=("Arial", 12))
     button.pack(pady=5)
     return button
 
@@ -97,10 +97,10 @@ def make_navigation(back_command, next_text, next_command):
     navigation_frame = tk.Frame(main_frame, bg="#111111")
     navigation_frame.pack(pady=10)
 
-    back_button = tk.Button(navigation_frame, text="Back", command=back_command, bg="#111111", fg="white", font=("Arial", 12))
+    back_button = tk.Button(navigation_frame, text="Back", command=back_command, bg="white", fg="black", font=("Arial", 12))
     back_button.pack(side=tk.LEFT, padx=5)
 
-    next_button = tk.Button(navigation_frame, text=next_text, command=next_command, bg="#111111", fg="white", font=("Arial", 12))
+    next_button = tk.Button(navigation_frame, text=next_text, command=next_command, bg="white", fg="black", font=("Arial", 12))
     next_button.pack(side=tk.RIGHT, padx=5)
 
 # Home page
@@ -132,7 +132,7 @@ def show_skin_type():
             text=option,
             value=option,
             variable=skin_type_var,
-            bg="#111111",
+            bg="black",
             fg="white",
         )
         radio_button.pack(anchor="w", padx=20)
@@ -210,15 +210,15 @@ def show_results():
 def save_results():
     results_file = open("skincare_results.txt", "w")
     results_file.write("Personalised Skincare Checker Results\n")
-    results_file.write("Skin Type: " + selected_skin_type)
-    results_file.write("Skin concerns: " + selected_skin_concerns)
+    results_file.write("Skin Type: " + selected_skin_type + "\n")
+    results_file.write("Skin concerns: " + ",".join(selected_skin_concerns) + "\n")
 
     results_file.write("Recommended Products:\n")
 
     for product in recommended_products:
         results_file.write("- " + product["name"] + ": " + product["description"] + "\n")
         results_file.write("Price: $" + str(product["price"]) + "\n")
-        results_file.write("Key ingredients: " + product["key_ingredients"] + "\n")
+        results_file.write("Key ingredients: " + str(product["key_ingredients"]) + "\n")
 
     results_file.close()
     messagebox.showinfo("Results saved", "Your results have been saved")
