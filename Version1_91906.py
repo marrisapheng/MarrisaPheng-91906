@@ -56,7 +56,7 @@ def validate_skin_concerns(answer):
         return False
     
 def get_recommended_products(selected_skin_type, selected_concerns):
-    # Search through product_database tp find suitable match
+    # Search through product_database to find suitable match
     products = load_products()
     matches = []
 
@@ -70,6 +70,12 @@ def get_recommended_products(selected_skin_type, selected_concerns):
                 
         if skin_type_matches == True and skin_concerns_matches == True:
             matches.append(product)
+        
+        # If no matches are found, the program searches for products that match the skin type only
+        if len(matches) == 0:
+            for product in products:
+                if selected_skin_type in product["suitable_skin_types"]:
+                    matches.append(product)
 
     return matches
 
@@ -146,7 +152,6 @@ def check_skin_type():
     if validate_skin_type(selected_skin_type) == False:
         messagebox.showerror("Error", "Please select a skin type.")
     else:
-        skin_type_options = selected_skin_type
         show_skin_concerns()
 
 # Skin concerns page
@@ -237,7 +242,7 @@ def save_results():
     results_file = open("skincare_results.txt", "w")
     results_file.write("Personalised Skincare Checker Results\n")
     results_file.write("Skin Type: " + selected_skin_type + "\n")
-    results_file.write("Skin concerns: " + ",".join(selected_skin_concerns) + "\n")
+    results_file.write("Skin concerns: " + ", ".join(selected_skin_concerns) + "\n")
 
     results_file.write("Recommended Products:\n")
 
