@@ -93,13 +93,13 @@ def clear_screen():
 
 def make_label(text, size):
     # Create a white label with background
-    label = tk.Label(main_frame, text=text, bg="#111111", fg="white", font=("Arial", size + 5)) # Increased all font size by 5 for better visibility
+    label = tk.Label(main_frame, text=text, bg="#111111", fg="white", font=("Times", size + 5, "bold")) # Increased all font size by 5 for better visibility
     label.pack(pady=10)
     return label
 
 def make_button(parent, text, command):
     # Create consistent buttons
-    button = tk.Button(parent, command=command, text=text, bg="white", fg="black", font=("Arial", 12))
+    button = tk.Button(parent, command=command, text=text, bg="white", fg="black", font=("Times", 12))
     button.pack(pady=5)
     return button
 
@@ -108,10 +108,10 @@ def make_navigation(back_command, next_text, next_command):
     navigation_frame = tk.Frame(main_frame, bg="#111111")
     navigation_frame.pack(pady=10)
 
-    back_button = tk.Button(navigation_frame, text="Back", command=back_command, bg="white", fg="black", font=("Arial", 12))
+    back_button = tk.Button(navigation_frame, text="Back", command=back_command, bg="white", fg="black", font=("Times", 12))
     back_button.pack(side=tk.LEFT, padx=5)
 
-    next_button = tk.Button(navigation_frame, text=next_text, command=next_command, bg="white", fg="black", font=("Arial", 12))
+    next_button = tk.Button(navigation_frame, text=next_text, command=next_command, bg="white", fg="black", font=("Times", 12))
     next_button.pack(side=tk.RIGHT, padx=5)
 
 # Home page
@@ -135,17 +135,17 @@ def show_about_you():
     heading.pack(pady=10)
 
     # Enter name input
-    name_label = tk.Label(main_frame, text="Name:", bg="#111111", fg="white", font=("Arial", 14))
+    name_label = tk.Label(main_frame, text="Name:", bg="#111111", fg="white", font=("Times", 14))
     name_label.pack(pady=5)
 
     name_entry = tk.Entry(main_frame, bg="white", fg="black", font=("Arial", 12))
     name_entry.pack(pady=5)
 
     # Enter age input
-    age_label = tk.Label(main_frame, text="Age:", bg="#111111", fg="white", font=("Arial", 14))
+    age_label = tk.Label(main_frame, text="Age:", bg="#111111", fg="white", font=("Times", 14))
     age_label.pack(pady=5)
 
-    age_entry = tk.Entry(main_frame, bg="white", fg="black", font=("Arial", 12))
+    age_entry = tk.Entry(main_frame, bg="white", fg="black", font=("Times", 12))
     age_entry.pack(pady=5)
 
     make_navigation(show_home, "Next", check_about_you)
@@ -250,7 +250,7 @@ def show_results():
     scroll_area.pack(fill=tk.BOTH, expand=True)
 
     # Creates a canvas to display all recommended products
-    canvas = tk.Canvas(scroll_area, bg="#111111", height=400, width=500)
+    canvas = tk.Canvas(scroll_area, bg="#111111", height=400, width=480)
     canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
 
     # Creates a scrollbar for the canvas
@@ -273,16 +273,16 @@ def show_results():
         information_frame = tk.Frame(product_box, bg="#222222")
         information_frame.pack(side=tk.LEFT, padx =5)
         
-        product_name = tk.Label(information_frame, text=product["name"], bg="#222222", fg="white", font=("Arial", 14))
+        product_name = tk.Label(information_frame, text=product["name"], bg="#222222", fg="white", font=("Times", 14))
         product_name.pack(anchor="w")
 
-        product_description = tk.Label(information_frame, text=product["description"], bg="#222222", fg="white", font=("Arial", 12), wraplength=450, justify="left")
+        product_description = tk.Label(information_frame, text=product["description"], bg="#222222", fg="white", font=("Times", 12), wraplength=450, justify="left")
         product_description.pack(anchor="w")
 
         product_ingredients = tk.Label(information_frame, text="Key ingredients: " + str(product["key_ingredients"]), bg="#222222", fg="white", font=("Arial", 12), wraplength=450, justify="left")
         product_ingredients.pack(anchor="w")
 
-        product_price = tk.Label(information_frame, text="Price: $" + str(product["price"]), bg="#222222", fg="white", font=("Arial", 12))
+        product_price = tk.Label(information_frame, text="Price: $" + str(product["price"]), bg="#222222", fg="white", font=("Times", 12))
         product_price.pack(anchor="w")
 
         # Frame for where to buy button for each product on the right
@@ -290,7 +290,7 @@ def show_results():
         button_frame.pack(side=tk.RIGHT, padx=10)
 
         # Buy button
-        buy_button = tk.Button(button_frame, text="Buy", command=lambda selected_product=product: show_where_to_buy(selected_product), bg="white", fg="black", font=("Arial", 12))
+        buy_button = tk.Button(button_frame, text="Buy", command=lambda selected_product=product: show_where_to_buy(selected_product), bg="white", fg="black", font=("Times", 12))
         buy_button.pack(pady=5)
 
     # Updates the scrollbar to match the size of the canvas
@@ -308,11 +308,11 @@ def show_where_to_buy(product):
     heading.pack(pady=10)
 
     # Display product name
-    product_name = tk.Label(main_frame, text=product["name"], bg="#111111", fg="white", font=("Arial", 14))
+    product_name = tk.Label(main_frame, text=product["name"], bg="#111111", fg="white", font=("Times", 14))
     product_name.pack(anchor="w")
 
     # Display product price
-    product_price = tk.Label(main_frame, text="Price: $"+str(product["price"]), bg="#111111", fg="white", font=("Arial", 14))
+    product_price = tk.Label(main_frame, text="Price: $"+str(product["price"]), bg="#111111", fg="white", font=("Times", 14))
     product_price.pack(anchor="w")
 
     # Information about where to buy the product
