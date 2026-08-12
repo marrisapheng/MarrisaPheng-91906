@@ -287,6 +287,29 @@ def show_results():
     # Navigation buttons to go back or save results
     make_navigation(show_skin_concerns, "Save results", save_results)
 
+# Where to buy page
+def show_where_to_buy(product):
+    clear_screen()
+
+    heading = make_label("Where to buy", 20)
+    heading.pack(pady=10)
+
+    # Display product name
+    product_name = tk.Label(main_frame, text=product["name"], bg="#111111", fg="white", font=("Arial", 14))
+    product_name.pack(anchor="w")
+
+    # Display product price
+    product_price = tk.Label(main_frame, text="Price: $"+str(product["price"]), bg="#111111", fg="white", font=("Arial", 12))
+    product_price.pack(anchor="w")
+
+    # Information about where to buy the product
+    instruction_label = make_label(text="Where to buy this product:", bg="#111111", fg="white", font=("Arial", 12))
+    instruction_label.pack(anchor="w")
+
+    # Back button to return to the results page
+    back_button = tk.Button(main_frame, text="Back", command=show_results, bg="white", fg="black", font=("Arial", 12))
+    back_button.pack(pady=5)
+    
 # Save the user's answers and results to a text file
 def save_results():
     results_file = open("skincare_results.txt", "w")
