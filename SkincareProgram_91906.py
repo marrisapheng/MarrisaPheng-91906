@@ -148,6 +148,7 @@ def show_about_you():
     age_entry = tk.Entry(main_frame, bg="white", fg="black", font=("Arial", 12))
     age_entry.pack(pady=5)
 
+    make_navigation(show_home, "Next", check_about_you)
 # About you page validation
 def check_about_you():
     global user_name, user_age
@@ -167,7 +168,6 @@ def check_about_you():
     user_age = age
 
     show_skin_type()
-make_navigation(show_home, "Next", check_about_you)
 
 # Show skin type page
 def show_skin_type():
