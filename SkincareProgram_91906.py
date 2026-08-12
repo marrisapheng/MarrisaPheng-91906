@@ -318,14 +318,9 @@ def show_where_to_buy(product):
     # Information about where to buy the product
     instruction_label = make_label("Where to buy this product:", 12)
     instruction_label.pack(anchor="w")
-
-    # Back button to return to the results page
-    back_button = tk.Button(main_frame, text="Back", command=show_results, bg="white", fg="black", font=("Arial", 12))
-    back_button.pack(pady=5)
-
-    # Home button to return to home page
-    home_button = tk.Button(main_frame, text="Home", command=show_home, bg="white", fg="black", font=("Arial", 12))
-    home_button.pack(pady=5)
+    
+    # Navigation buttons to go back to results page and home page
+    make_navigation(show_results, "Home", show_home)
 
 # Save the user's answers and results to a text file
 def save_results():
