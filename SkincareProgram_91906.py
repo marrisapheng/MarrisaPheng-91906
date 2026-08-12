@@ -23,6 +23,8 @@ skin_type_var = None
 skin_concerns_var = {}
 user_name = ""
 user_age = ""
+name_entry = None # Global variables for name and age so they can be accessed by other functions
+age_entry = None
 
 # Variables to store the user's answers
 selected_skin_type = ""
@@ -121,14 +123,57 @@ def show_home():
     instruction_label = make_label("Get started with building your personalised skincare routine.", 14)
     instruction_label.pack(pady=10)
 
-    start_button = make_button(main_frame, "Get started", show_skin_type)
+    start_button = make_button(main_frame, "Get started", show_about_you)
     start_button.pack(pady=20)
+
+# Show about you page
+def show_about_you():
+    global name_entry, age_entry
+    clear_screen()
+
+    heading = make_label("Tell us about yourself", 20)
+    heading.pack(pady=10)
+
+    # Enter name input
+    name_label = tk.Label(main_frame, text="Name:", bg="#111111", fg="white", font=("Arial", 14))
+    name_label.pack(pady=5)
+
+    name_entry = tk.Entry(main_frame, bg="white", fg="black", font=("Arial", 12))
+    name_entry.pack(pady=5)
+
+    # Enter age input
+    age_label = tk.Label(main_frame, text="Age:", bg="#111111", fg="white", font=("Arial", 14))
+    age_label.pack(pady=5)
+
+    age_entry = tk.Entry(main_frame, bg="white", fg="black", font=("Arial", 12))
+    age_entry.pack(pady=5)
+
+# About you page validation
+def check_about_you():
+    global user_name, user_age
+    name = name_entry.get()
+    age = age_entry.get()
+
+    # Check that a name has been entered
+    if name == "":
+        messagebox.showerror("Error", "Please enter your name.")
+        return
+    # Check that an age has been entered
+    if age == "":
+        messagebox.showerror("Error", "Please enter your age.")
+        return
+    
+    user_name = name
+    user_age = age
+
+    show_skin_type()
+make_navigation(show_home, "Next", check_about_you)
 
 # Show skin type page
 def show_skin_type():
     clear_screen()
 
-    heading = make_label("What is your skin type?", 18)
+    heading = make_label("What is your skin type?", 20)
     heading.pack(pady=10)
 
     instruction_label = make_label("Select your skin type", 14)
@@ -146,7 +191,7 @@ def show_skin_type():
         )
         radio_button.pack(anchor="w", padx=20)
 
-    make_navigation(show_home, "Next", check_skin_type)
+    make_navigation(show_about_you, "Next", check_skin_type)
 
 # Checking if skin type is valid
 def check_skin_type():
@@ -163,7 +208,7 @@ def check_skin_type():
 def show_skin_concerns():
     clear_screen()
 
-    heading = make_label("What are your skin concerns?", 18)
+    heading = make_label("What are your skin concerns?", 20)
     heading.pack(pady=10)
 
     instruction_label = make_label("Select your skin concerns", 14)
@@ -197,7 +242,7 @@ def check_skin_concerns():
 def show_results():
     clear_screen()
 
-    heading = make_label("Your Recommended Products", 18)
+    heading = make_label("Your Recommended Products", 20)
     heading.pack(pady=10)
 
     # Frame to hold the canvas and scrollbar
@@ -246,6 +291,8 @@ def show_results():
 def save_results():
     results_file = open("skincare_results.txt", "w")
     results_file.write("Personalised Skincare Checker Results\n")
+    results_file.write("Name: " + user_name + "\n")
+    results_file.write("Age: " + user_age + "\n")
     results_file.write("Skin Type: " + selected_skin_type + "\n")
     results_file.write("Skin concerns: " + ", ".join(selected_skin_concerns) + "\n")
 
