@@ -250,7 +250,7 @@ def show_results():
     scroll_area.pack(fill=tk.BOTH, expand=True)
 
     # Creates a canvas to display all recommended products
-    canvas = tk.Canvas(scroll_area, bg="#111111", height=400, width=420)
+    canvas = tk.Canvas(scroll_area, bg="#111111", height=400, width=500)
     canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
 
     # Creates a scrollbar for the canvas
@@ -271,18 +271,18 @@ def show_results():
 
         # Frame for product info on the left
         information_frame = tk.Frame(product_box, bg="#222222")
-        information_frame.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+        information_frame.pack(side=tk.LEFT, padx =5)
         
-        product_name = tk.Label(product_box, text=product["name"], bg="#222222", fg="white", font=("Arial", 14))
+        product_name = tk.Label(information_frame, text=product["name"], bg="#222222", fg="white", font=("Arial", 14))
         product_name.pack(anchor="w")
 
-        product_description = tk.Label(product_box, text=product["description"], bg="#222222", fg="white", font=("Arial", 12), wraplength=650, justify="left")
+        product_description = tk.Label(information_frame, text=product["description"], bg="#222222", fg="white", font=("Arial", 12), wraplength=450, justify="left")
         product_description.pack(anchor="w")
 
-        product_ingredients = tk.Label(product_box, text="Key ingredients: " + str(product["key_ingredients"]), bg="#222222", fg="white", font=("Arial", 12), wraplength=650, justify="left")
+        product_ingredients = tk.Label(information_frame, text="Key ingredients: " + str(product["key_ingredients"]), bg="#222222", fg="white", font=("Arial", 12), wraplength=450, justify="left")
         product_ingredients.pack(anchor="w")
 
-        product_price = tk.Label(product_box, text="Price: $" + str(product["price"]), bg="#222222", fg="white", font=("Arial", 12))
+        product_price = tk.Label(information_frame, text="Price: $" + str(product["price"]), bg="#222222", fg="white", font=("Arial", 12))
         product_price.pack(anchor="w")
 
         # Frame for where to buy button for each product on the right
