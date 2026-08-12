@@ -93,7 +93,7 @@ def clear_screen():
 
 def make_label(text, size):
     # Create a white label with background
-    label = tk.Label(main_frame, text=text, bg="#111111", fg="white", font=("Arial", size))
+    label = tk.Label(main_frame, text=text, bg="#111111", fg="white", font=("Arial", size + 5)) # Increased all font size by 5 for better visibility
     label.pack(pady=10)
     return label
 
@@ -312,7 +312,7 @@ def show_where_to_buy(product):
     product_name.pack(anchor="w")
 
     # Display product price
-    product_price = tk.Label(main_frame, text="Price: $"+str(product["price"]), bg="#111111", fg="white", font=("Arial", 12))
+    product_price = tk.Label(main_frame, text="Price: $"+str(product["price"]), bg="#111111", fg="white", font=("Arial", 14))
     product_price.pack(anchor="w")
 
     # Information about where to buy the product
