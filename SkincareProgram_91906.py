@@ -265,9 +265,14 @@ def show_results():
 
     # Displays each product in a simple box
     for product in recommended_products:
+
         product_box = tk.Frame(product_frame, bg="#222222", padx=10, pady=10)
         product_box.pack(pady=5, fill=tk.X)
 
+        # Frame for product info on the left
+        information_frame = tk.Frame(product_box, bg="#222222")
+        information_frame.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+        
         product_name = tk.Label(product_box, text=product["name"], bg="#222222", fg="white", font=("Arial", 14))
         product_name.pack(anchor="w")
 
@@ -279,6 +284,14 @@ def show_results():
 
         product_price = tk.Label(product_box, text="Price: $" + str(product["price"]), bg="#222222", fg="white", font=("Arial", 12))
         product_price.pack(anchor="w")
+
+        # Frame for where to buy button for each product on the right
+        button_frame = tk.Frame(product_box, bg="#222222")
+        button_frame.pack(side=tk.RIGHT, padx=10)
+
+        # Buy button
+        buy_button = tk.Button(button_frame, text="Buy", command=lambda selected_product=product: show_where_to_buy(selected_product), bg="white", fg="black", font=("Arial", 12))
+        buy_button.pack(pady=5)
 
     # Updates the scrollbar to match the size of the canvas
     product_frame.update_idletasks()
@@ -303,13 +316,17 @@ def show_where_to_buy(product):
     product_price.pack(anchor="w")
 
     # Information about where to buy the product
-    instruction_label = make_label(text="Where to buy this product:", bg="#111111", fg="white", font=("Arial", 12))
+    instruction_label = make_label("Where to buy this product:", 12)
     instruction_label.pack(anchor="w")
 
     # Back button to return to the results page
     back_button = tk.Button(main_frame, text="Back", command=show_results, bg="white", fg="black", font=("Arial", 12))
     back_button.pack(pady=5)
-    
+
+    # Home button to return to home page
+    home_button = tk.Button(main_frame, text="Home", command=show_home, bg="white", fg="black", font=("Arial", 12))
+    home_button.pack(pady=5)
+
 # Save the user's answers and results to a text file
 def save_results():
     results_file = open("skincare_results.txt", "w")
