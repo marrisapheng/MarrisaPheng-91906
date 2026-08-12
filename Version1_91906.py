@@ -26,7 +26,7 @@ selected_skin_type = ""
 selected_skin_concerns = []
 recommended_products = []
 
-# Data and recommendation functions
+# Data and recommendation functions to help programmers understand
 
 def load_products():
     return product_database

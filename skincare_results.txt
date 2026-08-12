@@ -1,0 +1,22 @@
+Personalised Skincare Checker Results
+Skin Type: dry
+Skin concerns: dry
+Recommended Products:
+- Beauty of Joseon Relief Sun: Rice + Probiotics SPF50+: A lightweight sunscreen that moisturises and protects the skin.
+Price: $31.9
+Key ingredients: Rice extract, grain fermented extracts, niacinamide
+- Dr.Althea 345 Relief Cream: A soothing cream for irritated, dry, or sensitive skin.
+Price: $49.9
+Key ingredients: Niacinamide, panthenol, centella asiatica
+- ROUND LAB 1025 Dokdo Cleanser: A gentle cleanser that cleans skin without stripping moisture.
+Price: $19.9
+Key ingredients: Deep sea water, panthenol, allantoin
+- COSRX Advanced Snail 96 Mucin Power Essence: A hydrating essence that helps smooth texture and support the skin barrier.
+Price: $29.0
+Key ingredients: Snail secretion filtrate, betaine, allantoin
+- Torriden Dive-In Low Molecule Hyaluronic Acid Serum: A lightweight hydrating serum for dry or dehydrated skin.
+Price: $12.8
+Key ingredients: Low molecular hyaluronic acid, panthenol, allantoin
+- Beauty of Joseon Dynasty Cream: A moisturising cream that helps with dryness and dull skin.
+Price: $41.9
+Key ingredients: Rice bran water, ginseng root water, niacinamide
