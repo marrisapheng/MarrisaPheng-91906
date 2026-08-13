@@ -277,11 +277,12 @@ def show_results():
     heading.pack(pady=10)
 
     # Frame to hold the canvas and scrollbar
-    scroll_area = tk.Frame(main_frame, bg="#111111")
-    scroll_area.pack(fill=tk.BOTH, expand=True)
+    scroll_area = tk.Frame(main_frame, bg="#111111", width=1100, height=430)
+    scroll_area.pack(padx=10, pady=5)
+    scroll_area.pack_propagate(False)  # Prevent the frame from resizing to fit the canvas
 
     # Creates a canvas to display all recommended products
-    canvas = tk.Canvas(scroll_area, bg="#111111", height=400)
+    canvas = tk.Canvas(scroll_area, bg="#111111", height=500)
     canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
 
     # Creates a scrollbar for the canvas
@@ -291,14 +292,23 @@ def show_results():
     canvas.configure(yscrollcommand=scrollbar.set)
 
     product_frame = tk.Frame(canvas, bg="#111111")
-    canvas.create_window((0, 0), window=product_frame, anchor="nw")
+    # Put the product_frame inside the canvas
+    canvas_window = canvas.create_window((0, 0), window=product_frame, anchor="nw")
 
+# Function to make the product boxes automatically stretch to the width of the canvas
+    def resize_product_frame(event):
+        # Changes the width of the product frame to match the width of the canvas
+        canvas.itemconfig(canvas_window, width=event.width)
+    # Calls the resize_product_frame function whenever the canvas is resized
+    canvas.bind("<Configure>", resize_product_frame)
 
     # Displays each product in a simple box
     for product in recommended_products:
 
-        product_box = tk.Frame(product_frame, bg="#F7BAC9", padx=15, pady=15)
+        product_box = tk.Frame(product_frame, bg="#F7BAC9", height=170, padx=15, pady=15)
         product_box.pack(padx=5, pady=5, fill=tk.X)
+        product_box.pack_propagate(False)  # Prevent the frame from resizing to fit the content
+        product_box.grid_columnconfigure(1, weight=1)  # Make the product info expand to fill available space
 
         # Frame for product image on the left
         image_frame = tk.Frame(product_box, bg="white", width=130, height=130)
@@ -315,10 +325,10 @@ def show_results():
         product_name = tk.Label(information_frame, text=product["name"], bg="#F7BAC9", fg="black", font=("Times", 16, "bold"))
         product_name.pack(anchor="w", fill=tk.X)
 
-        product_description = tk.Label(information_frame, text=product["description"], bg="#F7BAC9", fg="black", font=("Times", 14), wraplength=400, justify="left")
+        product_description = tk.Label(information_frame, text=product["description"], bg="#F7BAC9", fg="black", font=("Times", 14), wraplength=650, justify="left")
         product_description.pack(anchor="w", fill=tk.X)
 
-        product_ingredients = tk.Label(information_frame, text="Key ingredients: " + str(product["key_ingredients"]), bg="#F7BAC9", fg="black", font=("Times", 14), wraplength=400, justify="left")
+        product_ingredients = tk.Label(information_frame, text="Key ingredients: " + str(product["key_ingredients"]), bg="#F7BAC9", fg="black", font=("Times", 14), wraplength=650, justify="left")
         product_ingredients.pack(anchor="w", fill=tk.X)
 
         product_price = tk.Label(information_frame, text="Price: $" + str(product["price"]), bg="#F7BAC9", fg="black", font=("Times", 14))
@@ -401,7 +411,7 @@ def main():
     # Create the main window
     window = tk.Tk()
     window.title("Personalised Skincare Checker")
-    window.geometry("800x600")
+    window.geometry("1200x800")
     window.configure(bg="#111111")
 
     # Create the main frame

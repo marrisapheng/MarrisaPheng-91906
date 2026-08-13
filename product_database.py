@@ -42,7 +42,7 @@ product_database = [
         "targeted_skin_concerns": ["dull", "texture", "clogged pores"],
         "price": 43.90,
         "key_ingredients": "Niacinamide, tranexamic acid",
-        "image: ": "images/anua_niacinamide_serum.png"
+        "image": "images/anua_niacinamide_serum.png"
     },
     {
         "name": "COSRX Low pH Good Morning Gel Cleanser",
@@ -105,6 +105,6 @@ product_database = [
         "targeted_skin_concerns": ["dull", "texture", "acne"],
         "price": 29.90,
         "key_ingredients": "Propolis extract, niacinamide",
-        "image: ": "images/boj_glow_serum.png"
+        "image": "images/boj_glow_serum.png"
     }
 ]
