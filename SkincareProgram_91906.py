@@ -98,16 +98,18 @@ def make_header():
     header.pack(pady=10)
     return header
 
+# Create a consistent label for every page
 def make_label(text, size):
     # Create a white label with background
     label = tk.Label(main_frame, text=text, bg="#111111", fg="white", font=("Times", size + 5, "bold")) # Increased all font size by 5 for better visibility
     label.pack(pady=10)
     return label
 
+# Create a consistent product image display
 def make_product_image(parent, image_path):
     # Load the product image and resize it to fit the GUI
     image = Image.open(image_path)
-    image.thumbnail((150, 150))  # Resize the image to fit within 150x150 pixels
+    image = image.resize((130, 130))  # Resize the image to fit within 130x130 pixels consistently
 
     # Convert the image to a format that Tkinter can use
     product_image = ImageTk.PhotoImage(image)
@@ -116,14 +118,16 @@ def make_product_image(parent, image_path):
     image_label = tk.Label(parent, image=product_image, bg="white")
     image_label.image = product_image  # Keep a reference to avoid garbage collection
 
-    image_label.pack(padx=10, pady=5)
+    image_label.pack()
     return image_label
+# Create a consistent button for every page
 def make_button(parent, text, command):
     # Create consistent buttons
     button = tk.Button(parent, command=command, text=text, bg="white", fg="black", font=("Times", 12))
     button.pack(pady=5)
     return button
 
+# Create navigation buttons for every page
 def make_navigation(back_command, next_text, next_command):
     # Create navigation buttons
     navigation_frame = tk.Frame(main_frame, bg="#111111")
@@ -277,7 +281,7 @@ def show_results():
     scroll_area.pack(fill=tk.BOTH, expand=True)
 
     # Creates a canvas to display all recommended products
-    canvas = tk.Canvas(scroll_area, bg="#111111", height=400, width=570)
+    canvas = tk.Canvas(scroll_area, bg="#111111", height=400)
     canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
 
     # Creates a scrollbar for the canvas
@@ -293,28 +297,36 @@ def show_results():
     # Displays each product in a simple box
     for product in recommended_products:
 
-        product_box = tk.Frame(product_frame, bg="#F7BAC9", padx=10, pady=10)
-        product_box.pack(pady=5, fill=tk.X)
+        product_box = tk.Frame(product_frame, bg="#F7BAC9", padx=15, pady=15)
+        product_box.pack(padx=5, pady=5, fill=tk.X)
+
+        # Frame for product image on the left
+        image_frame = tk.Frame(product_box, bg="white", width=130, height=130)
+        image_frame.grid(row=0, column=0, padx=5, pady=15, sticky="n")
+        image_frame.grid_propagate(False)  # Prevent the frame from resizing to fit the image
+
+        # Display specific product image
+        product_image = make_product_image(image_frame, product["image"])
 
         # Frame for product info on the left
         information_frame = tk.Frame(product_box, bg="#F7BAC9")
-        information_frame.pack(side=tk.LEFT, padx =5)
+        information_frame.grid(row=0, column=1, padx=5, pady=15, sticky="nsew")
         
         product_name = tk.Label(information_frame, text=product["name"], bg="#F7BAC9", fg="black", font=("Times", 16, "bold"))
-        product_name.pack(anchor="w")
+        product_name.pack(anchor="w", fill=tk.X)
 
-        product_description = tk.Label(information_frame, text=product["description"], bg="#F7BAC9", fg="black", font=("Times", 14), wraplength=550, justify="left")
-        product_description.pack(anchor="w")
+        product_description = tk.Label(information_frame, text=product["description"], bg="#F7BAC9", fg="black", font=("Times", 14), wraplength=400, justify="left")
+        product_description.pack(anchor="w", fill=tk.X)
 
-        product_ingredients = tk.Label(information_frame, text="Key ingredients: " + str(product["key_ingredients"]), bg="#F7BAC9", fg="black", font=("Arial", 14), wraplength=550, justify="left")
-        product_ingredients.pack(anchor="w")
+        product_ingredients = tk.Label(information_frame, text="Key ingredients: " + str(product["key_ingredients"]), bg="#F7BAC9", fg="black", font=("Times", 14), wraplength=400, justify="left")
+        product_ingredients.pack(anchor="w", fill=tk.X)
 
         product_price = tk.Label(information_frame, text="Price: $" + str(product["price"]), bg="#F7BAC9", fg="black", font=("Times", 14))
         product_price.pack(anchor="w")
 
         # Frame for where to buy button for each product on the right
         button_frame = tk.Frame(product_box, bg="#F7BAC9")
-        button_frame.pack(side=tk.RIGHT, padx=10)
+        button_frame.grid(row=0, column=2, padx=5, pady=15, sticky="n")
 
         # Buy button
         buy_button = tk.Button(button_frame, text="Buy", command=lambda selected_product=product: show_where_to_buy(selected_product), bg="white", fg="black", font=("Times", 14))
