@@ -6,6 +6,7 @@ product_database = [
         "targeted_skin_concerns": ["dry", "dull", "sensitive", "fine lines"],
         "price": 31.90,
         "key_ingredients": "Rice extract, grain fermented extracts, niacinamide",
+        "image": "images/boj_sunscreen.png"
     },
     {
         "name": "COSRX Acne Pimple Master Patch",
@@ -14,6 +15,7 @@ product_database = [
         "targeted_skin_concerns": ["acne"],
         "price": 6.90,
         "key_ingredients": "Hydrocolloid patch",
+        "image": "images/cosrx_pimple_patch.png"
     },
     {
         "name": "Dr.Althea 345 Relief Cream",
@@ -22,6 +24,7 @@ product_database = [
         "targeted_skin_concerns": ["dry", "sensitive", "texture", "acne"],
         "price": 49.90,
         "key_ingredients": "Niacinamide, panthenol, centella asiatica",
+        "image": "images/dr_althea_345.png"
     },
     {
         "name": "ANUA Heartleaf Quercetinol Pore Deep Cleansing Foam",
@@ -30,6 +33,7 @@ product_database = [
         "targeted_skin_concerns": ["acne", "clogged pores", "texture", "sensitive"],
         "price": 22.90,
         "key_ingredients": "Heartleaf extract, quercetinol, hyaluronic acid",
+        "image": "images/anua_heartleaf_cleanser.png"
     },
     {
         "name": "ANUA Niacinamide 10% + TXA 4% Serum",
@@ -38,6 +42,7 @@ product_database = [
         "targeted_skin_concerns": ["dull", "texture", "clogged pores"],
         "price": 43.90,
         "key_ingredients": "Niacinamide, tranexamic acid",
+        "image: ": "images/anua_niacinamide_serum.png"
     },
     {
         "name": "COSRX Low pH Good Morning Gel Cleanser",
@@ -46,6 +51,7 @@ product_database = [
         "targeted_skin_concerns": ["acne", "texture", "sensitive"],
         "price": 16.90,
         "key_ingredients": "Tea tree leaf oil, betaine salicylate",
+        "image": "images/cosrx_gel_cleanser.png"
     },
     {
         "name": "ROUND LAB 1025 Dokdo Cleanser",
@@ -54,6 +60,7 @@ product_database = [
         "targeted_skin_concerns": ["dry", "sensitive", "texture"],
         "price": 19.90,
         "key_ingredients": "Deep sea water, panthenol, allantoin",
+        "image": "images/roundlab_dokdo_cleanser.png"
     },
     {
         "name": "COSRX Advanced Snail 96 Mucin Power Essence",
@@ -62,6 +69,7 @@ product_database = [
         "targeted_skin_concerns": ["dry", "texture", "sensitive", "fine lines"],
         "price": 29.00,
         "key_ingredients": "Snail secretion filtrate, betaine, allantoin",
+        "image": "images/cosrx_snail_essence.png"
     },
     {
         "name": "Torriden Dive-In Low Molecule Hyaluronic Acid Serum",
@@ -70,6 +78,7 @@ product_database = [
         "targeted_skin_concerns": ["dry", "dull", "sensitive"],
         "price": 12.80,
         "key_ingredients": "Low molecular hyaluronic acid, panthenol, allantoin",
+        "image": "images/torriden_hyaluronic_serum.png"
     },
     {
         "name": "Skin1004 Madagascar Centella Ampoule",
@@ -78,6 +87,7 @@ product_database = [
         "targeted_skin_concerns": ["sensitive", "acne", "texture"],
         "price": 10.50,
         "key_ingredients": "Centella asiatica extract",
+        "image": "images/skin1004_centella_ampoule.png"
     },
     {
         "name": "Beauty of Joseon Dynasty Cream",
@@ -86,6 +96,7 @@ product_database = [
         "targeted_skin_concerns": ["dry", "dull", "fine lines"],
         "price": 41.90,
         "key_ingredients": "Rice bran water, ginseng root water, niacinamide",
+        "image": "images/boj_dynasty_cream.png"
     },
     {
         "name": "Beauty of Joseon Glow Serum: Propolis + Niacinamide",
@@ -94,5 +105,6 @@ product_database = [
         "targeted_skin_concerns": ["dull", "texture", "acne"],
         "price": 29.90,
         "key_ingredients": "Propolis extract, niacinamide",
+        "image: ": "images/boj_glow_serum.png"
     }
 ]
