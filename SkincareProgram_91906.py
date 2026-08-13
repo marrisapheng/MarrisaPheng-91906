@@ -104,6 +104,20 @@ def make_label(text, size):
     label.pack(pady=10)
     return label
 
+def make_product_image(parent, image_path):
+    # Load the product image and resize it to fit the GUI
+    image = Image.open(image_path)
+    image.thumbnail((150, 150))  # Resize the image to fit within 150x150 pixels
+
+    # Convert the image to a format that Tkinter can use
+    product_image = ImageTk.PhotoImage(image)
+
+    # Create a label to display the image
+    image_label = tk.Label(parent, image=product_image, bg="white")
+    image_label.image = product_image  # Keep a reference to avoid garbage collection
+
+    image_label.pack(padx=10, pady=5)
+    return image_label
 def make_button(parent, text, command):
     # Create consistent buttons
     button = tk.Button(parent, command=command, text=text, bg="white", fg="black", font=("Times", 12))
