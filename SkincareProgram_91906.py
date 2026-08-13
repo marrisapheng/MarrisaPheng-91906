@@ -94,14 +94,14 @@ def clear_screen():
 
 # Create MyGlow header for every page
 def make_header():
-    header = tk.Label(main_frame, text="MyGlow", bg="#111111", fg="white", font=("Times", 26, "bold"))
+    header = tk.Label(main_frame, text="MyGlow", bg="#FFF4F6", fg="#3B2929", font=("Times", 26, "bold"))
     header.pack(pady=10)
     return header
 
 # Create a consistent label for every page
 def make_label(text, size):
     # Create a white label with background
-    label = tk.Label(main_frame, text=text, bg="#111111", fg="white", font=("Times", size + 5, "bold")) # Increased all font size by 5 for better visibility
+    label = tk.Label(main_frame, text=text, bg="#FFF4F6", fg="#3B2929", font=("Times", size + 5, "bold")) # Increased all font size by 5 for better visibility
     label.pack(pady=10)
     return label
 
@@ -115,28 +115,29 @@ def make_product_image(parent, image_path):
     product_image = ImageTk.PhotoImage(image)
 
     # Create a label to display the image
-    image_label = tk.Label(parent, image=product_image, bg="white")
+    image_label = tk.Label(parent, image=product_image, bg="#F7EAE6")
     image_label.image = product_image  # Keep a reference to avoid garbage collection
 
     image_label.pack()
     return image_label
+
 # Create a consistent button for every page
 def make_button(parent, text, command):
     # Create consistent buttons
-    button = tk.Button(parent, command=command, text=text, bg="white", fg="black", font=("Times", 12))
+    button = tk.Button(parent, command=command, text=text, bg="#D46A86", fg="black", font=("Times", 12))
     button.pack(pady=5)
     return button
 
 # Create navigation buttons for every page
 def make_navigation(back_command, next_text, next_command):
     # Create navigation buttons
-    navigation_frame = tk.Frame(main_frame, bg="#111111")
+    navigation_frame = tk.Frame(main_frame, bg="#FFF4F6")
     navigation_frame.pack(pady=10)
 
-    back_button = tk.Button(navigation_frame, text="Back", command=back_command, bg="white", fg="black", font=("Times", 12))
+    back_button = tk.Button(navigation_frame, text="Back", command=back_command, bg="#E493A9", fg="#3B2929", font=("Times", 12))
     back_button.pack(side=tk.LEFT, padx=5)
 
-    next_button = tk.Button(navigation_frame, text=next_text, command=next_command, bg="white", fg="black", font=("Times", 12))
+    next_button = tk.Button(navigation_frame, text=next_text, command=next_command, bg="#E493A9", fg="#3B2929", font=("Times", 12))
     next_button.pack(side=tk.RIGHT, padx=5)
 
 # Home page
@@ -163,17 +164,17 @@ def show_about_you():
     heading.pack(pady=10)
 
     # Enter name input
-    name_label = tk.Label(main_frame, text="Name:", bg="#111111", fg="white", font=("Times", 14))
+    name_label = tk.Label(main_frame, text="Name:", bg="#FFF4F6", fg="#3B2929", font=("Times", 14))
     name_label.pack(pady=5)
 
-    name_entry = tk.Entry(main_frame, bg="white", fg="black", font=("Arial", 12))
+    name_entry = tk.Entry(main_frame, bg="#FCE4EA", fg="#3B2929", font=("Arial", 12))
     name_entry.pack(pady=5)
 
     # Enter age input
-    age_label = tk.Label(main_frame, text="Age:", bg="#111111", fg="white", font=("Times", 14))
+    age_label = tk.Label(main_frame, text="Age:", bg="#FFF4F6", fg="#3B2929", font=("Times", 14))
     age_label.pack(pady=5)
 
-    age_entry = tk.Entry(main_frame, bg="white", fg="black", font=("Times", 12))
+    age_entry = tk.Entry(main_frame, bg="#FCE4EA", fg="#3B2929", font=("Times", 12))
     age_entry.pack(pady=5)
 
     make_navigation(show_home, "Next", check_about_you)
@@ -210,14 +211,7 @@ def show_skin_type():
 
     # Creates radio buttons for skin types
     for option in skin_type_options:
-        radio_button = tk.Radiobutton(
-            main_frame,
-            text=option,
-            value=option,
-            variable=skin_type_var,
-            bg="black",
-            fg="white",
-        )
+        radio_button = tk.Radiobutton(main_frame, text=option, value=option, variable=skin_type_var, bg="#FFF4F6", fg="#3B2929")
         radio_button.pack(anchor="w", padx=20)
 
     make_navigation(show_about_you, "Next", check_skin_type)
@@ -246,14 +240,8 @@ def show_skin_concerns():
 
     # Creates checkboxes for skin concerns
     for concern in skin_concern_options:
-        skin_concerns_var[concern] = tk.BooleanVar()
-        checkbox = tk.Checkbutton(
-            main_frame,
-            text=concern,
-            variable=skin_concerns_var[concern],
-            bg="#111111",
-            fg="white",
-        )
+        skin_concerns_var[concern] = tk.BooleanVar() # Creates a BooleanVar for each skin concern to track if it is selected or not
+        checkbox = tk.Checkbutton(main_frame, text=concern, variable=skin_concerns_var[concern], bg="#FFF4F6", fg="#3B2929")
         checkbox.pack(anchor="w", padx=20)
 
     make_navigation(show_skin_type, "Next", check_skin_concerns)
@@ -277,21 +265,21 @@ def show_results():
     heading.pack(pady=10)
 
     # Frame to hold the canvas and scrollbar
-    scroll_area = tk.Frame(main_frame, bg="#111111", width=1100, height=430)
+    scroll_area = tk.Frame(main_frame, bg="#FFF4F6", width=1100, height=430)
     scroll_area.pack(padx=10, pady=5)
     scroll_area.pack_propagate(False)  # Prevent the frame from resizing to fit the canvas
 
     # Creates a canvas to display all recommended products
-    canvas = tk.Canvas(scroll_area, bg="#111111", height=500)
+    canvas = tk.Canvas(scroll_area, bg="#FFF4F6", height=500)
     canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
 
     # Creates a scrollbar for the canvas
-    scrollbar = tk.Scrollbar(scroll_area, orient=tk.VERTICAL, command=canvas.yview)
+    scrollbar = tk.Scrollbar(scroll_area, orient=tk.VERTICAL, command=canvas.yview, bg="#E493A9")
     scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
 
     canvas.configure(yscrollcommand=scrollbar.set)
 
-    product_frame = tk.Frame(canvas, bg="#111111")
+    product_frame = tk.Frame(canvas, bg="#FFF4F6")
     # Put the product_frame inside the canvas
     canvas_window = canvas.create_window((0, 0), window=product_frame, anchor="nw")
 
@@ -311,7 +299,7 @@ def show_results():
         product_box.grid_columnconfigure(1, weight=1)  # Make the product info expand to fill available space
 
         # Frame for product image on the left
-        image_frame = tk.Frame(product_box, bg="white", width=130, height=130)
+        image_frame = tk.Frame(product_box, bg="#F7EAE6", width=130, height=130)
         image_frame.grid(row=0, column=0, padx=5, pady=15, sticky="n")
         image_frame.grid_propagate(False)  # Prevent the frame from resizing to fit the image
 
@@ -322,16 +310,16 @@ def show_results():
         information_frame = tk.Frame(product_box, bg="#F7BAC9")
         information_frame.grid(row=0, column=1, padx=5, pady=15, sticky="nsew")
         
-        product_name = tk.Label(information_frame, text=product["name"], bg="#F7BAC9", fg="black", font=("Times", 16, "bold"))
+        product_name = tk.Label(information_frame, text=product["name"], bg="#F7BAC9", fg="#3B2929", font=("Times", 16, "bold"))
         product_name.pack(anchor="w", fill=tk.X)
 
-        product_description = tk.Label(information_frame, text=product["description"], bg="#F7BAC9", fg="black", font=("Times", 14), wraplength=650, justify="left")
+        product_description = tk.Label(information_frame, text=product["description"], bg="#F7BAC9", fg="#3B2929", font=("Times", 14), wraplength=650, justify="left")
         product_description.pack(anchor="w", fill=tk.X)
 
-        product_ingredients = tk.Label(information_frame, text="Key ingredients: " + str(product["key_ingredients"]), bg="#F7BAC9", fg="black", font=("Times", 14), wraplength=650, justify="left")
+        product_ingredients = tk.Label(information_frame, text="Key ingredients: " + str(product["key_ingredients"]), bg="#F7BAC9", fg="#3B2929", font=("Times", 14), wraplength=650, justify="left")
         product_ingredients.pack(anchor="w", fill=tk.X)
 
-        product_price = tk.Label(information_frame, text="Price: $" + str(product["price"]), bg="#F7BAC9", fg="black", font=("Times", 14))
+        product_price = tk.Label(information_frame, text="Price: $" + str(product["price"]), bg="#F7BAC9", fg="#3B2929", font=("Times", 14))
         product_price.pack(anchor="w")
 
         # Frame for where to buy button for each product on the right
@@ -339,7 +327,7 @@ def show_results():
         button_frame.grid(row=0, column=2, padx=5, pady=15, sticky="n")
 
         # Buy button
-        buy_button = tk.Button(button_frame, text="Buy", command=lambda selected_product=product: show_where_to_buy(selected_product), bg="white", fg="black", font=("Times", 14))
+        buy_button = tk.Button(button_frame, text="Buy", command=lambda selected_product=product: show_where_to_buy(selected_product), bg="#D46A86", fg="#3B2929", font=("Times", 14))
         buy_button.pack(pady=5)
 
     # Updates the scrollbar to match the size of the canvas
@@ -412,10 +400,10 @@ def main():
     window = tk.Tk()
     window.title("Personalised Skincare Checker")
     window.geometry("1200x800")
-    window.configure(bg="#111111")
+    window.configure(bg="#FFF4F6")
 
     # Create the main frame
-    main_frame = tk.Frame(window, bg="#111111")
+    main_frame = tk.Frame(window, bg="#FFF4F6")
     main_frame.pack(padx=20, pady=20)
 
     # Variable to store the selected skin type
