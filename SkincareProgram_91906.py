@@ -2,6 +2,7 @@
 import tkinter as tk
 from tkinter import messagebox
 from product_database import product_database
+from PIL import Image, ImageTk
 
 # Skin types and Skin concerns lists
 skin_type_options = ["normal","dry","oily","combination","sensitive"]
@@ -308,12 +309,20 @@ def show_where_to_buy(product):
     heading.pack(pady=10)
 
     # Display product name
-    product_name = tk.Label(main_frame, text=product["name"], bg="#111111", fg="white", font=("Times", 14))
+    product_name = tk.Label(main_frame, text=product["name"], bg="#111111", fg="white", font=("Times", 14, "Bold"))
     product_name.pack(anchor="w")
+
+    # Display product description
+    product_description = tk.Label(main_frame, text=product["description"], bg="#111111", fg="white", font=("Times", 14), wraplength=750, justify="left")
+    product_description.pack(anchor="w")
 
     # Display product price
     product_price = tk.Label(main_frame, text="Price: $"+str(product["price"]), bg="#111111", fg="white", font=("Times", 14))
     product_price.pack(anchor="w")
+
+    # Display product key ingredients
+    product_ingredients = tk.Label(main_frame, text="Key ingredients: " + str(product["key_ingredients"]), bg="#111111", fg="white", font=("Times", 14), wraplength=750, justify="left")
+    product_ingredients.pack(anchor="w")
 
     # Information about where to buy the product
     instruction_label = make_label("Where to buy this product:", 12)
