@@ -92,6 +92,12 @@ def clear_screen():
     for widget in main_frame.winfo_children():
         widget.destroy()
 
+# Create MyGlow header for every page
+def make_header():
+    header = tk.Label(main_frame, text="MyGlow", bg="#111111", fg="white", font=("Times", 26, "bold"))
+    header.pack(pady=10)
+    return header
+
 def make_label(text, size):
     # Create a white label with background
     label = tk.Label(main_frame, text=text, bg="#111111", fg="white", font=("Times", size + 5, "bold")) # Increased all font size by 5 for better visibility
@@ -118,6 +124,8 @@ def make_navigation(back_command, next_text, next_command):
 # Home page
 def show_home():
     clear_screen()
+    make_header()
+
     welcome_label = make_label("Welcome to the Skincare Checker!", 20)
     welcome_label.pack(pady=20)
 
@@ -131,6 +139,7 @@ def show_home():
 def show_about_you():
     global name_entry, age_entry
     clear_screen()
+    make_header()
 
     heading = make_label("Tell us about yourself", 20)
     heading.pack(pady=10)
@@ -173,6 +182,7 @@ def check_about_you():
 # Show skin type page
 def show_skin_type():
     clear_screen()
+    make_header()
 
     heading = make_label("What is your skin type?", 20)
     heading.pack(pady=10)
@@ -208,6 +218,7 @@ def check_skin_type():
 # Skin concerns page
 def show_skin_concerns():
     clear_screen()
+    make_header()
 
     heading = make_label("What are your skin concerns?", 20)
     heading.pack(pady=10)
@@ -242,6 +253,7 @@ def check_skin_concerns():
 # Results page
 def show_results():
     clear_screen()
+    make_header()
 
     heading = make_label("Your Recommended Products", 20)
     heading.pack(pady=10)
@@ -304,24 +316,30 @@ def show_results():
 # Where to buy page
 def show_where_to_buy(product):
     clear_screen()
+    make_header()
 
+    # Header for where to buy page
     heading = make_label("Where to buy", 20)
     heading.pack(pady=10)
 
+    # Create a frame for the product information
+    information_frame = tk.Frame(main_frame, bg="#111111")
+    information_frame.pack(fill=tk.X, padx=20, pady=10)
+
     # Display product name
-    product_name = tk.Label(main_frame, text=product["name"], bg="#111111", fg="white", font=("Times", 14, "Bold"))
+    product_name = tk.Label(information_frame, text=product["name"], bg="#111111", fg="white", font=("Times", 14, "bold"))
     product_name.pack(anchor="w")
 
     # Display product description
-    product_description = tk.Label(main_frame, text=product["description"], bg="#111111", fg="white", font=("Times", 14), wraplength=750, justify="left")
+    product_description = tk.Label(information_frame, text=product["description"], bg="#111111", fg="white", font=("Times", 14), wraplength=750, justify="left")
     product_description.pack(anchor="w")
 
     # Display product price
-    product_price = tk.Label(main_frame, text="Price: $"+str(product["price"]), bg="#111111", fg="white", font=("Times", 14))
+    product_price = tk.Label(information_frame, text="Price: $"+str(product["price"]), bg="#111111", fg="white", font=("Times", 14))
     product_price.pack(anchor="w")
 
     # Display product key ingredients
-    product_ingredients = tk.Label(main_frame, text="Key ingredients: " + str(product["key_ingredients"]), bg="#111111", fg="white", font=("Times", 14), wraplength=750, justify="left")
+    product_ingredients = tk.Label(information_frame, text="Key ingredients: " + str(product["key_ingredients"]), bg="#111111", fg="white", font=("Times", 14), wraplength=750, justify="left")
     product_ingredients.pack(anchor="w")
 
     # Information about where to buy the product
