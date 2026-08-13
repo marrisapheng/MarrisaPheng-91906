@@ -250,7 +250,7 @@ def show_results():
     scroll_area.pack(fill=tk.BOTH, expand=True)
 
     # Creates a canvas to display all recommended products
-    canvas = tk.Canvas(scroll_area, bg="#111111", height=400, width=480)
+    canvas = tk.Canvas(scroll_area, bg="#111111", height=400, width=570)
     canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
 
     # Creates a scrollbar for the canvas
@@ -266,31 +266,31 @@ def show_results():
     # Displays each product in a simple box
     for product in recommended_products:
 
-        product_box = tk.Frame(product_frame, bg="#222222", padx=10, pady=10)
+        product_box = tk.Frame(product_frame, bg="#F7BAC9", padx=10, pady=10)
         product_box.pack(pady=5, fill=tk.X)
 
         # Frame for product info on the left
-        information_frame = tk.Frame(product_box, bg="#222222")
+        information_frame = tk.Frame(product_box, bg="#F7BAC9")
         information_frame.pack(side=tk.LEFT, padx =5)
         
-        product_name = tk.Label(information_frame, text=product["name"], bg="#222222", fg="white", font=("Times", 14))
+        product_name = tk.Label(information_frame, text=product["name"], bg="#F7BAC9", fg="black", font=("Times", 16, "bold"))
         product_name.pack(anchor="w")
 
-        product_description = tk.Label(information_frame, text=product["description"], bg="#222222", fg="white", font=("Times", 12), wraplength=450, justify="left")
+        product_description = tk.Label(information_frame, text=product["description"], bg="#F7BAC9", fg="black", font=("Times", 14), wraplength=550, justify="left")
         product_description.pack(anchor="w")
 
-        product_ingredients = tk.Label(information_frame, text="Key ingredients: " + str(product["key_ingredients"]), bg="#222222", fg="white", font=("Arial", 12), wraplength=450, justify="left")
+        product_ingredients = tk.Label(information_frame, text="Key ingredients: " + str(product["key_ingredients"]), bg="#F7BAC9", fg="black", font=("Arial", 14), wraplength=550, justify="left")
         product_ingredients.pack(anchor="w")
 
-        product_price = tk.Label(information_frame, text="Price: $" + str(product["price"]), bg="#222222", fg="white", font=("Times", 12))
+        product_price = tk.Label(information_frame, text="Price: $" + str(product["price"]), bg="#F7BAC9", fg="black", font=("Times", 14))
         product_price.pack(anchor="w")
 
         # Frame for where to buy button for each product on the right
-        button_frame = tk.Frame(product_box, bg="#222222")
+        button_frame = tk.Frame(product_box, bg="#F7BAC9")
         button_frame.pack(side=tk.RIGHT, padx=10)
 
         # Buy button
-        buy_button = tk.Button(button_frame, text="Buy", command=lambda selected_product=product: show_where_to_buy(selected_product), bg="white", fg="black", font=("Times", 12))
+        buy_button = tk.Button(button_frame, text="Buy", command=lambda selected_product=product: show_where_to_buy(selected_product), bg="white", fg="black", font=("Times", 14))
         buy_button.pack(pady=5)
 
     # Updates the scrollbar to match the size of the canvas
