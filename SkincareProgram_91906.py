@@ -124,8 +124,11 @@ def make_product_image(parent, image_path):
 # Create a consistent button for every page
 def make_button(parent, text, command):
     # Create consistent buttons
-    button = tk.Button(parent, command=command, text=text, bg="#D46A86", fg="black", font=("Times", 12))
+    button = tk.Label(parent, text=text, bg="#E493A9", fg="#3B2929", font=("Times", 17))
     button.pack(pady=5)
+
+    # Makes the button clickable and calls the command function when clicked (macOS compatible)
+    button.bind("<Button-1>", lambda event: command())
     return button
 
 # Create navigation buttons for every page
@@ -134,11 +137,15 @@ def make_navigation(back_command, next_text, next_command):
     navigation_frame = tk.Frame(main_frame, bg="#FFF4F6")
     navigation_frame.pack(pady=10)
 
-    back_button = tk.Button(navigation_frame, text="Back", command=back_command, bg="#E493A9", fg="#3B2929", font=("Times", 12))
+    back_button = tk.Label(navigation_frame, text="Back", bg="#E493A9", fg="#3B2929", font=("Times", 17)) # Changed back button to a label for consistency with other buttons
     back_button.pack(side=tk.LEFT, padx=5)
+    # Makes the back button clickable
+    back_button.bind("<Button-1>", lambda event: back_command())
 
-    next_button = tk.Button(navigation_frame, text=next_text, command=next_command, bg="#E493A9", fg="#3B2929", font=("Times", 12))
+    next_button = tk.Label(navigation_frame, text=next_text, bg="#E493A9", fg="#3B2929", font=("Times", 17)) # Changed next button to a label for consistency with other buttons
     next_button.pack(side=tk.RIGHT, padx=5)
+    # Makes the next button clickable
+    next_button.bind("<Button-1>", lambda event: next_command())
 
 # Home page
 def show_home():
@@ -327,8 +334,10 @@ def show_results():
         button_frame.grid(row=0, column=2, padx=5, pady=15, sticky="n")
 
         # Buy button
-        buy_button = tk.Button(button_frame, text="Buy", command=lambda selected_product=product: show_where_to_buy(selected_product), bg="#D46A86", fg="#3B2929", font=("Times", 14))
+        buy_button = tk.Label(button_frame, text="Buy", bg="#E493A9", fg="#3B2929", font=("Times", 25)) # Changed buy button to a label for consistency with other buttons
         buy_button.pack(pady=5)
+        # Makes the buy button clickable
+        buy_button.bind("<Button-1>", lambda event, selected_product=product: show_where_to_buy(selected_product))
 
     # Updates the scrollbar to match the size of the canvas
     product_frame.update_idletasks()
