@@ -124,7 +124,7 @@ def make_product_image(parent, image_path):
 # Create a consistent button for every page
 def make_button(parent, text, command):
     # Create consistent buttons
-    button = tk.Label(parent, text=text, bg="#E493A9", fg="#3B2929", font=("Times", 17))
+    button = tk.Label(parent, text=text, bg="#E493A9", fg="#3B2929", font=("Times", 17), padx=25, pady=8)
     button.pack(pady=5)
 
     # Makes the button clickable and calls the command function when clicked (macOS compatible)
@@ -137,12 +137,12 @@ def make_navigation(back_command, next_text, next_command):
     navigation_frame = tk.Frame(main_frame, bg="#FFF4F6")
     navigation_frame.pack(pady=10)
 
-    back_button = tk.Label(navigation_frame, text="Back", bg="#E493A9", fg="#3B2929", font=("Times", 17)) # Changed back button to a label for consistency with other buttons
+    back_button = tk.Label(navigation_frame, text="Back", bg="#E493A9", fg="#3B2929", font=("Times", 17), padx=25, pady=8) # Changed back button to a label for consistency with other buttons
     back_button.pack(side=tk.LEFT, padx=5)
     # Makes the back button clickable
     back_button.bind("<Button-1>", lambda event: back_command())
 
-    next_button = tk.Label(navigation_frame, text=next_text, bg="#E493A9", fg="#3B2929", font=("Times", 17)) # Changed next button to a label for consistency with other buttons
+    next_button = tk.Label(navigation_frame, text=next_text, bg="#E493A9", fg="#3B2929", font=("Times", 17), padx=25, pady=8) # Changed next button to a label for consistency with other buttons
     next_button.pack(side=tk.RIGHT, padx=5)
     # Makes the next button clickable
     next_button.bind("<Button-1>", lambda event: next_command())
@@ -152,11 +152,24 @@ def show_home():
     clear_screen()
     make_header()
 
-    welcome_label = make_label("Welcome to the Skincare Checker!", 20)
-    welcome_label.pack(pady=20)
+    # Main box containing the logo and quote
+    home_box = tk.Frame(main_frame, bg="#F7BAC9", width=850, height=400)
+    home_box.pack(padx=10, pady=10)
+    home_box.pack_propagate(False)  # Prevent the frame from resizing to fit the content
 
-    instruction_label = make_label("Get started with building your personalised skincare routine.", 14)
-    instruction_label.pack(pady=10)
+    logo_box = tk.Frame(home_box, bg="#F7EAE6", width=250, height=220)
+    logo_box.grid(row=0, column=0, padx=10, pady=10)
+    logo_box.pack_propagate(False)  # Prevent the frame from resizing to fit the content
+
+    # Add logo here
+
+    # Quote area on the right side of the box
+    quote_frame = tk.Frame(home_box, bg="#F7BAC9", width=450, height=220)
+    quote_frame.grid(row=0, column=1, padx=10, pady=10)
+
+    # Quote displayed beside the logo
+    quote_label = tk.Label(quote_frame, text="Discover personalised skincare recommendations for you.", bg="#F7BAC9", fg="#3B2929", font=("Times", 20, "italic"), wraplength=400, justify="left")
+    quote_label.pack(pady=10)
 
     start_button = make_button(main_frame, "Get started", show_about_you)
     start_button.pack(pady=20)
