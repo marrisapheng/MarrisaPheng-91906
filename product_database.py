@@ -4,45 +4,55 @@ product_database = [
         "description": "A lightweight sunscreen that moisturises and protects the skin.",
         "suitable_skin_types": ["normal", "dry", "combination", "sensitive", "oily"],
         "targeted_skin_concerns": ["dry", "dull", "sensitive", "fine lines"],
-        "price": 31.90,
+        "price": 31.00,
         "key_ingredients": "Rice extract, grain fermented extracts, niacinamide",
-        "image": "images/boj_sunscreen.png"
+        "image": "images/boj_sunscreen.png",
+        "where_to_buy": [{"name": "HIKOCO", "logo": "images/hikoco_logo.png", "link": "https://hikoco.co.nz/products/relief-sun-rice-probiotics?srsltid=AfmBOorIplhPdfF1Qi0sjb3y_uDV53hr9rZQY4syB09fEbwY59LTg3Np"},
+                         {"name": "YesStyle", "logo": "images/yesstyle_logo.png", "link": "https://www.yesstyle.com/en/beauty-of-joseon-relief-sun-rice-probiotics-50ml/info.html/pid.1137908658"},]
     },
     {
         "name": "COSRX Acne Pimple Master Patch",
         "description": "Pimple patches that protect spots and help reduce breakouts.",
         "suitable_skin_types": ["normal", "dry", "combination", "sensitive", "oily"],
         "targeted_skin_concerns": ["acne"],
-        "price": 6.90,
+        "price": 6.00,
         "key_ingredients": "Hydrocolloid patch",
-        "image": "images/cosrx_pimple_patch.png"
+        "image": "images/cosrx_pimple_patch.png",
+        "where_to_buy": [{"name": "HIKOCO", "logo": "images/hikoco_logo.png", "link": "https://hikoco.co.nz/products/acne-pimple-master-patch?variant=27927811137&country=NZ&currency=NZD&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic&gad_source=1&gad_campaignid=21428164992&gbraid=0AAAAADfsQE2s_JG1voCwWg81ufLX94pp9&gclid=Cj0KCQjw-frTBhCvARIsADv4XY4pTz9bAV6oVPQ5BsMeZ4_GR04dndhhdyLqqPaney18R8y6TJmg2uEaAgfNEALw_wcB"},
+                        {"name": "W Cosmetics", "logo": "images/w_cosmetics_logo.png", "link": "https://wcosmetics.com.au/products/cosrx-acne-pimple-master-patch-24patches-1"}]
     },
     {
         "name": "Dr.Althea 345 Relief Cream",
         "description": "A soothing cream for irritated, dry, or sensitive skin.",
         "suitable_skin_types": ["normal", "dry", "combination", "sensitive"],
         "targeted_skin_concerns": ["dry", "sensitive", "texture", "acne"],
-        "price": 49.90,
+        "price": 45.00,
         "key_ingredients": "Niacinamide, panthenol, centella asiatica",
-        "image": "images/dr_althea_345.png"
+        "image": "images/dr_althea_345.png",
+        "where_to_buy": [{"name": "HIKOCO", "logo": "images/hikoco_logo.png", "link": "https://hikoco.co.nz/products/345-relief-cream?_pos=1&_sid=5c732f124&_ss=r"},
+                         {"name": "W Cosmetics", "logo": "images/w_cosmetics_logo.png", "link": "https://wcosmetics.com.au/products/dr-althea-345-relief-cream?_pos=1&_sid=81773dac8&_ss=r"}]
     },
     {
         "name": "ANUA Heartleaf Quercetinol Pore Deep Cleansing Foam",
         "description": "A cleanser that helps remove oil, dirt, and pore buildup.",
         "suitable_skin_types": ["oily", "combination", "sensitive"],
         "targeted_skin_concerns": ["acne", "clogged pores", "texture", "sensitive"],
-        "price": 22.90,
+        "price": 28.00,
         "key_ingredients": "Heartleaf extract, quercetinol, hyaluronic acid",
-        "image": "images/anua_heartleaf_cleanser.png"
+        "image": "images/anua_heartleaf_cleanser.png",
+        "where_to_buy": [{"name": "HIKOCO", "logo": "images/hikoco_logo.png", "link": "https://hikoco.co.nz/products/heartleaf-quercetinol-pore-deep-cleansing-foam?_pos=1&_sid=f103eac01&_ss=r"},
+                         {"name": "W Cosmetics", "logo": "images/w_cosmetics_logo.png", "link": "https://wcosmetics.com.au/search?options%5Bprefix%5D=last&q=anua+foam+cleanser"}]
     },
     {
         "name": "ANUA Niacinamide 10% + TXA 4% Serum",
         "description": "A serum that helps brighten uneven and dull-looking skin.",
         "suitable_skin_types": ["normal", "oily", "combination"],
         "targeted_skin_concerns": ["dull", "texture", "clogged pores"],
-        "price": 43.90,
+        "price": 44.00,
         "key_ingredients": "Niacinamide, tranexamic acid",
-        "image": "images/anua_niacinamide_serum.png"
+        "image": "images/anua_niacinamide_serum.png",
+        "where_to_buy": [{"name": "HIKOCO", "logo": "images/hikoco_logo.png", "link": "https://hikoco.co.nz/products/niacinamide-10-txa-4-dark-spot-correcting-serum?_pos=1&_sid=41c5c853d&_ss=r"},
+                         {"name": "YesStyle", "logo": "images/yesstyle_logo.png", "link": "https://www.yesstyle.com/en/anua-niacinamide-10-txa-4-serum-2024-version-30ml/info.html/pid.1132942898"}]
     },
     {
         "name": "COSRX Low pH Good Morning Gel Cleanser",
@@ -51,43 +61,53 @@ product_database = [
         "targeted_skin_concerns": ["acne", "texture", "sensitive"],
         "price": 16.90,
         "key_ingredients": "Tea tree leaf oil, betaine salicylate",
-        "image": "images/cosrx_gel_cleanser.png"
+        "image": "images/cosrx_gel_cleanser.png",
+        "where_to_buy": [{"name": "HIKOCO", "logo": "images/hikoco_logo.png", "link": "https://hikoco.co.nz/products/low-ph-good-morning-gel-cleanser?_pos=1&_sid=a6d871858&_ss=r"},
+                         {"name": "YesStyle", "logo": "images/yesstyle_logo.png", "link": "https://www.yesstyle.com/en/cosrx-low-ph-good-morning-gel-cleanser-150ml/info.html/pid.1052684732"}]
     },
     {
         "name": "ROUND LAB 1025 Dokdo Cleanser",
         "description": "A gentle cleanser that cleans skin without stripping moisture.",
         "suitable_skin_types": ["normal", "dry", "combination", "sensitive"],
         "targeted_skin_concerns": ["dry", "sensitive", "texture"],
-        "price": 19.90,
+        "price": 19.00,
         "key_ingredients": "Deep sea water, panthenol, allantoin",
-        "image": "images/roundlab_dokdo_cleanser.png"
+        "image": "images/roundlab_dokdo_cleanser.png",
+        "where_to_buy": [{"name": "HIKOCO", "logo": "images/hikoco_logo.png", "link": "https://hikoco.co.nz/products/1025-dokdo-cleanser?_pos=1&_sid=e9413db55&_ss=r"},
+                         {"name": "W Cosmetics", "logo": "images/w_cosmetics_logo.png", "link": "https://wcosmetics.com.au/products/round-lab-1025-dokdo-cleanser-150ml?_pos=1&_sid=5cb36c87f&_ss=r"}]
     },
     {
         "name": "COSRX Advanced Snail 96 Mucin Power Essence",
         "description": "A hydrating essence that helps smooth texture and support the skin barrier.",
         "suitable_skin_types": ["normal", "dry", "combination", "sensitive", "oily"],
         "targeted_skin_concerns": ["dry", "texture", "sensitive", "fine lines"],
-        "price": 29.00,
+        "price": 12.00,
         "key_ingredients": "Snail secretion filtrate, betaine, allantoin",
-        "image": "images/cosrx_snail_essence.png"
+        "image": "images/cosrx_snail_essence.png",
+        "where_to_buy": [{"name": "W cosmetics", "logo": "images/w_cosmetics_logo.png", "link": "https://wcosmetics.com.au/products/cosrx-advanced-snail-96-mucin-power-essence?_pos=1&_sid=2da0e9fe9&_ss=r"},
+                         {"name": "YesStyle", "logo": "images/yesstyle_logo.png", "link": "https://www.yesstyle.com/en/cosrx-advanced-snail-96-mucin-power-essence-100ml/info.html/pid.1052684695"}]
     },
     {
         "name": "Torriden Dive-In Low Molecule Hyaluronic Acid Serum",
         "description": "A lightweight hydrating serum for dry or dehydrated skin.",
         "suitable_skin_types": ["normal", "dry", "combination", "sensitive", "oily"],
         "targeted_skin_concerns": ["dry", "dull", "sensitive"],
-        "price": 12.80,
+        "price": 32.00,
         "key_ingredients": "Low molecular hyaluronic acid, panthenol, allantoin",
-        "image": "images/torriden_hyaluronic_serum.png"
+        "image": "images/torriden_hyaluronic_serum.png",
+        "where_to_buy": [{"name": "HIKOCO", "logo": "images/hikoco_logo.png", "link": "https://hikoco.co.nz/products/dive-in-low-molecular-hyaluronic-acid-serum?_pos=1&_sid=2a9a2cff0&_ss=r"},
+                        {"name": "YesStyle", "logo": "images/yesstyle_logo.png", "link": "https://www.yesstyle.com/en/torriden-dive-in-low-molecular-hyaluronic-acid-serum-renewed-50ml/info.html/pid.1115692618"}]
     },
     {
         "name": "Skin1004 Madagascar Centella Ampoule",
         "description": "A calming ampoule that helps soothe sensitive or irritated skin.",
         "suitable_skin_types": ["normal", "dry", "combination", "sensitive", "oily"],
         "targeted_skin_concerns": ["sensitive", "acne", "texture"],
-        "price": 10.50,
+        "price": 29.00,
         "key_ingredients": "Centella asiatica extract",
-        "image": "images/skin1004_centella_ampoule.png"
+        "image": "images/skin1004_centella_ampoule.png",
+        "where_to_buy": [{"name": "HIKOCO", "logo": "images/hikoco_logo.png", "link": "https://hikoco.co.nz/products/madagascar-centella-ampoule?_pos=2&_psq=centella&_psid=3b99bd9f2&_ss=e"},
+                         {"name": "W Cosmetics", "logo": "images/w_cosmetics_logo.png", "link": "https://wcosmetics.com.au/products/skin1004-madagascar-centella-ampoule-55ml?_pos=1&_sid=16b000620&_ss=r"}]
     },
     {
         "name": "Beauty of Joseon Dynasty Cream",
@@ -96,15 +116,19 @@ product_database = [
         "targeted_skin_concerns": ["dry", "dull", "fine lines"],
         "price": 41.90,
         "key_ingredients": "Rice bran water, ginseng root water, niacinamide",
-        "image": "images/boj_dynasty_cream.png"
+        "image": "images/boj_dynasty_cream.png",
+        "where_to_buy": [{"name": "HIKOCO", "logo": "images/hikoco_logo.png", "link": "https://hikoco.co.nz/products/dynasty-cream?_pos=1&_sid=4f348f2a1&_ss=r"},
+                         {"name": "W Cosmetics", "logo": "images/w_cosmetics_logo.png", "link": "https://wcosmetics.com.au/products/beauty-of-joseon-dynasty-cream-50ml?_pos=2&_psq=dynasty+cream&_psid=cc0ae45cd&_ss=e"}]
     },
     {
         "name": "Beauty of Joseon Glow Serum: Propolis + Niacinamide",
         "description": "A glow serum that helps with dullness, texture, and blemish-prone skin.",
         "suitable_skin_types": ["normal", "oily", "combination", "sensitive"],
         "targeted_skin_concerns": ["dull", "texture", "acne"],
-        "price": 29.90,
+        "price": 38.00,
         "key_ingredients": "Propolis extract, niacinamide",
-        "image": "images/boj_glow_serum.png"
+        "image": "images/boj_glow_serum.png",
+        "where_to_buy": [{"name": "W Cosmetics", "logo": "images/w_cosmetics_logo.png", "link": "https://wcosmetics.com.au/products/foc-beauty-of-joseon-glow-serum-propolis-niacinamide-60ml?_pos=2&_sid=e19bed863&_ss=r"},
+                         {"name": "YesStyle", "logo": "images/yesstyle_logo.png", "link": "https://www.yesstyle.com/en/beauty-of-joseon-glow-serum-jumbo-60ml/info.html/pid.1133657599"}]
     }
 ]

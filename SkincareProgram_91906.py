@@ -330,7 +330,7 @@ def show_results():
         information_frame = tk.Frame(product_box, bg="#F7BAC9")
         information_frame.grid(row=0, column=1, padx=5, pady=15, sticky="nsew")
         
-        product_name = tk.Label(information_frame, text=product["name"], bg="#F7BAC9", fg="#3B2929", font=("Times", 16, "bold"))
+        product_name = tk.Label(information_frame, text=product["name"], bg="#F7BAC9", fg="#3B2929", font=("Times", 16, "bold"), justify="left")
         product_name.pack(anchor="w", fill=tk.X)
 
         product_description = tk.Label(information_frame, text=product["description"], bg="#F7BAC9", fg="#3B2929", font=("Times", 14), wraplength=650, justify="left")
@@ -339,7 +339,7 @@ def show_results():
         product_ingredients = tk.Label(information_frame, text="Key ingredients: " + str(product["key_ingredients"]), bg="#F7BAC9", fg="#3B2929", font=("Times", 14), wraplength=650, justify="left")
         product_ingredients.pack(anchor="w", fill=tk.X)
 
-        product_price = tk.Label(information_frame, text="Price: $" + str(product["price"]), bg="#F7BAC9", fg="#3B2929", font=("Times", 14))
+        product_price = tk.Label(information_frame, text="Price: $" + str(product["price"]), bg="#F7BAC9", fg="#3B2929", font=("Times", 14), justify="left")
         product_price.pack(anchor="w")
 
         # Frame for where to buy button for each product on the right
@@ -369,23 +369,23 @@ def show_where_to_buy(product):
     heading.pack(pady=10)
 
     # Create a frame for the product information
-    information_frame = tk.Frame(main_frame, bg="#111111")
+    information_frame = tk.Frame(main_frame, bg="#FFF4F6")
     information_frame.pack(fill=tk.X, padx=20, pady=10)
 
     # Display product name
-    product_name = tk.Label(information_frame, text=product["name"], bg="#111111", fg="white", font=("Times", 14, "bold"))
+    product_name = tk.Label(information_frame, text=product["name"], bg="#FFF4F6", fg="#3B2929", font=("Times", 14, "bold"))
     product_name.pack(anchor="w")
 
     # Display product description
-    product_description = tk.Label(information_frame, text=product["description"], bg="#111111", fg="white", font=("Times", 14), wraplength=750, justify="left")
+    product_description = tk.Label(information_frame, text=product["description"], bg="#FFF4F6", fg="#3B2929", font=("Times", 14), wraplength=750, justify="left")
     product_description.pack(anchor="w")
 
     # Display product price
-    product_price = tk.Label(information_frame, text="Price: $"+str(product["price"]), bg="#111111", fg="white", font=("Times", 14))
+    product_price = tk.Label(information_frame, text="Price: $"+str(product["price"]), bg="#FFF4F6", fg="#3B2929", font=("Times", 14))
     product_price.pack(anchor="w")
 
     # Display product key ingredients
-    product_ingredients = tk.Label(information_frame, text="Key ingredients: " + str(product["key_ingredients"]), bg="#111111", fg="white", font=("Times", 14), wraplength=750, justify="left")
+    product_ingredients = tk.Label(information_frame, text="Key ingredients: " + str(product["key_ingredients"]), bg="#FFF4F6", fg="#3B2929", font=("Times", 14), wraplength=750, justify="left")
     product_ingredients.pack(anchor="w")
 
     # Information about where to buy the product

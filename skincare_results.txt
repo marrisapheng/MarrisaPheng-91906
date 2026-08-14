@@ -1,6 +1,8 @@
 Personalised Skincare Checker Results
-Skin Type: dry
-Skin concerns: dry
+Name: m
+Age: 4
+Skin Type: combination
+Skin concerns: sensitive, clogged pores
 Recommended Products:
 - Beauty of Joseon Relief Sun: Rice + Probiotics SPF50+: A lightweight sunscreen that moisturises and protects the skin.
 Price: $31.9
@@ -8,6 +10,15 @@ Key ingredients: Rice extract, grain fermented extracts, niacinamide
 - Dr.Althea 345 Relief Cream: A soothing cream for irritated, dry, or sensitive skin.
 Price: $49.9
 Key ingredients: Niacinamide, panthenol, centella asiatica
+- ANUA Heartleaf Quercetinol Pore Deep Cleansing Foam: A cleanser that helps remove oil, dirt, and pore buildup.
+Price: $22.9
+Key ingredients: Heartleaf extract, quercetinol, hyaluronic acid
+- ANUA Niacinamide 10% + TXA 4% Serum: A serum that helps brighten uneven and dull-looking skin.
+Price: $43.9
+Key ingredients: Niacinamide, tranexamic acid
+- COSRX Low pH Good Morning Gel Cleanser: A gentle everyday cleanser for keeping skin balanced.
+Price: $16.9
+Key ingredients: Tea tree leaf oil, betaine salicylate
 - ROUND LAB 1025 Dokdo Cleanser: A gentle cleanser that cleans skin without stripping moisture.
 Price: $19.9
 Key ingredients: Deep sea water, panthenol, allantoin
@@ -17,6 +28,6 @@ Key ingredients: Snail secretion filtrate, betaine, allantoin
 - Torriden Dive-In Low Molecule Hyaluronic Acid Serum: A lightweight hydrating serum for dry or dehydrated skin.
 Price: $12.8
 Key ingredients: Low molecular hyaluronic acid, panthenol, allantoin
-- Beauty of Joseon Dynasty Cream: A moisturising cream that helps with dryness and dull skin.
-Price: $41.9
-Key ingredients: Rice bran water, ginseng root water, niacinamide
+- Skin1004 Madagascar Centella Ampoule: A calming ampoule that helps soothe sensitive or irritated skin.
+Price: $10.5
+Key ingredients: Centella asiatica extract
