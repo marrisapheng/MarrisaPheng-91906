@@ -3,6 +3,7 @@ import tkinter as tk
 from tkinter import messagebox
 from product_database import product_database
 from PIL import Image, ImageTk
+import webbrowser # Allows links to be opened in the user's default web browser
 
 # Skin types and Skin concerns lists
 skin_type_options = ["normal","dry","oily","combination","sensitive"]
@@ -368,30 +369,77 @@ def show_where_to_buy(product):
     heading = make_label("Where to buy", 20)
     heading.pack(pady=10)
 
+    # Frame to hold the product image and information
+    product_area = tk.Frame(main_frame, bg="#FFF4F6", width=1000, height=360)
+    product_area.pack(padx=20, pady=10)
+    product_area.pack_propagate(False)  # Prevent the frame from resizing to fit the content
+
+    # Product image on the left side
+    image_frame = tk.Frame(product_area, bg="#F7BAC9", width=220, height=280)
+    image_frame.grid(row=0, column=0, padx=20, pady=10, sticky="n")
+    image_frame.grid_propagate(False)  # Prevent the frame from resizing to fit the image
+    # Load the product image
+    product_image = Image.open(product["image"])
+    # Resize the product image to fit
+    product_image = product_image.resize((190, 250))
+    # Convert the image to a format that Tkinter can use
+    product_image = ImageTk.PhotoImage(product_image)
+    # Display the product image
+    product_image_label = tk.Label(image_frame, image=product_image, bg="#F7EAE6")
+    product_image_label.image = product_image  # Keep a reference so the image doesnt disappear
+    product_image_label.pack(padx=10, pady=10)
+
+    # Product information on the right side
     # Create a frame for the product information
-    information_frame = tk.Frame(main_frame, bg="#FFF4F6")
-    information_frame.pack(fill=tk.X, padx=20, pady=10)
+    information_frame = tk.Frame(product_area, bg="#FFF4F6")
+    information_frame.grid(row=0, column=1, padx=20, pady=10, sticky="nw")
+    information_frame.grid_propagate(False)
 
     # Display product name
-    product_name = tk.Label(information_frame, text=product["name"], bg="#FFF4F6", fg="#3B2929", font=("Times", 14, "bold"))
+    product_name = tk.Label(information_frame, text=product["name"], bg="#FFF4F6", fg="#3B2929", font=("Times", 18, "bold"), wraplength=600, justify="left")
     product_name.pack(anchor="w")
 
     # Display product description
-    product_description = tk.Label(information_frame, text=product["description"], bg="#FFF4F6", fg="#3B2929", font=("Times", 14), wraplength=750, justify="left")
+    product_description = tk.Label(information_frame, text=product["description"], bg="#FFF4F6", fg="#3B2929", font=("Times", 16), wraplength=600, justify="left")
     product_description.pack(anchor="w")
 
     # Display product price
-    product_price = tk.Label(information_frame, text="Price: $"+str(product["price"]), bg="#FFF4F6", fg="#3B2929", font=("Times", 14))
+    product_price = tk.Label(information_frame, text="Price: $"+str(product["price"]), bg="#FFF4F6", fg="#3B2929", font=("Times", 16))
     product_price.pack(anchor="w")
 
     # Display product key ingredients
-    product_ingredients = tk.Label(information_frame, text="Key ingredients: " + str(product["key_ingredients"]), bg="#FFF4F6", fg="#3B2929", font=("Times", 14), wraplength=750, justify="left")
+    product_ingredients = tk.Label(information_frame, text="Key ingredients: " + str(product["key_ingredients"]), bg="#FFF4F6", fg="#3B2929", font=("Times", 14), wraplength=600, justify="left")
     product_ingredients.pack(anchor="w")
 
+    # Where to buy
     # Information about where to buy the product
-    instruction_label = make_label("Where to buy this product:", 12)
-    instruction_label.pack(anchor="w")
-    
+    instruction_label = tk.Label(information_frame, text="Where to buy:", bg="#FFF4F6", fg="#3B2929", font=("Times", 18, "bold"))
+    instruction_label.pack(anchor="w", pady=10)
+
+    # Frame to hold shop logos
+    shop_frame = tk.Frame(information_frame, bg="#FFF4F6")
+    shop_frame.pack(anchor="w")
+
+    # Display each shop logo and make it clickable to open the shop link
+    for shop in product["where_to_buy"]:
+        # Create a frame for each shop logo
+        logo_box = tk.Frame(shop_frame, bg="#F7BAC9", width=210, height=100)
+        logo_box.pack(side=tk.LEFT, padx=10, pady=5)
+        logo_box.pack_propagate(False)
+        # Load the shop logo image from product_database
+        logo_image = Image.open(shop["logo"])
+        # Resize the shop logo image to fit
+        logo_image = logo_image.resize((180, 70))
+        # Convert the image to a format that Tkinter can use
+        logo_image = ImageTk.PhotoImage(logo_image)
+        # Display the shop logo image
+        logo_image_label = tk.Label(logo_box, image=logo_image, bg="#F7EAE6")
+        # Keep a reference so the image doesn't disappear
+        logo_image_label.image = logo_image
+        logo_image_label.pack(expand=True, padx=5, pady=5)
+        # Make the shop logo clickable to open the shop link
+        logo_image_label.bind("<Button-1>", lambda event, url=shop["link"]: webbrowser.open(url))
+        
     # Navigation buttons to go back to results page and home page
     make_navigation(show_results, "Home", show_home)
 
