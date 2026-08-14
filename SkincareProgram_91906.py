@@ -169,7 +169,7 @@ def show_home():
     quote_frame.grid(row=0, column=1, padx=10, pady=10)
 
     # Quote displayed beside the logo
-    quote_label = tk.Label(quote_frame, text="Discover personalised skincare recommendations for you.", bg="#F7BAC9", fg="#3B2929", font=("Times", 20, "italic"), wraplength=400, justify="left")
+    quote_label = tk.Label(quote_frame, text="Discover personalised skincare recommendations for you.", bg="#F7BAC9", fg="#3B2929", font=("Times", 35, "italic"), wraplength=400, justify="left")
     quote_label.pack(pady=10)
 
     start_button = make_button(main_frame, "Get started", show_about_you)
@@ -188,14 +188,14 @@ def show_about_you():
     name_label = tk.Label(main_frame, text="Name:", bg="#FFF4F6", fg="#3B2929", font=("Times", 14))
     name_label.pack(pady=5)
 
-    name_entry = tk.Entry(main_frame, bg="#FCE4EA", fg="#3B2929", font=("Arial", 12))
+    name_entry = tk.Entry(main_frame, bg="#FCE4EA", fg="#3B2929", font=("Arial", 12), highlightbackground="white", highlightcolor="white", highlightthickness=2) # Added white widget border
     name_entry.pack(pady=5)
 
     # Enter age input
     age_label = tk.Label(main_frame, text="Age:", bg="#FFF4F6", fg="#3B2929", font=("Times", 14))
     age_label.pack(pady=5)
 
-    age_entry = tk.Entry(main_frame, bg="#FCE4EA", fg="#3B2929", font=("Times", 12))
+    age_entry = tk.Entry(main_frame, bg="#FCE4EA", fg="#3B2929", font=("Times", 12), highlightbackground="white", highlightcolor="white", highlightthickness=2) # Added white widget border
     age_entry.pack(pady=5)
 
     make_navigation(show_home, "Next", check_about_you)
