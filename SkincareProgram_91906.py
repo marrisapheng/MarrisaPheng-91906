@@ -330,26 +330,31 @@ def show_results():
         # Frame for product info on the left
         information_frame = tk.Frame(product_box, bg="#F7BAC9")
         information_frame.grid(row=0, column=1, padx=5, pady=15, sticky="nsew")
+        information_frame.grid_propagate(False)
         
-        product_name = tk.Label(information_frame, text=product["name"], bg="#F7BAC9", fg="#3B2929", font=("Times", 16, "bold"), justify="left")
-        product_name.pack(anchor="w", fill=tk.X)
+        product_name = tk.Label(information_frame, text=product["name"], bg="#F7BAC9", fg="#3B2929", font=("Times", 16, "bold"), wraplength=600, justify="left")
+        product_name.pack(anchor="w", pady=5)
 
-        product_description = tk.Label(information_frame, text=product["description"], bg="#F7BAC9", fg="#3B2929", font=("Times", 14), wraplength=650, justify="left")
-        product_description.pack(anchor="w", fill=tk.X)
+        product_description = tk.Label(information_frame, text=product["description"], bg="#F7BAC9", fg="#3B2929", font=("Times", 14), wraplength=600, justify="left")
+        product_description.pack(anchor="w", pady=5)
 
-        product_ingredients = tk.Label(information_frame, text="Key ingredients: " + str(product["key_ingredients"]), bg="#F7BAC9", fg="#3B2929", font=("Times", 14), wraplength=650, justify="left")
-        product_ingredients.pack(anchor="w", fill=tk.X)
+        product_ingredients = tk.Label(information_frame, text="Key ingredients: " + str(product["key_ingredients"]), bg="#F7BAC9", fg="#3B2929", font=("Times", 14), wraplength=600, justify="left")
+        product_ingredients.pack(anchor="w", pady=5)
 
         product_price = tk.Label(information_frame, text="Price: $" + str(product["price"]), bg="#F7BAC9", fg="#3B2929", font=("Times", 14), justify="left")
-        product_price.pack(anchor="w")
+        product_price.pack(anchor="w", pady=5)
 
         # Frame for where to buy button for each product on the right
-        button_frame = tk.Frame(product_box, bg="#F7BAC9")
-        button_frame.grid(row=0, column=2, padx=5, pady=15, sticky="n")
+        button_frame = tk.Frame(product_box, bg="#F7BAC9", width=180, height=140)
+        button_frame.grid(row=0, column=2, padx=10, pady=15, sticky="nsew")
+        button_frame.grid_propagate(False)
 
+        # White border around the "Buy" button
+        buy_border = tk.Frame(button_frame, bg="white", padx=1, pady=1)
+        buy_border.place(relx=0.5, rely=0.5, anchor="center")
         # Buy button
-        buy_button = tk.Label(button_frame, text="Buy", bg="#E493A9", fg="#3B2929", font=("Times", 25)) # Changed buy button to a label for consistency with other buttons
-        buy_button.pack(pady=5)
+        buy_button = tk.Label(buy_border, text="Buy", bg="#E493A9", fg="#3B2929", font=("Times", 35)) # Changed buy button to a label for consistency with other buttons
+        buy_button.pack(pady=5, padx=5)
         # Makes the buy button clickable
         buy_button.bind("<Button-1>", lambda event, selected_product=product: show_where_to_buy(selected_product))
 
