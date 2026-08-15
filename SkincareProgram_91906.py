@@ -154,18 +154,26 @@ def show_home():
     make_header()
 
     # Main box containing the logo and quote
-    home_box = tk.Frame(main_frame, bg="#F7BAC9", width=850, height=400)
+    home_box = tk.Frame(main_frame, bg="#F7BAC9", width=850, height=570)
     home_box.pack(padx=10, pady=10)
     home_box.pack_propagate(False)  # Prevent the frame from resizing to fit the content
 
-    logo_box = tk.Frame(home_box, bg="#F7EAE6", width=250, height=220)
+    logo_box = tk.Frame(home_box, bg="#E493A9", width=300, height=450)
     logo_box.grid(row=0, column=0, padx=10, pady=10)
     logo_box.pack_propagate(False)  # Prevent the frame from resizing to fit the content
 
-    # Add logo here
+    # Add MyGlow logo
+    logo_image = Image.open("images/MyGlow_logo.png")
+    logo_image = logo_image.resize((210, 190))
+    # Convert the image into a format that Tkinter can display
+    logo_photo = ImageTk.PhotoImage(logo_image)
+    # Create a label to display the logo image
+    logo_label = tk.Label(logo_box, image=logo_photo, bg="#F7BAC9")
+    logo_label.image = logo_photo # Keep a reference to the image
+    logo_label.pack(expand=True) # Centre the logo
 
     # Quote area on the right side of the box
-    quote_frame = tk.Frame(home_box, bg="#F7BAC9", width=450, height=220)
+    quote_frame = tk.Frame(home_box, bg="#F7BAC9", width=550, height=450)
     quote_frame.grid(row=0, column=1, padx=10, pady=10)
 
     # Quote displayed beside the logo
