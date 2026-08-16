@@ -161,41 +161,42 @@ def show_home():
     make_header()
 
     # Main box containing the logo and quote
-    home_box = tk.Frame(main_frame, bg="#F7BAC9", width=850, height=570)
+    home_box = tk.Frame(main_frame, bg="#F7BAC9", width=1050, height=550)
     home_box.pack(padx=10, pady=10)
     home_box.pack_propagate(False)  # Prevent the frame from resizing to fit the content
 
-    logo_box = tk.Frame(home_box, bg="#E493A9", width=300, height=450)
-    logo_box.grid(row=0, column=0, padx=10, pady=10)
-    logo_box.pack_propagate(False)  # Prevent the frame from resizing to fit the content
+    logo_box = tk.Frame(home_box, bg="#E493A9", width=330, height=500)
+    logo_box.place(x=15, y=25)
+    logo_box.grid_propagate(False)  # Prevent the frame from resizing to fit the content
 
     # Add MyGlow logo
     logo_image = Image.open("images/MyGlow_logo.png")
-    logo_image = logo_image.resize((210, 190))
+    logo_image = resize_decorative_image(logo_image,270,250)
     # Convert the image into a format that Tkinter can display
     logo_photo = ImageTk.PhotoImage(logo_image)
     # Create a label to display the logo image
     logo_label = tk.Label(logo_box, image=logo_photo, bg="#F7BAC9")
     logo_label.image = logo_photo # Keep a reference to the image
-    logo_label.pack(expand=True) # Centre the logo
+    logo_label.place(anchor="center", relx = 0.5, rely= 0.5) # Centre the logo
 
     # Quote area on the right side of the box
-    quote_frame = tk.Frame(home_box, bg="#F7BAC9", width=550, height=450)
-    quote_frame.grid(row=0, column=1, padx=10, pady=10)
+    quote_frame = tk.Frame(home_box, bg="#F7BAC9", width=660, height=500)
+    quote_frame.place(x=370, y=25)
+    quote_frame.grid_propagate(False)
 
     # Quote displayed beside the logo
-    quote_label = tk.Label(quote_frame, text="Discover personalised skincare recommendations for you.", bg="#F7BAC9", fg="#3B2929", font=("Times", 35, "italic"), wraplength=400, justify="left")
-    quote_label.pack(pady=10)
+    quote_label = tk.Label(quote_frame, text="Discover personalised skincare recommendations for you.", bg="#F7BAC9", fg="#3B2929", font=("Times", 35, "italic"), wraplength=520, justify="left")
+    quote_label.place(x=30,y=25)
 
     # Add the decorative pink flower to the bottom right of the quote box
     flower_image = Image.open("images/pink_flower.png")
-    flower_image = resize_decorative_image(flower_image,80,80)
+    flower_image = resize_decorative_image(flower_image,170,170)
     # Convert the flower image into a format Tkinter can display
     flower_photo = ImageTk.PhotoImage(flower_image)
     # Display the flower in the quote frame
     flower_label = tk.Label(quote_frame, image=flower_photo, bg="#F7BAC9")
     flower_label.image = flower_photo # Keep a reference so the image stays visible
-    flower_label.place(relx = 1.0, rely=1.0, anchor="se")
+    flower_label.place(x=465,y=320) # Position near bottom right
 
     # Start button
     start_button = make_button(main_frame, "Get started", show_about_you)
@@ -258,22 +259,22 @@ def show_skin_type():
 
     # Add decorative face image on the left side of the skin type option
     left_face_image = Image.open("images/LadyFrontFace.png")
-    left_face_image = resize_decorative_image(left_face_image,90,90)
+    left_face_image = resize_decorative_image(left_face_image,180,180)
     # Convert the left face image into a format Tkinter can display
     left_face_photo = ImageTk.PhotoImage(left_face_image)
     # Display the left face image
     left_face_label = tk.Label(main_frame, image=left_face_photo, bg="#FFF4F6")
     left_face_label.image = left_face_photo # Reference
-    left_face_label.place(x=30, y=180)
+    left_face_label.place(x=80, y=190)
     # Add decorative face image on the right side of the skin type option
     right_face_image = Image.open("images/LadyFrontFace.png")
-    right_face_image = resize_decorative_image(right_face_image,90,90)
+    right_face_image = resize_decorative_image(right_face_image,180,180)
     # Convert the right face image into a format Tkinter can display
     right_face_photo = ImageTk.PhotoImage(right_face_image)
     # Display the right face image
     right_face_label = tk.Label(main_frame, image=right_face_photo, bg="#FFF4F6")
     right_face_label.image = right_face_photo # Reference
-    right_face_label.place(x=800, y=180)
+    right_face_label.place(x=900, y=190)
 
     # Create a frame to hold the skin type options
     options_frame = tk.Frame(main_frame, bg="#FFF4F6")
@@ -309,13 +310,13 @@ def show_skin_concerns():
 
     # Add the decorative side face image to the left of the skin concern options
     side_face_image = Image.open("images/LadySideFace.png")
-    side_face_image = resize_decorative_image(side_face_image,100,100)
+    side_face_image = resize_decorative_image(side_face_image,180,180)
     # Convert the image into a format Tkinter can display
     side_face_photo = ImageTk.PhotoImage(side_face_image)
     # Display the side face image
     side_face_label = tk.Label(main_frame, image=side_face_photo, bg="#FFF4F6")
     side_face_label.image = side_face_photo # Reference
-    side_face_label.place(x=30, y=220)
+    side_face_label.place(x=60, y=220)
 
     # Create a frame to hold the skin concern options
     concerns_frame = tk.Frame(main_frame, bg="#FFF4F6")
@@ -348,13 +349,13 @@ def show_results():
 
     # Add the pink flower to the top left of the results page
     flower_image = Image.open("images/pink_flower.png")
-    flower_image = resize_decorative_image(flower_image,65,65)
+    flower_image = resize_decorative_image(flower_image,100,100)
     # Convert the flower image into a format Tkinter can display
     flower_photo = ImageTk.PhotoImage(flower_image)
     # Display the flower on the top lef side of the results page
     flower_label = tk.Label(main_frame, image=flower_photo, bg="#FFF4F6")
     flower_label.image = flower_photo # Reference
-    flower_label.place(x=20, y=120)
+    flower_label.place(x=30, y=105)
 
     # Frame to hold the canvas and scrollbar
     scroll_area = tk.Frame(main_frame, bg="#FFF4F6", width=1100, height=430)
@@ -447,7 +448,7 @@ def show_where_to_buy(product):
 
     # Add the pink flower to the top right of the page
     flower_image = Image.open("images/pink_flower.png")
-    flower_image = resize_decorative_image(flower_image,90,90)
+    flower_image = resize_decorative_image(flower_image,110,110)
     # Convert the flower image into a format Tkinter can display
     flower_photo = ImageTk.PhotoImage(flower_image)
     # Display the flower near the top right of the page
@@ -559,7 +560,7 @@ def main():
 
     # Create the main frame
     main_frame = tk.Frame(window, bg="#FFF4F6")
-    main_frame.pack(padx=20, pady=20)
+    main_frame.pack(padx=20, pady=10)
 
     # Variable to store the selected skin type
     skin_type_var = tk.StringVar()
