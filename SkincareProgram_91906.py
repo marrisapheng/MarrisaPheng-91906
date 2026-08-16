@@ -257,32 +257,37 @@ def show_skin_type():
     instruction_label = make_label("Select your skin type", 14)
     instruction_label.pack(pady=10)
 
+    # Create a fixed area for the images and skin type options
+    skin_type_area = tk.Frame(main_frame, bg="#FFF4F6", width=1100, height=300)
+    skin_type_area.pack(pady=10)
+    skin_type_area.pack_propagate(False
+                                  )
     # Add decorative face image on the left side of the skin type option
     left_face_image = Image.open("images/LadyFrontFace.png")
-    left_face_image = resize_decorative_image(left_face_image,180,180)
+    left_face_image = resize_decorative_image(left_face_image,250,250)
     # Convert the left face image into a format Tkinter can display
     left_face_photo = ImageTk.PhotoImage(left_face_image)
     # Display the left face image
-    left_face_label = tk.Label(main_frame, image=left_face_photo, bg="#FFF4F6")
+    left_face_label = tk.Label(skin_type_area, image=left_face_photo, bg="#FFF4F6")
     left_face_label.image = left_face_photo # Reference
-    left_face_label.place(x=80, y=190)
+    left_face_label.place(x=180, y=145, anchor="center")
     # Add decorative face image on the right side of the skin type option
     right_face_image = Image.open("images/LadyFrontFace.png")
-    right_face_image = resize_decorative_image(right_face_image,180,180)
+    right_face_image = resize_decorative_image(right_face_image,250,250)
     # Convert the right face image into a format Tkinter can display
     right_face_photo = ImageTk.PhotoImage(right_face_image)
     # Display the right face image
-    right_face_label = tk.Label(main_frame, image=right_face_photo, bg="#FFF4F6")
+    right_face_label = tk.Label(skin_type_area, image=right_face_photo, bg="#FFF4F6")
     right_face_label.image = right_face_photo # Reference
-    right_face_label.place(x=900, y=190)
+    right_face_label.place(x=920, y=145, anchor="center")
 
     # Create a frame to hold the skin type options
-    options_frame = tk.Frame(main_frame, bg="#FFF4F6")
-    options_frame.pack(pady=10)
+    options_frame = tk.Frame(skin_type_area, bg="#FFF4F6")
+    options_frame.place(x=550, y=145, anchor="center")
     # Creates radio buttons for skin types
     for option in skin_type_options:
-        radio_button = tk.Radiobutton(options_frame, text=option, value=option, variable=skin_type_var, bg="#FFF4F6", fg="#3B2929")
-        radio_button.pack(anchor="w", pady=3)
+        radio_button = tk.Radiobutton(options_frame, text=option, value=option, variable=skin_type_var, bg="#FFF4F6", fg="#3B2929", font=("Times", 15), anchor="w")
+        radio_button.pack(anchor="w", pady=5)
 
     make_navigation(show_about_you, "Next", check_skin_type)
 
