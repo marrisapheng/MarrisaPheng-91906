@@ -185,7 +185,7 @@ def show_home():
     quote_frame.grid_propagate(False)
 
     # Quote displayed beside the logo
-    quote_label = tk.Label(quote_frame, text="Discover personalised skincare recommendations for you.", bg="#F7BAC9", fg="#3B2929", font=("Times", 35, "italic"), wraplength=520, justify="left")
+    quote_label = tk.Label(quote_frame, text="Discover personalised skincare recommendations for you.", bg="#F7BAC9", fg="#3B2929", font=("Times", 50, "italic"), wraplength=520, justify="left")
     quote_label.place(x=30,y=25)
 
     # Add the decorative pink flower to the bottom right of the quote box
@@ -286,7 +286,7 @@ def show_skin_type():
     options_frame.place(x=550, y=145, anchor="center")
     # Creates radio buttons for skin types
     for option in skin_type_options:
-        radio_button = tk.Radiobutton(options_frame, text=option, value=option, variable=skin_type_var, bg="#FFF4F6", fg="#3B2929", font=("Times", 15), anchor="w")
+        radio_button = tk.Radiobutton(options_frame, text=option, value=option, variable=skin_type_var, bg="#FFF4F6", fg="#3B2929", font=("Times", 20), anchor="w")
         radio_button.pack(anchor="w", pady=5)
 
     make_navigation(show_about_you, "Next", check_skin_type)
@@ -313,24 +313,29 @@ def show_skin_concerns():
     instruction_label = make_label("Select your skin concerns", 14)
     instruction_label.pack(pady=10)
 
+    # A fixed area for the image and skin concern options
+    skin_concern_area = tk.Frame(main_frame, bg="#FFF4F6", width=1100, height=400)
+    skin_concern_area.pack(pady=10)
+    skin_concern_area.pack_propagate(False)
+
     # Add the decorative side face image to the left of the skin concern options
     side_face_image = Image.open("images/LadySideFace.png")
-    side_face_image = resize_decorative_image(side_face_image,180,180)
+    side_face_image = resize_decorative_image(side_face_image,400,400)
     # Convert the image into a format Tkinter can display
     side_face_photo = ImageTk.PhotoImage(side_face_image)
     # Display the side face image
-    side_face_label = tk.Label(main_frame, image=side_face_photo, bg="#FFF4F6")
+    side_face_label = tk.Label(skin_concern_area, image=side_face_photo, bg="#FFF4F6")
     side_face_label.image = side_face_photo # Reference
-    side_face_label.place(x=60, y=220)
+    side_face_label.place(x=150, y=200, anchor="center")
 
     # Create a frame to hold the skin concern options
-    concerns_frame = tk.Frame(main_frame, bg="#FFF4F6")
-    concerns_frame.pack(pady=10)
+    concerns_frame = tk.Frame(skin_concern_area, bg="#FFF4F6")
+    concerns_frame.place(x=550, y=200, anchor="center")
     # Creates checkboxes for skin concerns
     for concern in skin_concern_options:
         skin_concerns_var[concern] = tk.BooleanVar() # Creates a BooleanVar for each skin concern to track if it is selected or not
-        checkbox = tk.Checkbutton(concerns_frame, text=concern, variable=skin_concerns_var[concern], bg="#FFF4F6", fg="#3B2929")
-        checkbox.pack(anchor="w", padx=3)
+        checkbox = tk.Checkbutton(concerns_frame, text=concern, variable=skin_concerns_var[concern], bg="#FFF4F6", fg="#3B2929", font=("Times", 20), anchor="w")
+        checkbox.pack(anchor="w", padx=4)
 
     make_navigation(show_skin_type, "Next", check_skin_concerns)
 
