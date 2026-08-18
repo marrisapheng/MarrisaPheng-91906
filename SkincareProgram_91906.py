@@ -212,17 +212,17 @@ def show_about_you():
     heading.pack(pady=10)
 
     # Enter name input
-    name_label = tk.Label(main_frame, text="Name:", bg="#FFF4F6", fg="#3B2929", font=("Times", 14))
+    name_label = tk.Label(main_frame, text="Name:", bg="#FFF4F6", fg="#3B2929", font=("Times", 20))
     name_label.pack(pady=5)
 
-    name_entry = tk.Entry(main_frame, bg="#FCE4EA", fg="#3B2929", font=("Arial", 12), highlightbackground="white", highlightcolor="white", highlightthickness=2) # Added white widget border
+    name_entry = tk.Entry(main_frame, bg="#FCE4EA", fg="#3B2929", font=("Arial", 17), highlightbackground="white", highlightcolor="white", highlightthickness=2) # Added white widget border
     name_entry.pack(pady=5)
 
     # Enter age input
-    age_label = tk.Label(main_frame, text="Age:", bg="#FFF4F6", fg="#3B2929", font=("Times", 14))
+    age_label = tk.Label(main_frame, text="Age:", bg="#FFF4F6", fg="#3B2929", font=("Times", 20))
     age_label.pack(pady=5)
 
-    age_entry = tk.Entry(main_frame, bg="#FCE4EA", fg="#3B2929", font=("Times", 12), highlightbackground="white", highlightcolor="white", highlightthickness=2) # Added white widget border
+    age_entry = tk.Entry(main_frame, bg="#FCE4EA", fg="#3B2929", font=("Times", 17), highlightbackground="white", highlightcolor="white", highlightthickness=2) # Added white widget border
     age_entry.pack(pady=5)
 
     make_navigation(show_home, "Next", check_about_you)
@@ -233,12 +233,22 @@ def check_about_you():
     age = age_entry.get()
 
     # Check that a name has been entered
-    if name == "":
+    if name.strip() == "":
         messagebox.showerror("Error", "Please enter your name.")
         return
     # Check that an age has been entered
     if age == "":
         messagebox.showerror("Error", "Please enter your age.")
+        return
+    
+    # Check that age is a valid number
+    if age.isdigit() == False:
+        messagebox.showerror("Error", "Please enter a valid age")
+        return
+    
+    # Check that age is within a reasonable range
+    if int(age) < 10 or int(age) > 100:
+        messagebox.showerror("Error", "Please enter an age between 10 and 100")
         return
     
     user_name = name
