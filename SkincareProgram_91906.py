@@ -114,7 +114,6 @@ class SkincareGUI:
             widget.destroy()
 
 
-
 # GUI functions
 
 # Create MyGlow header for every page
@@ -180,12 +179,12 @@ def make_navigation(back_command, next_text, next_command):
     next_button.bind("<Button-1>", lambda event: next_command())
 
 # Home page
-def show_home():
-    clear_screen()
+def show_home(self):
+    self.clear_screen()
     make_header()
 
     # Main box containing the logo and quote
-    home_box = tk.Frame(main_frame, bg="#F7BAC9", width=1050, height=550)
+    home_box = tk.Frame(self.main_frame, bg="#F7BAC9", width=1050, height=550)
     home_box.pack(padx=10, pady=10)
     home_box.pack_propagate(False)  # Prevent the frame from resizing to fit the content
 
@@ -223,7 +222,7 @@ def show_home():
     flower_label.place(x=465,y=320) # Position near bottom right
 
     # Start button
-    start_button = make_button(main_frame, "Get started", show_about_you)
+    start_button = make_button(self.main_frame, "Get started", self.show_about_you)
     start_button.pack(pady=20)
 
 # Show about you page
