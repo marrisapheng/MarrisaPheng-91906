@@ -569,17 +569,17 @@ def show_where_to_buy(self, product):
     make_navigation(self.show_results, "Home", self.show_home)
 
 # Save the user's answers and results to a text file
-def save_results():
+def save_results(self):
     results_file = open("skincare_results.txt", "w")
     results_file.write("Personalised Skincare Checker Results\n")
-    results_file.write("Name: " + user_name + "\n")
-    results_file.write("Age: " + user_age + "\n")
-    results_file.write("Skin Type: " + selected_skin_type + "\n")
-    results_file.write("Skin concerns: " + ", ".join(selected_skin_concerns) + "\n")
+    results_file.write("Name: " + self.checker.user_name + "\n")
+    results_file.write("Age: " + self.checker.user_age + "\n")
+    results_file.write("Skin Type: " + self.checker.selected_skin_type + "\n")
+    results_file.write("Skin concerns: " + ", ".join(self.checker.selected_skin_concerns) + "\n")
 
     results_file.write("Recommended Products:\n")
 
-    for product in recommended_products:
+    for product in self.checker.recommended_products:
         results_file.write("- " + product["name"] + ": " + product["description"] + "\n")
         results_file.write("Price: $" + str(product["price"]) + "\n")
         results_file.write("Key ingredients: " + str(product["key_ingredients"]) + "\n")
