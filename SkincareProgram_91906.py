@@ -249,13 +249,11 @@ def show_about_you(self):
     self.age_entry.pack(pady=5)
 
     make_navigation(self.show_home, "Next", self.check_about_you)
-    
-# About you page validation
-def check_about_you():
-    global user_name, user_age
-    name = name_entry.get()
-    age = age_entry.get()
 
+# About you page validation, checks the user's name and age
+def check_about_you(self):
+    name = self.name_entry.get()
+    age = self.age_entry.get()
     # Check that a name has been entered
     if name.strip() == "":
         messagebox.showerror("Error", "Please enter your name.")
@@ -275,10 +273,11 @@ def check_about_you():
         messagebox.showerror("Error", "Please enter an age between 10 and 100")
         return
     
-    user_name = name
-    user_age = age
+    # Store the info
+    self.checker.user_name = name
+    self.checker.user_age = age
 
-    show_skin_type()
+    self.show_skin_type()
 
 # Show skin type page
 def show_skin_type():
