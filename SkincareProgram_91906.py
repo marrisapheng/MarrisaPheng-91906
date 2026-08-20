@@ -423,7 +423,7 @@ def show_results(self):
     canvas.bind("<Configure>", resize_product_frame)
 
     # Displays each product in a simple box
-    for product in recommended_products:
+    for product in self.checker.recommended_products:
 
         product_box = tk.Frame(product_frame, bg="#F7BAC9", height=170, padx=15, pady=15)
         product_box.pack(padx=5, pady=5, fill=tk.X)
@@ -467,14 +467,14 @@ def show_results(self):
         buy_button = tk.Label(buy_border, text="Buy", bg="#E493A9", fg="#3B2929", font=("Times", 35)) # Changed buy button to a label for consistency with other buttons
         buy_button.pack(pady=5, padx=5)
         # Makes the buy button clickable
-        buy_button.bind("<Button-1>", lambda event, selected_product=product: show_where_to_buy(selected_product))
+        buy_button.bind("<Button-1>", lambda event, selected_product=product: self.show_where_to_buy(selected_product))
 
     # Updates the scrollbar to match the size of the canvas
     product_frame.update_idletasks()
     canvas.configure(scrollregion=canvas.bbox("all"))
         
     # Navigation buttons to go back or save results
-    make_navigation(show_skin_concerns, "Save results", save_results)
+    make_navigation(self.show_skin_concerns, "Save results", self.save_results)
 
 # Where to buy page
 def show_where_to_buy(product):
