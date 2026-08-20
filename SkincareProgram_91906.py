@@ -372,11 +372,17 @@ class SkincareGUI:
         for ingredient in ingredient_options:
             self.checker.ingredient_preferences_var[ingredient] = tk.BooleanVar() # Boolean to store whether the ingredient is selected
             # Checkbox for preferences
-            checkbox = tk.Checkbutton(preferences_frame, text=ingredient, variable=self.checker_preferences_var[ingredient], bg="#FFF4F6", fg="#3B2929", font=("Times", 20), anchor="w")
+            checkbox = tk.Checkbutton(preferences_frame, text=ingredient, variable=self.checker.ingredient_preferences_var[ingredient], bg="#FFF4F6", fg="#3B2929", font=("Times", 20), anchor="w")
             checkbox.pack(anchor="w", pady=3)
         
         # Navigation buttons
         make_navigation(self.show_skin_concerns, "Next", self.check_ingredient_preferences)
+    
+    # Check ingredient preferences
+    def check_ingredient_preferences(self):
+        self.checker.recommended_products = self.checker.get_recommended_products(self.checker.selected_skin_type, self.checker.selected_skin_concerns)
+        self.show_results
+
     # Results page
     def show_results(self):
         self.clear_screen()
