@@ -55,7 +55,7 @@ class SkincareChecker:
     def validate_skin_concerns(self, answer):
         selected_concerns = self.get_skin_concerns()
         # Checks if at least one skin concern is selected
-        if len(selected_concerns) > 0:
+        if len(answer) > 0:
             return True
         else:
             return False
