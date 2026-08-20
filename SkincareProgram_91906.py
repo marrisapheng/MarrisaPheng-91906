@@ -379,8 +379,8 @@ def check_skin_concerns(self):
         show_results()
 
 # Results page
-def show_results():
-    clear_screen()
+def show_results(self):
+    self.clear_screen()
     make_header()
 
     heading = make_label("Your Recommended Products", 20)
