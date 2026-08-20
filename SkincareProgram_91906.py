@@ -18,22 +18,22 @@ skin_concern_options = [
     "loose skin",
 ]
 
-# Global variables used by different functions
-window = None
-main_frame = None
-# Keeps track of the user's selections
-skin_type_var = None
-skin_concerns_var = {}
-user_name = ""
-user_age = ""
-name_entry = None # Global variables for name and age so they can be accessed by other functions
-age_entry = None
-
-# Variables to store the user's answers
-selected_skin_type = ""
-selected_skin_concerns = []
-recommended_products = []
-
+# Class for storing user info
+class SkincareChecker:
+    def __init__(self):
+        # Stores the user's personal info
+        self.user_name=""
+        self.user_age=""
+        # Stores the user's selections
+        self.selected_skin_type=""
+        self.selected_skin_concers=[]
+        # Stores recommended products
+        self.recommended_products=[]
+        # Stores the selected skin type 
+        self.skin_type_var = tk.StringVar()
+        # Stores the selected skin concerns
+        self.skin_concerns_var={}
+        
 # Data and recommendation functions to help programmers understand
 
 def load_products():
