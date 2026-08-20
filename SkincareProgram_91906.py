@@ -369,14 +369,13 @@ def show_skin_concerns(self):
 
     make_navigation(self.show_skin_type, "Next", self.check_skin_concerns)
 
-def check_skin_concerns():
-    global selected_skin_concerns, recommended_products
-    answer = get_skin_concerns()
-    if validate_skin_concerns(answer) == False:
+def check_skin_concerns(self):
+    answer = self.checker.get_skin_concerns()
+    if self.checker.validate_skin_concerns(answer) == False:
         messagebox.showerror("Error", "Please select at least one skin concern.")
     else:
-        selected_skin_concerns = answer
-        recommended_products = get_recommended_products(selected_skin_type, selected_skin_concerns)
+        self.checker.selected_skin_concerns = answer
+        self.checker.recommended_products = self.checker.get_recommended_products(self.checker.selected_skin_type, self.checker.selected_skin_concerns)
         show_results()
 
 # Results page
