@@ -226,29 +226,30 @@ def show_home(self):
     start_button.pack(pady=20)
 
 # Show about you page
-def show_about_you():
+def show_about_you(self):
     global name_entry, age_entry
-    clear_screen()
+    self.clear_screen()
     make_header()
 
     heading = make_label("Tell us about yourself", 20)
     heading.pack(pady=10)
 
     # Enter name input
-    name_label = tk.Label(main_frame, text="Name:", bg="#FFF4F6", fg="#3B2929", font=("Times", 20))
+    name_label = tk.Label(self.main_frame, text="Name:", bg="#FFF4F6", fg="#3B2929", font=("Times", 20))
     name_label.pack(pady=5)
 
-    name_entry = tk.Entry(main_frame, bg="#FCE4EA", fg="#3B2929", font=("Arial", 17), highlightbackground="white", highlightcolor="white", highlightthickness=2) # Added white widget border
-    name_entry.pack(pady=5)
+    self.name_entry = tk.Entry(self.main_frame, bg="#FCE4EA", fg="#3B2929", font=("Arial", 17), highlightbackground="white", highlightcolor="white", highlightthickness=2) # Added white widget border
+    self.name_entry.pack(pady=5)
 
     # Enter age input
-    age_label = tk.Label(main_frame, text="Age:", bg="#FFF4F6", fg="#3B2929", font=("Times", 20))
+    age_label = tk.Label(self.main_frame, text="Age:", bg="#FFF4F6", fg="#3B2929", font=("Times", 20))
     age_label.pack(pady=5)
 
-    age_entry = tk.Entry(main_frame, bg="#FCE4EA", fg="#3B2929", font=("Times", 17), highlightbackground="white", highlightcolor="white", highlightthickness=2) # Added white widget border
-    age_entry.pack(pady=5)
+    self.age_entry = tk.Entry(self.main_frame, bg="#FCE4EA", fg="#3B2929", font=("Times", 17), highlightbackground="white", highlightcolor="white", highlightthickness=2) # Added white widget border
+    self.age_entry.pack(pady=5)
 
-    make_navigation(show_home, "Next", check_about_you)
+    make_navigation(self.show_home, "Next", self.check_about_you)
+    
 # About you page validation
 def check_about_you():
     global user_name, user_age
