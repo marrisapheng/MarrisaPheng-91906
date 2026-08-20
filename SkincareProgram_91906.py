@@ -280,8 +280,8 @@ def check_about_you(self):
     self.show_skin_type()
 
 # Show skin type page
-def show_skin_type():
-    clear_screen()
+def show_skin_type(self):
+    self.clear_screen()
     make_header()
 
     heading = make_label("What is your skin type?", 20)
@@ -291,7 +291,7 @@ def show_skin_type():
     instruction_label.pack(pady=10)
 
     # Create a fixed area for the images and skin type options
-    skin_type_area = tk.Frame(main_frame, bg="#FFF4F6", width=1100, height=300)
+    skin_type_area = tk.Frame(self.main_frame, bg="#FFF4F6", width=1100, height=300)
     skin_type_area.pack(pady=10)
     skin_type_area.pack_propagate(False)
     # Add decorative face image on the left side of the skin type option
@@ -318,10 +318,10 @@ def show_skin_type():
     options_frame.place(x=550, y=145, anchor="center")
     # Creates radio buttons for skin types
     for option in skin_type_options:
-        radio_button = tk.Radiobutton(options_frame, text=option, value=option, variable=skin_type_var, bg="#FFF4F6", fg="#3B2929", font=("Times", 20), anchor="w")
+        radio_button = tk.Radiobutton(options_frame, text=option, value=option, variable=self.checker.skin_type_var, bg="#FFF4F6", fg="#3B2929", font=("Times", 20), anchor="w")
         radio_button.pack(anchor="w", pady=5)
 
-    make_navigation(show_about_you, "Next", check_skin_type)
+    make_navigation(self.show_about_you, "Next", self.check_skin_type)
 
 # Checking if skin type is valid
 def check_skin_type():
