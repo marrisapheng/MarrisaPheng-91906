@@ -477,8 +477,8 @@ def show_results(self):
     make_navigation(self.show_skin_concerns, "Save results", self.save_results)
 
 # Where to buy page
-def show_where_to_buy(product):
-    clear_screen()
+def show_where_to_buy(self, product):
+    self.clear_screen()
     make_header()
 
     # Header for where to buy page
@@ -491,11 +491,11 @@ def show_where_to_buy(product):
     # Convert the flower image into a format Tkinter can display
     flower_photo = ImageTk.PhotoImage(flower_image)
     # Display the flower near the top right of the page
-    flower_label = tk.Label(main_frame, image=flower_photo, bg="#FFF4F6")
+    flower_label = tk.Label(self.main_frame, image=flower_photo, bg="#FFF4F6")
     flower_label.image = flower_photo # Reference
     flower_label.place(x=980,y=90, anchor="ne")
     # Frame to hold the product image and information
-    product_area = tk.Frame(main_frame, bg="#FFF4F6", width=1000, height=360)
+    product_area = tk.Frame(self.main_frame, bg="#FFF4F6", width=1000, height=360)
     product_area.pack(padx=20, pady=10)
     product_area.pack_propagate(False)  # Prevent the frame from resizing to fit the content
 
@@ -566,7 +566,7 @@ def show_where_to_buy(product):
         logo_image_label.bind("<Button-1>", lambda event, url=shop["link"]: webbrowser.open(url))
         
     # Navigation buttons to go back to results page and home page
-    make_navigation(show_results, "Home", show_home)
+    make_navigation(self.show_results, "Home", self.show_home)
 
 # Save the user's answers and results to a text file
 def save_results():
