@@ -324,15 +324,13 @@ def show_skin_type(self):
     make_navigation(self.show_about_you, "Next", self.check_skin_type)
 
 # Checking if skin type is valid
-def check_skin_type():
-    global selected_skin_type
-    # Gets the user's selected skin type
-    selected_skin_type = get_skin_type()
-    # Error message if no valid skin type is selected
-    if validate_skin_type(selected_skin_type) == False:
-        messagebox.showerror("Error", "Please select a skin type.")
+def check_skin_type(self):
+    self.checker.selected_skin_type = (self.checker.get_skin_type())
+    # Check if a skin type was selected
+    if self.checker.validate_skin_type(self.checker.selected_skin_type) == False:
+        messagebox.showerror("Error", "Please select a skin type.") # Error message
     else:
-        show_skin_concerns()
+        self.show_skin_concerns()
 
 # Skin concerns page
 def show_skin_concerns():
