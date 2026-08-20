@@ -589,22 +589,12 @@ def save_results(self):
 
 # Main program
 def main():
-    global window, main_frame, skin_type_var
 
-    # Create the main window
-    window = tk.Tk()
-    window.title("Personalised Skincare Checker")
-    window.geometry("1200x800")
-    window.configure(bg="#FFF4F6")
-
-    # Create the main frame
-    main_frame = tk.Frame(window, bg="#FFF4F6")
-    main_frame.pack(padx=20, pady=10)
-
-    # Variable to store the selected skin type
-    skin_type_var = tk.StringVar()
-
-    show_home()
-    window.mainloop()
+    # Create the checker object
+    checker = SkincareChecker()
+    # Create the GUI
+    gui = SkincareGUI(checker)
+    # Run the program
+    gui.window.mainloop()
 
 main()
