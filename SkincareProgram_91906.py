@@ -31,6 +31,8 @@ class SkincareChecker:
         self.recommended_products=[]
         # Stores the selected skin concerns
         self.skin_concerns_var={}
+        # Stores the selected ingredient warning preferences
+        self.ingredient_preferences_var={}
 
     # Data and recommendation functions to help programmers understand
     def load_products(self):
@@ -110,6 +112,7 @@ class SkincareGUI:
     
     # Delete current page before showing new page
     def clear_screen(self):
+        # Gets all widgets inside the main frame so they can be removed
         for widget in self.main_frame.winfo_children():
             widget.destroy()
 
@@ -338,9 +341,42 @@ class SkincareGUI:
             messagebox.showerror("Error", "Please select at least one skin concern.")
         else:
             self.checker.selected_skin_concerns = answer
-            self.checker.recommended_products = self.checker.get_recommended_products(self.checker.selected_skin_type, self.checker.selected_skin_concerns)
-            self.show_results()
+            self.show_ingredient_preferences()
+    
+    # Ingredient warnings and preferences page
+    def show_ingredient_preferences(self):
+        self.clear_screen()
+        self.make_header()
 
+        heading = self.make_label("Ingredient warnings & preferences", 20)
+        heading.pack(pady=10)
+
+        instruction_label = self.make_label("Let us know if you want to avoid certain ingredients", 12)
+        instruction_label.pack(pady=5)
+
+        # Create a frame to hold the preference options
+        preferences_frame = tk.Frame(self.main_frame, bg="#FFF4F6")
+        preferences_frame.pack(pady=10)
+
+        # List of ingredient warning preferences
+        ingredient_options = [
+            "Parabens",
+            "Fragrances",
+            "Alcohol",
+            "Sulfates",
+            "Retinol",
+            "None of the above"
+        ]
+
+        # Create checkboxes for each preference
+        for ingredient in ingredient_options:
+            self.checker.ingredient_preferences_var[ingredient] = tk.BooleanVar() # Boolean to store whether the ingredient is selected
+            # Checkbox for preferences
+            checkbox = tk.Checkbutton(preferences_frame, text=ingredient, variable=self.checker_preferences_var[ingredient], bg="#FFF4F6", fg="#3B2929", font=("Times", 20), anchor="w")
+            checkbox.pack(anchor="w", pady=3)
+        
+        # Navigation buttons
+        make_navigation(self.show_skin_concerns, "Next", self.check_ingredient_preferences)
     # Results page
     def show_results(self):
         self.clear_screen()
