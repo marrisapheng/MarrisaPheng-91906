@@ -34,58 +34,80 @@ class SkincareChecker:
         # Stores the selected skin concerns
         self.skin_concerns_var={}
 
-# Data and recommendation functions to help programmers understand
+    # Data and recommendation functions to help programmers understand
+    def load_products(self):
+        return product_database
 
-def load_products(self):
-    return product_database
+    def get_skin_type(self):
+        return self.skin_type_var.get()
 
-def get_skin_type(self):
-    return self.skin_type_var.get()
+    def validate_skin_type(self, selected_skin_type):
+        if selected_skin_type in skin_type_options:
+            return True
+        else:
+            return False
 
-def validate_skin_type(self, selected_skin_type):
-    if selected_skin_type in skin_type_options:
-        return True
-    else:
-        return False
+    def get_skin_concerns(self):
+        selected_concerns = []
+        for concern in self.skin_concerns_var:
+            if self.skin_concerns_var[concern].get():
+                selected_concerns.append(concern)
+        return selected_concerns
 
-def get_skin_concerns(self):
-    selected_concerns = []
-    for concern in self.skin_concerns_var:
-        if self.skin_concerns_var[concern].get():
-            selected_concerns.append(concern)
-    return selected_concerns
-
-def validate_skin_concerns(self, answer):
-    selected_concerns = self, get_skin_concerns()
-    # Checks if at least one skin concern is selected
-    if len(selected_concerns) > 0:
-        return True
-    else:
-        return False
-    
-def get_recommended_products(self, selected_skin_type, selected_concerns):
-    # Search through product_database to find suitable match
-    products = self.load_products() # Loads product from the product_database
-    matches = []
-
-    for product in products:
-        skin_type_matches = selected_skin_type in product["suitable_skin_types"]
-        skin_concerns_matches = False
-
-        for concern in selected_concerns:
-            if concern in product["targeted_skin_concerns"]:
-                skin_concerns_matches = True
-                
-        if skin_type_matches == True and skin_concerns_matches == True:
-            matches.append(product)
+    def validate_skin_concerns(self, answer):
+        selected_concerns = self, get_skin_concerns()
+        # Checks if at least one skin concern is selected
+        if len(selected_concerns) > 0:
+            return True
+        else:
+            return False
         
-        # If no matches are found, the program searches for products that match the skin type only
-        if len(matches) == 0:
-            for product in products:
-                if selected_skin_type in product["suitable_skin_types"]:
-                    matches.append(product)
+    def get_recommended_products(self, selected_skin_type, selected_concerns):
+        # Search through product_database to find suitable match
+        products = self.load_products() # Loads product from the product_database
+        matches = []
 
-    return matches
+        for product in products:
+            skin_type_matches = selected_skin_type in product["suitable_skin_types"]
+            skin_concerns_matches = False
+
+            for concern in selected_concerns:
+                if concern in product["targeted_skin_concerns"]:
+                    skin_concerns_matches = True
+                    
+            if skin_type_matches == True and skin_concerns_matches == True:
+                matches.append(product)
+            
+            # If no matches are found, the program searches for products that match the skin type only
+            if len(matches) == 0:
+                for product in products:
+                    if selected_skin_type in product["suitable_skin_types"]:
+                        matches.append(product)
+
+        return matches
+
+# Class for the GUI
+class SkincareGUI:
+    def __init__(self, checker):
+        # Conncet the GUI to the checker
+        self.checker = checker
+        # Create the main window
+        self.window = tk.Tk()
+        self.window.title("Personalised Skincare Checker")
+        self.window.geometry("1200x800")
+        self.window.configure(bg="#FFF4F6")
+        # Create the main frame
+        self.main_frame = tk.Frame(self.window, bg="#FFF4F6")
+        self.main_frame.pack(padx=20,pady=10)
+        # Connect older functions
+        window = self.window
+        main_frame = self.main_frame
+        # Store the name and age input
+        self.name_entry = None
+        self.age_entry = None
+        # Show the home page
+        self.show_home()
+
 
 # GUI functions
 
