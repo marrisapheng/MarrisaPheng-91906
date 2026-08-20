@@ -107,14 +107,15 @@ class SkincareGUI:
         self.age_entry = None
         # Show the home page
         self.show_home()
+    
+    # Delete current page before showing new page
+    def clear_screen():
+        for widget in main_frame.winfo_children():
+            widget.destroy()
+
 
 
 # GUI functions
-
-# Delete current page before showing new page
-def clear_screen():
-    for widget in main_frame.winfo_children():
-        widget.destroy()
 
 # Create MyGlow header for every page
 def make_header():
