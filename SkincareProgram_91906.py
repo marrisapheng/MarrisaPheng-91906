@@ -21,6 +21,7 @@ skin_concern_options = [
 # Global variables used by different functions
 window = None
 main_frame = None
+# Keeps track of the user's selections
 skin_type_var = None
 skin_concerns_var = {}
 user_name = ""
@@ -270,8 +271,7 @@ def show_skin_type():
     # Create a fixed area for the images and skin type options
     skin_type_area = tk.Frame(main_frame, bg="#FFF4F6", width=1100, height=300)
     skin_type_area.pack(pady=10)
-    skin_type_area.pack_propagate(False
-                                  )
+    skin_type_area.pack_propagate(False)
     # Add decorative face image on the left side of the skin type option
     left_face_image = Image.open("images/LadyFrontFace.png")
     left_face_image = resize_decorative_image(left_face_image,250,250)
