@@ -53,7 +53,6 @@ class SkincareChecker:
         return selected_concerns
 
     def validate_skin_concerns(self, answer):
-        selected_concerns = self.get_skin_concerns()
         # Checks if at least one skin concern is selected
         if len(answer) > 0:
             return True
@@ -77,17 +76,17 @@ class SkincareChecker:
                 matches.append(product)
             
             # If no matches are found, the program searches for products that match the skin type only
-            if len(matches) == 0:
-                for product in products:
-                    if selected_skin_type in product["suitable_skin_types"]:
-                        matches.append(product)
+        if len(matches) == 0:
+            for product in products:
+                if selected_skin_type in product["suitable_skin_types"]:
+                    matches.append(product)
 
         return matches
 
 # Class for the GUI
 class SkincareGUI:
     def __init__(self, checker):
-        global window, main_frame
+        global main_frame
 
         # Conncet the GUI to the checker
         self.checker = checker
@@ -102,7 +101,6 @@ class SkincareGUI:
         self.main_frame = tk.Frame(self.window, bg="#FFF4F6")
         self.main_frame.pack(padx=20,pady=10)
         # Connect older functions to keep them working
-        window = self.window
         main_frame = self.main_frame
         # Store the name and age input
         self.name_entry = None
@@ -190,17 +188,14 @@ class SkincareGUI:
         flower_label.place(x=465,y=320) # Position near bottom right
 
         # Start button
-        start_button = make_button(self.main_frame, "Get started", self.show_about_you)
-        start_button.pack(pady=20)
+        make_button(self.main_frame, "Get started", self.show_about_you)
 
     # Show about you page
     def show_about_you(self):
-        global name_entry, age_entry
         self.clear_screen()
         self.make_header()
 
         heading = self.make_label("Tell us about yourself", 20)
-        heading.pack(pady=10)
 
         # Enter name input
         name_label = tk.Label(self.main_frame, text="Name:", bg="#FFF4F6", fg="#3B2929", font=("Times", 20))
@@ -404,7 +399,7 @@ class SkincareGUI:
             image_frame.grid_propagate(False)  # Prevent the frame from resizing to fit the image
 
             # Display specific product image
-            product_image = self.make_product_image(image_frame, product["image"])
+            self.make_product_image(image_frame, product["image"])
 
             # Frame for product info on the left
             information_frame = tk.Frame(product_box, bg="#F7BAC9")
