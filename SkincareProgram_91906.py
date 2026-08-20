@@ -333,8 +333,8 @@ def check_skin_type(self):
         self.show_skin_concerns()
 
 # Skin concerns page
-def show_skin_concerns():
-    clear_screen()
+def show_skin_concerns(self):
+    self.clear_screen()
     make_header()
 
     heading = make_label("What are your skin concerns?", 20)
@@ -344,7 +344,7 @@ def show_skin_concerns():
     instruction_label.pack(pady=10)
 
     # A fixed area for the image and skin concern options
-    skin_concern_area = tk.Frame(main_frame, bg="#FFF4F6", width=1100, height=400)
+    skin_concern_area = tk.Frame(self.main_frame, bg="#FFF4F6", width=1100, height=400)
     skin_concern_area.pack(pady=10)
     skin_concern_area.pack_propagate(False)
 
@@ -363,11 +363,11 @@ def show_skin_concerns():
     concerns_frame.place(x=550, y=200, anchor="center")
     # Creates checkboxes for skin concerns
     for concern in skin_concern_options:
-        skin_concerns_var[concern] = tk.BooleanVar() # Creates a BooleanVar for each skin concern to track if it is selected or not
-        checkbox = tk.Checkbutton(concerns_frame, text=concern, variable=skin_concerns_var[concern], bg="#FFF4F6", fg="#3B2929", font=("Times", 20), anchor="w")
+        self.checker.skin_concerns_var[concern] = tk.BooleanVar() # Creates a BooleanVar for each skin concern to track if it is selected or not
+        checkbox = tk.Checkbutton(concerns_frame, text=concern, variable=self.checker.skin_concerns_var[concern], bg="#FFF4F6", fg="#3B2929", font=("Times", 20), anchor="w")
         checkbox.pack(anchor="w", padx=4)
 
-    make_navigation(show_skin_type, "Next", check_skin_concerns)
+    make_navigation(self.show_skin_type, "Next", self.check_skin_concerns)
 
 def check_skin_concerns():
     global selected_skin_concerns, recommended_products
