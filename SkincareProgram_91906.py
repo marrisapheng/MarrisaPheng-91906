@@ -33,39 +33,39 @@ class SkincareChecker:
         self.skin_type_var = tk.StringVar()
         # Stores the selected skin concerns
         self.skin_concerns_var={}
-        
+
 # Data and recommendation functions to help programmers understand
 
-def load_products():
+def load_products(self):
     return product_database
 
-def get_skin_type():
-    return skin_type_var.get()
+def get_skin_type(self):
+    return self.skin_type_var.get()
 
-def validate_skin_type(selected_skin_type):
+def validate_skin_type(self, selected_skin_type):
     if selected_skin_type in skin_type_options:
         return True
     else:
         return False
 
-def get_skin_concerns():
+def get_skin_concerns(self):
     selected_concerns = []
-    for concern in skin_concerns_var:
-        if skin_concerns_var[concern].get():
+    for concern in self.skin_concerns_var:
+        if self.skin_concerns_var[concern].get():
             selected_concerns.append(concern)
     return selected_concerns
 
-def validate_skin_concerns(answer):
-    selected_concerns = get_skin_concerns()
+def validate_skin_concerns(self, answer):
+    selected_concerns = self, get_skin_concerns()
     # Checks if at least one skin concern is selected
     if len(selected_concerns) > 0:
         return True
     else:
         return False
     
-def get_recommended_products(selected_skin_type, selected_concerns):
+def get_recommended_products(self, selected_skin_type, selected_concerns):
     # Search through product_database to find suitable match
-    products = load_products() # Loads product from the product_database
+    products = self.load_products() # Loads product from the product_database
     matches = []
 
     for product in products:
