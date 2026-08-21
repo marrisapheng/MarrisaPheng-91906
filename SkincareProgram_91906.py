@@ -94,7 +94,7 @@ class SkincareChecker:
             # Only keep products that dont contain a selected ingredient
             if contains_warning == False:
                 filtered_products.append(product)
-                
+
         return filtered_products
     def get_recommended_products(self, selected_skin_type, selected_concerns):
         # Search through product_database to find suitable match
@@ -413,9 +413,15 @@ class SkincareGUI:
         # Navigation buttons
         make_navigation(self.show_skin_concerns, "Next", self.check_ingredient_preferences)
     
-    # Check ingredient preferences
+    # Check ingredient preferences and filters the recommended products
     def check_ingredient_preferences(self):
-        self.checker.recommended_products = self.checker.get_recommended_products(self.checker.selected_skin_type, self.checker.selected_skin_concerns)
+        # Find products matching the user's skin type and skin concerns
+        recommended_products = self.checker.recommended_products = self.checker.get_recommended_products(self.checker.selected_skin_type, self.checker.selected_skin_concerns)
+        
+        # Remove products which contain ingredient sthe user wants to avoid
+        self.checker.recommended_products = self.checker.filter_products_by_preferences(recommended_products)
+
+        # Show the filtered products in results page
         self.show_results()
 
     # Results page
