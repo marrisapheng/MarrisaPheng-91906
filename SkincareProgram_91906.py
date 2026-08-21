@@ -155,14 +155,14 @@ class SkincareGUI:
     # GUI functions
     # Create MyGlow header for every page
     def make_header(self):
-        header = tk.Label(self.main_frame, text="MyGlow", bg="#FFF4F6", fg="#3B2929", font=("Verdana", 26, "bold"))
+        header = tk.Label(self.main_frame, text="MyGlow", bg="#FFF4F6", fg="#3B2929", font=("Verdana", 32, "bold"))
         header.pack(pady=10)
         return header
 
     # Create a consistent label for every page
     def make_label(self, text, size):
         # Create a white label with background
-        label = tk.Label(self.main_frame, text=text, bg="#FFF4F6", fg="#3B2929", font=("Verdana", size + 5, "bold")) # Increased all font size by 5 for better visibility
+        label = tk.Label(self.main_frame, text=text, bg="#FFF4F6", fg="#3B2929", font=("Verdana", size + 8, "bold")) # Increased all font size by 5 for better visibility
         label.pack(pady=10)
         return label
 
@@ -212,7 +212,7 @@ class SkincareGUI:
         quote_frame.grid_propagate(False)
 
         # Quote displayed beside the logo
-        quote_label = tk.Label(quote_frame, text="Discover personalised skincare recommendations for you.", bg="#F7BAC9", fg="#3B2929", font=("Verdana", 50, "italic"), wraplength=520, justify="left")
+        quote_label = tk.Label(quote_frame, text="Discover personalised skincare recommendations for you.", bg="#F7BAC9", fg="#3B2929", font=("Verdana", 52, "italic"), wraplength=520, justify="left")
         quote_label.place(x=30,y=25)
 
         # Add the decorative pink flower to the bottom right of the quote box
@@ -236,17 +236,17 @@ class SkincareGUI:
         heading = self.make_label("Tell us about yourself", 20)
 
         # Enter name input
-        name_label = tk.Label(self.main_frame, text="Name:", bg="#FFF4F6", fg="#3B2929", font=("Verdana", 20))
+        name_label = tk.Label(self.main_frame, text="Name:", bg="#FFF4F6", fg="#3B2929", font=("Verdana", 22))
         name_label.pack(pady=5)
 
-        self.name_entry = tk.Entry(self.main_frame, bg="#FCE4EA", fg="#3B2929", font=("Verdana", 17), highlightbackground="white", highlightcolor="white", highlightthickness=2) # Added white widget border
+        self.name_entry = tk.Entry(self.main_frame, bg="#FCE4EA", fg="#3B2929", font=("Verdana", 22), highlightbackground="white", highlightcolor="white", highlightthickness=2) # Added white widget border
         self.name_entry.pack(pady=5)
 
         # Enter age input
-        age_label = tk.Label(self.main_frame, text="Age:", bg="#FFF4F6", fg="#3B2929", font=("Verdana", 20))
+        age_label = tk.Label(self.main_frame, text="Age:", bg="#FFF4F6", fg="#3B2929", font=("Verdana", 22))
         age_label.pack(pady=5)
 
-        self.age_entry = tk.Entry(self.main_frame, bg="#FCE4EA", fg="#3B2929", font=("Verdana", 17), highlightbackground="white", highlightcolor="white", highlightthickness=2) # Added white widget border
+        self.age_entry = tk.Entry(self.main_frame, bg="#FCE4EA", fg="#3B2929", font=("Verdana", 22), highlightbackground="white", highlightcolor="white", highlightthickness=2) # Added white widget border
         self.age_entry.pack(pady=5)
 
         make_navigation(self.show_home, "Next", self.check_about_you)
@@ -288,7 +288,7 @@ class SkincareGUI:
         heading = self.make_label("What is your skin type?", 20)
         heading.pack(pady=10)
 
-        instruction_label = self.make_label("Select your skin type", 14)
+        instruction_label = self.make_label("Select your skin type", 20)
         instruction_label.pack(pady=10)
 
         # Create a fixed area for the images and skin type options
@@ -319,7 +319,7 @@ class SkincareGUI:
         options_frame.place(x=550, y=145, anchor="center")
         # Creates radio buttons for skin types
         for option in skin_type_options:
-            radio_button = tk.Radiobutton(options_frame, text=option, value=option, variable=self.checker.skin_type_var, bg="#FFF4F6", fg="#3B2929", font=("Verdana", 20), anchor="w")
+            radio_button = tk.Radiobutton(options_frame, text=option, value=option, variable=self.checker.skin_type_var, bg="#FFF4F6", fg="#3B2929", font=("Verdana", 22), anchor="w")
             radio_button.pack(anchor="w", pady=5)
 
         make_navigation(self.show_about_you, "Next", self.check_skin_type)
@@ -341,7 +341,7 @@ class SkincareGUI:
         heading = self.make_label("What are your skin concerns?", 20)
         heading.pack(pady=10)
 
-        instruction_label = self.make_label("Select your skin concerns", 14)
+        instruction_label = self.make_label("Select your skin concerns", 20)
         instruction_label.pack(pady=10)
 
         # A fixed area for the image and skin concern options
@@ -365,7 +365,7 @@ class SkincareGUI:
         # Creates checkboxes for skin concerns
         for concern in skin_concern_options:
             self.checker.skin_concerns_var[concern] = tk.BooleanVar() # Creates a BooleanVar for each skin concern to track if it is selected or not
-            checkbox = tk.Checkbutton(concerns_frame, text=concern, variable=self.checker.skin_concerns_var[concern], bg="#FFF4F6", fg="#3B2929", font=("Verdana", 20), anchor="w")
+            checkbox = tk.Checkbutton(concerns_frame, text=concern, variable=self.checker.skin_concerns_var[concern], bg="#FFF4F6", fg="#3B2929", font=("Verdana", 22), anchor="w")
             checkbox.pack(anchor="w", padx=4)
 
         make_navigation(self.show_skin_type, "Next", self.check_skin_concerns)
@@ -386,7 +386,7 @@ class SkincareGUI:
         heading = self.make_label("Ingredient warnings & preferences", 20)
         heading.pack(pady=10)
 
-        instruction_label = self.make_label("Let us know if you want to avoid certain ingredients", 12)
+        instruction_label = self.make_label("Let us know if you want to avoid certain ingredients", 20)
         instruction_label.pack(pady=5)
 
         # Create a frame to hold the preference options
@@ -407,7 +407,7 @@ class SkincareGUI:
         for ingredient in ingredient_options:
             self.checker.ingredient_preferences_var[ingredient] = tk.BooleanVar() # Boolean to store whether the ingredient is selected
             # Checkbox for preferences
-            checkbox = tk.Checkbutton(preferences_frame, text=ingredient, variable=self.checker.ingredient_preferences_var[ingredient], bg="#FFF4F6", fg="#3B2929", font=("Verdana", 20), anchor="w")
+            checkbox = tk.Checkbutton(preferences_frame, text=ingredient, variable=self.checker.ingredient_preferences_var[ingredient], bg="#FFF4F6", fg="#3B2929", font=("Verdana", 22), anchor="w")
             checkbox.pack(anchor="w", pady=3)
         
         # Navigation buttons
@@ -489,16 +489,16 @@ class SkincareGUI:
             information_frame.grid(row=0, column=1, padx=5, pady=15, sticky="nsew")
             information_frame.grid_propagate(False)
             
-            product_name = tk.Label(information_frame, text=product["name"], bg="#F7BAC9", fg="#3B2929", font=("Verdana", 16, "bold"), wraplength=600, justify="left")
+            product_name = tk.Label(information_frame, text=product["name"], bg="#F7BAC9", fg="#3B2929", font=("Verdana", 19, "bold"), wraplength=600, justify="left")
             product_name.pack(anchor="w", pady=5)
 
-            product_description = tk.Label(information_frame, text=product["description"], bg="#F7BAC9", fg="#3B2929", font=("Verdana", 14), wraplength=600, justify="left")
+            product_description = tk.Label(information_frame, text=product["description"], bg="#F7BAC9", fg="#3B2929", font=("Verdana", 17), wraplength=600, justify="left")
             product_description.pack(anchor="w", pady=5)
 
-            product_ingredients = tk.Label(information_frame, text="Key ingredients: " + str(product["key_ingredients"]), bg="#F7BAC9", fg="#3B2929", font=("Verdana", 14), wraplength=600, justify="left")
+            product_ingredients = tk.Label(information_frame, text="Key ingredients: " + str(product["key_ingredients"]), bg="#F7BAC9", fg="#3B2929", font=("Verdana", 17), wraplength=600, justify="left")
             product_ingredients.pack(anchor="w", pady=5)
 
-            product_price = tk.Label(information_frame, text="Price: $" + str(product["price"]), bg="#F7BAC9", fg="#3B2929", font=("Verdana", 14), justify="left")
+            product_price = tk.Label(information_frame, text="Price: $" + str(product["price"]), bg="#F7BAC9", fg="#3B2929", font=("Verdana", 17), justify="left")
             product_price.pack(anchor="w", pady=5)
 
             # Frame for where to buy button for each product on the right
@@ -510,7 +510,7 @@ class SkincareGUI:
             buy_border = tk.Frame(button_frame, bg="white", padx=1, pady=1)
             buy_border.place(relx=0.5, rely=0.5, anchor="center")
             # Buy button
-            buy_button = tk.Label(buy_border, text="Buy", bg="#E493A9", fg="#3B2929", font=("Verdana", 35)) # Changed buy button to a label for consistency with other buttons
+            buy_button = tk.Label(buy_border, text="Buy", bg="#E493A9", fg="#3B2929", font=("Verdana", 30)) # Changed buy button to a label for consistency with other buttons
             buy_button.pack(pady=5, padx=5)
             # Makes the buy button clickable
             buy_button.bind("<Button-1>", lambda event, selected_product=product: self.show_where_to_buy(selected_product))
@@ -571,20 +571,20 @@ class SkincareGUI:
         product_name.pack(anchor="w")
 
         # Display product description
-        product_description = tk.Label(information_frame, text=product["description"], bg="#FFF4F6", fg="#3B2929", font=("Verdana", 16), wraplength=600, justify="left")
+        product_description = tk.Label(information_frame, text=product["description"], bg="#FFF4F6", fg="#3B2929", font=("Verdana", 19), wraplength=600, justify="left")
         product_description.pack(anchor="w")
 
         # Display product price
-        product_price = tk.Label(information_frame, text="Price: $"+str(product["price"]), bg="#FFF4F6", fg="#3B2929", font=("Verdana", 16))
+        product_price = tk.Label(information_frame, text="Price: $"+str(product["price"]), bg="#FFF4F6", fg="#3B2929", font=("Verdana", 19))
         product_price.pack(anchor="w")
 
         # Display product key ingredients
-        product_ingredients = tk.Label(information_frame, text="Key ingredients: " + str(product["key_ingredients"]), bg="#FFF4F6", fg="#3B2929", font=("Verdana", 14), wraplength=600, justify="left")
+        product_ingredients = tk.Label(information_frame, text="Key ingredients: " + str(product["key_ingredients"]), bg="#FFF4F6", fg="#3B2929", font=("Verdana", 17), wraplength=600, justify="left")
         product_ingredients.pack(anchor="w")
 
         # Where to buy
         # Information about where to buy the product
-        instruction_label = tk.Label(information_frame, text="Where to buy:", bg="#FFF4F6", fg="#3B2929", font=("Verdana", 18, "bold"))
+        instruction_label = tk.Label(information_frame, text="Where to buy:", bg="#FFF4F6", fg="#3B2929", font=("Verdana", 22, "bold"))
         instruction_label.pack(anchor="w", pady=10)
 
         # Frame to hold shop logos
@@ -642,7 +642,7 @@ def resize_decorative_image(image, max_width, max_height):
 # Create a consistent button for every page
 def make_button(parent, text, command):
     # Create consistent buttons
-    button = tk.Label(parent, text=text, bg="#E493A9", fg="#3B2929", font=("Verdana", 17), padx=25, pady=8)
+    button = tk.Label(parent, text=text, bg="#E493A9", fg="#3B2929", font=("Verdana", 22), padx=25, pady=8)
     button.pack(pady=5)
 
     # Makes the button clickable and calls the command function when clicked (macOS compatible)
@@ -655,12 +655,12 @@ def make_navigation(back_command, next_text, next_command):
     navigation_frame = tk.Frame(main_frame, bg="#FFF4F6")
     navigation_frame.pack(pady=10)
 
-    back_button = tk.Label(navigation_frame, text="Back", bg="#E493A9", fg="#3B2929", font=("Verdana", 17), padx=25, pady=8) # Changed back button to a label for consistency with other buttons
+    back_button = tk.Label(navigation_frame, text="Back", bg="#E493A9", fg="#3B2929", font=("Verdana", 22), padx=25, pady=8) # Changed back button to a label for consistency with other buttons
     back_button.pack(side=tk.LEFT, padx=5)
     # Makes the back button clickable
     back_button.bind("<Button-1>", lambda event: back_command())
 
-    next_button = tk.Label(navigation_frame, text=next_text, bg="#E493A9", fg="#3B2929", font=("Verdana", 17), padx=25, pady=8) # Changed next button to a label for consistency with other buttons
+    next_button = tk.Label(navigation_frame, text=next_text, bg="#E493A9", fg="#3B2929", font=("Verdana", 22), padx=25, pady=8) # Changed next button to a label for consistency with other buttons
     next_button.pack(side=tk.RIGHT, padx=5)
     # Makes the next button clickable
     next_button.bind("<Button-1>", lambda event: next_command())
