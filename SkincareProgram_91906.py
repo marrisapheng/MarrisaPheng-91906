@@ -396,7 +396,7 @@ class SkincareGUI:
         # List of ingredient warning preferences
         ingredient_options = [
             "Parabens",
-            "Fragrances",
+            "Fragrance",
             "Alcohol",
             "Sulfates",
             "Retinol",

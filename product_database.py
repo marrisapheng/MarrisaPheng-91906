@@ -5,7 +5,7 @@ product_database = [
         "suitable_skin_types": ["normal", "dry", "combination", "sensitive", "oily"],
         "targeted_skin_concerns": ["dry", "dull", "sensitive", "fine lines"],
         "price": 31.00,
-        "key_ingredients": "Rice extract, grain fermented extracts, niacinamide",
+        "key_ingredients": "Rice extract, grain fermented extracts, niacinamide, Alcohol",
         "image": "images/boj_sunscreen.png",
         "where_to_buy": [{"name": "HIKOCO", "logo": "images/hikoco_logo.png", "link": "https://hikoco.co.nz/products/relief-sun-rice-probiotics?srsltid=AfmBOorIplhPdfF1Qi0sjb3y_uDV53hr9rZQY4syB09fEbwY59LTg3Np"},
                          {"name": "YesStyle", "logo": "images/yesstyle_logo.png", "link": "https://www.yesstyle.com/en/beauty-of-joseon-relief-sun-rice-probiotics-50ml/info.html/pid.1137908658"},]
@@ -60,7 +60,7 @@ product_database = [
         "suitable_skin_types": ["normal", "oily", "combination", "sensitive"],
         "targeted_skin_concerns": ["acne", "texture", "sensitive"],
         "price": 16.90,
-        "key_ingredients": "Tea tree leaf oil, betaine salicylate",
+        "key_ingredients": "Tea tree leaf oil, betaine salicylate, Fragrance",
         "image": "images/cosrx_gel_cleanser.png",
         "where_to_buy": [{"name": "HIKOCO", "logo": "images/hikoco_logo.png", "link": "https://hikoco.co.nz/products/low-ph-good-morning-gel-cleanser?_pos=1&_sid=a6d871858&_ss=r"},
                          {"name": "YesStyle", "logo": "images/yesstyle_logo.png", "link": "https://www.yesstyle.com/en/cosrx-low-ph-good-morning-gel-cleanser-150ml/info.html/pid.1052684732"}]
@@ -115,7 +115,7 @@ product_database = [
         "suitable_skin_types": ["normal", "dry", "combination", "sensitive"],
         "targeted_skin_concerns": ["dry", "dull", "fine lines"],
         "price": 41.90,
-        "key_ingredients": "Rice bran water, ginseng root water, niacinamide",
+        "key_ingredients": "Rice bran water, ginseng root water, niacinamide, Fragrance",
         "image": "images/boj_dynasty_cream.png",
         "where_to_buy": [{"name": "HIKOCO", "logo": "images/hikoco_logo.png", "link": "https://hikoco.co.nz/products/dynasty-cream?_pos=1&_sid=4f348f2a1&_ss=r"},
                          {"name": "W Cosmetics", "logo": "images/w_cosmetics_logo.png", "link": "https://wcosmetics.com.au/products/beauty-of-joseon-dynasty-cream-50ml?_pos=2&_psq=dynasty+cream&_psid=cc0ae45cd&_ss=e"}]
@@ -130,5 +130,123 @@ product_database = [
         "image": "images/boj_glow_serum.png",
         "where_to_buy": [{"name": "W Cosmetics", "logo": "images/w_cosmetics_logo.png", "link": "https://wcosmetics.com.au/products/foc-beauty-of-joseon-glow-serum-propolis-niacinamide-60ml?_pos=2&_sid=e19bed863&_ss=r"},
                          {"name": "YesStyle", "logo": "images/yesstyle_logo.png", "link": "https://www.yesstyle.com/en/beauty-of-joseon-glow-serum-jumbo-60ml/info.html/pid.1133657599"}]
+    },
+        {
+        "name": "Medicube Deep Vita A Retinol Serum",
+        "description": "A retinol serum designed to improve the appearance of fine lines, uneven texture, and signs of skin ageing.",
+        "suitable_skin_types": ["normal", "dry", "combination", "oily"],
+        "targeted_skin_concerns": ["fine lines", "texture", "dull", "clogged pores"],
+        "price": 40.95,
+        "key_ingredients": "Retinol, niacinamide, hyaluronic acid, ceramides",
+        "image": "images/medicube_retinol_serum.png",
+        "where_to_buy": [{"name": "HIKOCO", "logo": "images/hikoco_logo.png", "link": "https://hikoco.co.nz/products/deep-vita-a-retinol-serum?srsltid=AfmBOooeY4EsY5jmTl95b43oEwKnFnquUqDArdp4UU1mIDGxiCUHGzgl"},
+                         {"name": "YesStyle", "logo": "images/yesstyle_logo.png", "link": "https://www.yesstyle.com/en/medicube-deep-vita-a-retinol-serum-30ml/info.html/pid.1129540918"}]
+    },
+    {
+        "name": "Anua Retinol 0.3% + Niacin Renewing Serum",
+        "description": "A renewing serum combining retinol and niacinamide to improve the appearance of pores, uneven texture, and fine lines.",
+        "suitable_skin_types": ["normal", "oily", "combination"],
+        "targeted_skin_concerns": ["fine lines", "clogged pores", "texture", "dull"],
+        "price": 53.10,
+        "key_ingredients": "Retinol, niacinamide, ceramides, hyaluronic acid",
+        "image": "images/anua_retinol_serum.png",
+        "where_to_buy": [{"name": "HIKOCO", "logo": "images/hikoco_logo.png", "link": "https://hikoco.co.nz/products/anua-retinol-0-3-niacin-renewing-serum?srsltid=AfmBOoplEy9tWL2RCGeZhNWwtXr8sNMtrKkcGb0bImR3NEUjuRJK1u-8"},
+                         {"name": "YesStyle", "logo": "images/yesstyle_logo.png", "link": "https://www.yesstyle.com/en/anua-retinol-0-3-niacin-renewing-serum-30ml/info.html/pid.1133093776"}]
+    },
+    {
+        "name": "celimax The Vita-A Retinol Shot Tightening Serum",
+        "description": "A targeted retinol serum designed to improve the appearance of pores, fine lines, and uneven skin texture.",
+        "suitable_skin_types": ["normal", "oily", "combination"],
+        "targeted_skin_concerns": ["fine lines", "clogged pores", "texture", "dull"],
+        "price": 34.00,
+        "key_ingredients": "Retinol, niacinamide, peptides, hyaluronic acid",
+        "image": "images/celimax_retinol_serum.png",
+        "where_to_buy": [{"name": "HIKOCO", "logo": "images/hikoco_logo.png", "link": "https://hikoco.co.nz/products/the-vita-a-retinol-shot-tightening-serum?srsltid=AfmBOoqkvQCUn2-9iVQaTZaI01mTCYqr_FegfPJVg_x5dTvj47jJNape"},
+                         {"name": "YesStyle", "logo": "images/yesstyle_logo.png", "link": "https://www.yesstyle.com/en/celimax-the-vita-a-retinol-shot-tightening-serum-30ml/info.html/pid.1130946338"}]
+    },
+    {
+        "name": "Innisfree Retinol Cica Repair Ampoule",
+        "description": "A soothing retinol ampoule designed to improve uneven texture while helping support the skin barrier.",
+        "suitable_skin_types": ["normal", "dry", "combination", "sensitive"],
+        "targeted_skin_concerns": ["fine lines", "texture", "sensitive", "acne"],
+        "price": 62.10,
+        "key_ingredients": "Retinol, cica, niacinamide, hyaluronic acid, Alcohol, Fragrance",
+        "image": "images/innisfree_retinol_cica.png",
+        "where_to_buy": [{"name": "HIKOCO", "logo": "images/hikoco_logo.png", "link": "https://hikoco.co.nz/products/retinol-cica-repair-ampoule?srsltid=AfmBOor7ALMBhU9cm1bPOBrKd2lRFiZgTmUBFSIdo8r3DHEpisquL1WF"},
+                         {"name": "YesStyle", "logo": "images/yesstyle_logo.png", "link": "https://www.yesstyle.com/en/innisfree-retinol-cica-repair-ampoule-renewal-version-30ml/info.html/pid.1120887566"}]
+    },
+    {
+        "name": "Haruharu Wonder Black Rice Bakuchiol Eye Cream",
+        "description": "A nourishing eye cream designed to improve the appearance of fine lines and dryness around the eye area.",
+        "suitable_skin_types": ["normal", "dry", "combination", "sensitive"],
+        "targeted_skin_concerns": ["fine lines", "dry", "dull"],
+        "price": 28.00,
+        "key_ingredients": "Fermented black rice extract, bakuchiol, adenosine",
+        "image": "images/haruharu_eye_cream.png",
+        "where_to_buy": [{"name": "HIKOCO", "logo": "images/hikoco_logo.png", "link": "https://hikoco.co.nz/products/black-rice-bakuchiol-eye-cream?srsltid=AfmBOooesvR2yu7q9cA0H0ANWuRnUEQZLm1FayqLFABJY3ril7KykEaC"},
+                         {"name": "YesStyle", "logo": "images/yesstyle_logo.png", "link": "https://www.yesstyle.com/en/haruharu-wonder-black-rice-bakuchiol-eye-cream-20ml/info.html/pid.1112455824"}]
+    },
+    {
+        "name": "Purito SEOUL Retinol Retinal 2000 NAD+ Serum",
+        "description": "An anti-ageing serum containing retinol and retinal designed to improve the appearance of fine lines and uneven texture.",
+        "suitable_skin_types": ["normal", "dry", "combination"],
+        "targeted_skin_concerns": ["fine lines", "texture", "dull"],
+        "price": 37.80,
+        "key_ingredients": "Retinol, retinal, NAD+, peptides, niacinamide",
+        "image": "images/purito_retinol_retinal_serum.png",
+        "where_to_buy": [{"name": "HIKOCO", "logo": "images/hikoco_logo.png", "link": "https://hikoco.co.nz/products/retinol-retinal-2000-nad-serum?srsltid=AfmBOooWngVFSgH1sa2VR3CG3upd9eXJH31nkdtg9tKLVRfJO4rhoUh8"},
+                         {"name": "YesStyle", "logo": "images/yesstyle_logo.png", "link": "https://www.yesstyle.com/en/purito-seoul-retinol-retinal-2000-nad-serum-30ml/info.html/pid.1137538142"}]
+    },
+    {
+        "name": "Seoul 1988 Serum: Retinal Liposome 2% + Black Ginseng",
+        "description": "A retinal serum designed to improve the appearance of fine lines, uneven texture, pores, and dull skin.",
+        "suitable_skin_types": ["normal", "dry", "combination", "oily", "sensitive"],
+        "targeted_skin_concerns": ["fine lines", "texture", "clogged pores", "dull"],
+        "price": 37.00,
+        "key_ingredients": "Retinal, black ginseng extract, bakuchiol, niacinamide, peptides",
+        "image": "images/seoul_1988_retinal.png",
+        "where_to_buy": [{"name": "HIKOCO", "logo": "images/hikoco_logo.png", "link": "https://hikoco.co.nz/products/seoul-1988-serum-retinal-liposome-2-black-ginseng?srsltid=AfmBOooSgDoMtZrA2zkS9_N13A8vZGUPhk5uYM4sj1ABE29iFAqeLXKq"},
+                         {"name": "YesStyle", "logo": "images/yesstyle_logo.png", "link": "https://www.yesstyle.com/en/ksecret-seoul-1988-serum-retinal-liposome-2-black-ginseng-30ml/info.html/pid.1126934079"}]
+    },
+    {
+        "name": "APLB Spicule Retinol Shot 180 Serum",
+        "description": "A retinol serum with centella and soothing ingredients designed to improve the appearance of texture and signs of ageing.",
+        "suitable_skin_types": ["normal", "dry", "combination", "sensitive"],
+        "targeted_skin_concerns": ["fine lines", "texture", "dry", "sensitive"],
+        "price": 16.60,
+        "key_ingredients": "Retinol, centella asiatica, panthenol, squalane, beta-glucan",
+        "image": "images/aplb_retinol_serum.png",
+        "where_to_buy": [{"name": "YesStyle", "logo": "images/yesstyle_logo.png", "link": "https://www.yesstyle.com/en/aplb-spicule-retinol-shot-180-serum-40ml/info.html/pid.1133553915"}]
+    },
+    {
+        "name": "APLB Coenzyme Q10 Retinol Ampoule Serum",
+        "description": "A retinol ampoule designed to improve the appearance of dullness, pores, and fine lines while providing hydration.",
+        "suitable_skin_types": ["normal", "dry", "combination", "oily"],
+        "targeted_skin_concerns": ["fine lines", "dull", "clogged pores", "texture"],
+        "price": 16.60,
+        "key_ingredients": "Retinol, coenzyme Q10, squalane, hyaluronic acid",
+        "image": "images/aplb_q10_retinol.png",
+        "where_to_buy": {"name": "YesStyle", "logo": "images/yesstyle_logo.png", "link": "https://www.yesstyle.com/en/aplb-coenzyme-q10-retinol-ampoule-serum-40ml/info.html/pid.1130147937"}
+    },
+    {
+        "name": "APLB Retinol Vitamin C Vitamin E Ampoule Serum",
+        "description": "A brightening and anti-ageing ampoule containing retinol, vitamin C, and vitamin E.",
+        "suitable_skin_types": ["normal", "dry", "combination"],
+        "targeted_skin_concerns": ["fine lines", "dull", "texture"],
+        "price": 16.00,
+        "key_ingredients": "Retinol, vitamin C, vitamin E, centella asiatica",
+        "image": "images/aplb_retinol_vitamin_serum.png",
+        "where_to_buy": [{"name": "YesStyle", "logo": "images/yesstyle_logo.png", "link": "https://www.yesstyle.com/en/aplb-retinol-vitamin-c-vitamin-e-ampoule-serum-40ml/info.html/pid.1125409748"},
+                         {"name": "HIKOCO", "logo": "images/hikoco_logo.png", "link": "https://hikoco.co.nz/products/retinol-vitamin-c-vitamin-e-ampoule-serum?srsltid=AfmBOopUJXZlu8RqKUemiYmzQAY0aWse8zmRN5G7jK3gzRmVsPvFnW6v"}]
+    },
+    {
+        "name": "Bellflower Retinol 0.3% Serum",
+        "description": "A Korean retinol serum designed to improve the appearance of fine lines, uneven texture, and signs of skin ageing.",
+        "suitable_skin_types": ["normal", "dry", "combination", "oily"],
+        "targeted_skin_concerns": ["fine lines", "texture", "dull"],
+        "price": 20.00,
+        "key_ingredients": "Retinol, plant extracts, hyaluronic acid",
+        "image": "images/bellflower_retinol.png",
+        "where_to_buy": [{"name": "YesStyle", "logo": "images/yesstyle_logo.png", "link": "https://www.yesstyle.com/en/bellflower-retinol-0-3-serum-30ml/info.html/pid.1134621943"}]
     }
 ]
