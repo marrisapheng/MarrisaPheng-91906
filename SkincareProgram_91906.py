@@ -60,7 +60,42 @@ class SkincareChecker:
             return True
         else:
             return False
+
+    # Gets the user's ingredient preferences that they want to avoid
+    def get_ingredient_preferences(self):
+        selected_preferences = []
+        # Checks each ingredient to see if it has been selected
+        for ingredient in self.ingredient_preferences_var:
+            if self.ingredient_preferences_var[ingredient].get():
+                # Adds selected preference to list
+                selected_preferences.append(ingredient)
+        return selected_preferences # Returns list of ingredients user wants to avoid
+    
+    # Removes products containing ingredients the user wants to avoid
+    def filter_products_by_preferences(self, products):
+        selected_preferences = self.get_ingredient_preferences()
+
+        # If "None of the above" is selected, no products need to be removed
+        if "None of the above" in selected_preferences:
+            return products
         
+        filtered_products = []
+
+        for product in products:
+            # Convert product ingredients to lowercase text
+            product_ingredients = str(product["key_ingredients"]).lower()
+            # Assume the product is suitable unless a warning ingredient is found
+            contains_warning = False
+            
+            for ingredient in selected_preferences:
+                if ingredient.lower() in product_ingredients:
+                    contains_warning = True
+            
+            # Only keep products that dont contain a selected ingredient
+            if contains_warning == False:
+                filtered_products.append(product)
+                
+        return filtered_products
     def get_recommended_products(self, selected_skin_type, selected_concerns):
         # Search through product_database to find suitable match
         products = self.load_products() # Loads product from the product_database
@@ -381,7 +416,7 @@ class SkincareGUI:
     # Check ingredient preferences
     def check_ingredient_preferences(self):
         self.checker.recommended_products = self.checker.get_recommended_products(self.checker.selected_skin_type, self.checker.selected_skin_concerns)
-        self.show_results
+        self.show_results()
 
     # Results page
     def show_results(self):
