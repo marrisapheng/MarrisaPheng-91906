@@ -520,7 +520,7 @@ class SkincareGUI:
         canvas.configure(scrollregion=canvas.bbox("all"))
             
         # Navigation buttons to go back or save results
-        make_navigation(self.show_skin_concerns, "Save results", self.save_results)
+        make_navigation(self.show_ingredient_preferences, "Save results", self.save_results)
 
     # Where to buy page
     def show_where_to_buy(self, product):
