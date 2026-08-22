@@ -17,6 +17,8 @@ skin_concern_options = [
     "texture",
     "loose skin",
 ]
+# Budget options list
+budget_options = ["Under $20", "$20 - $40", "$40 - $60", "Over $60"]
 
 # Class for storing user info
 class SkincareChecker:
@@ -33,6 +35,8 @@ class SkincareChecker:
         self.skin_concerns_var={}
         # Stores the selected ingredient warning preferences
         self.ingredient_preferences_var={}
+        # Stores the user's selected budget
+        self.selected_budget = ""
 
     # Data and recommendation functions to help programmers understand
     def load_products(self):
@@ -249,6 +253,22 @@ class SkincareGUI:
         self.age_entry = tk.Entry(self.main_frame, bg="#FCE4EA", fg="#3B2929", font=("Verdana", 22), highlightbackground="white", highlightcolor="white", highlightthickness=2) # Added white widget border
         self.age_entry.pack(pady=5)
 
+        # Budget selection
+        budget_label = tk.Label(self.main_frame, text="Budget:", bg="#FFF4F6", fg="#3B2929", font=("Verdana", 22))
+        budget_label.pack(pady=5)
+
+        # Variable used to store selected budget
+        self.budget_var = tk.StringVar() # Variable used to store the user's selected budget
+        self.budget_var.set("Select a budget") # Sets the default value displayed in the budget dropdown menu
+
+        # Create dropdown menu for budget options
+        budget_menu = tk.OptionMenu(self.main_frame, self.budget_var, * budget_options)
+        # Set the bg colour, fg colour, font, and width of dropdown menu
+        budget_menu.config(bg="#FCE4EA", fg="#3B2929", font=("Verdana", 18), width=15)
+        # Appearence of list of budget options in dropdown menu
+        budget_menu["menu"].config(bg="#FCE4EA", fg="#3B2929", font=("Verdana", 18))
+        budget_menu.pack(pady=5)
+
         make_navigation(self.show_home, "Next", self.check_about_you)
 
     # About you page validation, checks the user's name and age
@@ -274,9 +294,15 @@ class SkincareGUI:
             messagebox.showerror("Error", "Please enter an age between 10 and 100")
             return
         
+        # Check that a budget has been selected
+        if self.budget_var.get() == "Select a budget":
+            messagebox.showerror("Error", "Please select a budget.")
+            return
+        
         # Store the info
         self.checker.user_name = name
         self.checker.user_age = age
+        self.checker.selected_budget = self.budget_var.get()
 
         self.show_skin_type()
 
