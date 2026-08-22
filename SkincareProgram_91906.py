@@ -493,6 +493,9 @@ class SkincareGUI:
         # Find products matching the user's skin type and skin concerns
         recommended_products = self.checker.get_recommended_products(self.checker.selected_skin_type, self.checker.selected_skin_concerns)
         
+        # Filter retinol products based on user's age
+        recommended_products = self.checker.filter_products_by_age(recommended_products)
+        
         # Remove products that are outside the user's budget
         recommended_products = self.checker.filter_products_by_budget(recommended_products)
 
