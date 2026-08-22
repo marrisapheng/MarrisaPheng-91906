@@ -331,7 +331,7 @@ class SkincareGUI:
         budget_menu["menu"].config(bg="#FCE4EA", fg="#3B2929", font=("Verdana", 18))
         budget_menu.pack(pady=5)
 
-        make_navigation(self.show_home, "Next", self.check_about_you)
+        make_navigation(self.show_home, "Next >", self.check_about_you)
 
     # About you page validation, checks the user's name and age
     def check_about_you(self):
@@ -410,7 +410,7 @@ class SkincareGUI:
             radio_button = tk.Radiobutton(options_frame, text=option, value=option, variable=self.checker.skin_type_var, bg="#FFF4F6", fg="#3B2929", font=("Verdana", 22), anchor="w")
             radio_button.pack(anchor="w", pady=5)
 
-        make_navigation(self.show_about_you, "Next", self.check_skin_type)
+        make_navigation(self.show_about_you, "Next >", self.check_skin_type)
 
     # Checking if skin type is valid
     def check_skin_type(self):
@@ -456,7 +456,7 @@ class SkincareGUI:
             checkbox = tk.Checkbutton(concerns_frame, text=concern, variable=self.checker.skin_concerns_var[concern], bg="#FFF4F6", fg="#3B2929", font=("Verdana", 22), anchor="w")
             checkbox.pack(anchor="w", padx=4)
 
-        make_navigation(self.show_skin_type, "Next", self.check_skin_concerns)
+        make_navigation(self.show_skin_type, "Next >", self.check_skin_concerns)
 
     def check_skin_concerns(self):
         answer = self.checker.get_skin_concerns()
@@ -499,7 +499,7 @@ class SkincareGUI:
             checkbox.pack(anchor="w", pady=3)
         
         # Navigation buttons
-        make_navigation(self.show_skin_concerns, "Next", self.check_ingredient_preferences)
+        make_navigation(self.show_skin_concerns, "Next >", self.check_ingredient_preferences)
     
     # Check ingredient preferences and filters the recommended products
     def check_ingredient_preferences(self):
@@ -759,7 +759,7 @@ def make_navigation(back_command, next_text, next_command):
     navigation_frame = tk.Frame(main_frame, bg="#FFF4F6")
     navigation_frame.pack(pady=10)
 
-    back_button = tk.Label(navigation_frame, text="Back", bg="#E493A9", fg="#3B2929", font=("Verdana", 22), padx=25, pady=8) # Changed back button to a label for consistency with other buttons
+    back_button = tk.Label(navigation_frame, text="< Back", bg="#E493A9", fg="#3B2929", font=("Verdana", 22), padx=25, pady=8) # Changed back button to a label for consistency with other buttons
     back_button.pack(side=tk.LEFT, padx=5)
     # Makes the back button clickable
     back_button.bind("<Button-1>", lambda event: back_command())
