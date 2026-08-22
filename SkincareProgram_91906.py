@@ -100,6 +100,33 @@ class SkincareChecker:
                 filtered_products.append(product)
 
         return filtered_products
+    
+    # Filters products by user's selected budget
+    def filter_products_by_budget(self, products):
+        filtered_products = [] # List to store products withing user's budget
+
+        for product in products:
+            price = product["price"] # Gets price of the product
+
+            # Checks if the product is under $20 budget
+            if self.selected_budget == "Under $20" and price < 20:
+                filtered_products.append(product)
+
+            # Checks if the product is within the $20-$40 budget
+            elif self.selected_budget == "$20 - $40" and 20 <= price <=40:
+                filtered_products.append(product)
+
+            # Checks if the product is within the $40-$60 budget
+            elif self.selected_budget == "$40 - $60" and 40 < price <= 60:
+                filtered_products.append(product)
+
+            # Checks if the product is over the $60 budget
+            elif self.selected_budget == "Over $60" and price > 60:
+                filtered_products.append(product)
+        
+        # Returns only the products that are within the user;s selected budget
+        return filtered_products
+
     def get_recommended_products(self, selected_skin_type, selected_concerns):
         # Search through product_database to find suitable match
         products = self.load_products() # Loads product from the product_database
@@ -442,7 +469,10 @@ class SkincareGUI:
     # Check ingredient preferences and filters the recommended products
     def check_ingredient_preferences(self):
         # Find products matching the user's skin type and skin concerns
-        recommended_products = self.checker.recommended_products = self.checker.get_recommended_products(self.checker.selected_skin_type, self.checker.selected_skin_concerns)
+        recommended_products = self.checker.get_recommended_products(self.checker.selected_skin_type, self.checker.selected_skin_concerns)
+        
+        # Remove products that are outside the user's budget
+        recommended_products = self.checker.filter_products_by_budget(recommended_products)
         
         # Remove products which contain ingredient sthe user wants to avoid
         self.checker.recommended_products = self.checker.filter_products_by_preferences(recommended_products)
