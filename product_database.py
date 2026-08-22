@@ -226,7 +226,7 @@ product_database = [
         "price": 16.60,
         "key_ingredients": "Retinol, coenzyme Q10, squalane, hyaluronic acid",
         "image": "images/aplb_q10_retinol.png",
-        "where_to_buy": {"name": "YesStyle", "logo": "images/yesstyle_logo.png", "link": "https://www.yesstyle.com/en/aplb-coenzyme-q10-retinol-ampoule-serum-40ml/info.html/pid.1130147937"}
+        "where_to_buy": [{"name": "YesStyle", "logo": "images/yesstyle_logo.png", "link": "https://www.yesstyle.com/en/aplb-coenzyme-q10-retinol-ampoule-serum-40ml/info.html/pid.1130147937"}]
     },
     {
         "name": "APLB Retinol Vitamin C Vitamin E Ampoule Serum",

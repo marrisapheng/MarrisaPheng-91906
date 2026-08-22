@@ -291,7 +291,7 @@ class SkincareGUI:
         # Create dropdown menu for budget options
         budget_menu = tk.OptionMenu(self.main_frame, self.budget_var, * budget_options)
         # Set the bg colour, fg colour, font, and width of dropdown menu
-        budget_menu.config(bg="#FCE4EA", fg="#3B2929", font=("Verdana", 18), width=15)
+        budget_menu.config(bg="#FCE4EA", fg="#3B2929", font=("Verdana", 18), width=18)
         # Appearence of list of budget options in dropdown menu
         budget_menu["menu"].config(bg="#FCE4EA", fg="#3B2929", font=("Verdana", 18))
         budget_menu.pack(pady=5)
@@ -473,7 +473,7 @@ class SkincareGUI:
         
         # Remove products that are outside the user's budget
         recommended_products = self.checker.filter_products_by_budget(recommended_products)
-        
+
         # Remove products which contain ingredient sthe user wants to avoid
         self.checker.recommended_products = self.checker.filter_products_by_preferences(recommended_products)
 
@@ -583,19 +583,24 @@ class SkincareGUI:
         self.clear_screen()
         self.make_header()
 
+        # Create a fixed area at the top of the page to prevent flower from being cropped
+        top_frame = tk.Frame(self.main_frame, bg="#FFF4F6", width=1100, height=120)
+        top_frame.pack(pady=5)
+        top_frame.pack_propagate(False)
+
         # Header for where to buy page
         heading = self.make_label("Where to buy", 20)
-        heading.pack(pady=10)
+        heading.place(relx=0.5, rely=0.5, anchor="center")
 
         # Add the pink flower to the top right of the page
         flower_image = Image.open("images/pink_flower.png")
-        flower_image = resize_decorative_image(flower_image,110,110)
+        flower_image = resize_decorative_image(flower_image,160,160)
         # Convert the flower image into a format Tkinter can display
         flower_photo = ImageTk.PhotoImage(flower_image)
         # Display the flower near the top right of the page
         flower_label = tk.Label(self.main_frame, image=flower_photo, bg="#FFF4F6")
         flower_label.image = flower_photo # Reference
-        flower_label.place(x=980,y=90, anchor="ne")
+        flower_label.place(x=1050,y=5, anchor="ne")
         # Frame to hold the product image and information
         product_area = tk.Frame(self.main_frame, bg="#FFF4F6", width=1000, height=360)
         product_area.pack(padx=20, pady=10)
