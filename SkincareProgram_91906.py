@@ -126,7 +126,29 @@ class SkincareChecker:
         
         # Returns only the products that are within the user;s selected budget
         return filtered_products
+    
+    # Filters products based on the user's age to recommend/not recommend retinol
+    def filter_products_by_age(self, products):
+        filtered_products = [] # List to store suitable products based on age
 
+        age = int(self.user_age) # Converts user's age from string to integer
+
+        for product in products:
+            # Converts product ingredients to lowercase
+            product_ingredients = str(product["key_ingredients"]).lower()
+            # if user age is under 18, do not recommend products containing retinol
+            if age < 18:
+                if "retinol" not in product_ingredients:
+                    filtered_products.append(product)
+            # if the user is 18-24 allow any products to be recommended
+            elif age < 25:
+                filtered_products.append(product)
+            # if the user is 25 or older, recommend products containing retinol
+            else:
+                if "retinol" in product_ingredients:
+                    filtered_products.append(product)
+        return filtered_products
+    
     def get_recommended_products(self, selected_skin_type, selected_concerns):
         # Search through product_database to find suitable match
         products = self.load_products() # Loads product from the product_database
