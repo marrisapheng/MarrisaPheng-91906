@@ -675,7 +675,7 @@ class SkincareGUI:
         product_name.pack(anchor="w")
 
         # Display product description
-        product_description = tk.Label(information_frame, text=product["description"], bg="#FFF4F6", fg="#3B2929", font=("Verdana", 19), wraplength=600, justify="left")
+        product_description = tk.Label(information_frame, text=product["detailed_description"], bg="#FFF4F6", fg="#3B2929", font=("Verdana", 19), wraplength=600, justify="left")
         product_description.pack(anchor="w")
 
         # Display product price
@@ -722,9 +722,11 @@ class SkincareGUI:
     def save_results(self):
         results_file = open("skincare_results.txt", "w")
         results_file.write("Personalised Skincare Checker Results\n")
+        results_file.write("**************************************\n")
         results_file.write("Name: " + self.checker.user_name + "\n")
         results_file.write("Age: " + self.checker.user_age + "\n")
         results_file.write("Skin Type: " + self.checker.selected_skin_type + "\n")
+        results_file.write("Budget: " + self.checker.selected_budget + "\n")
         results_file.write("Skin concerns: " + ", ".join(self.checker.selected_skin_concerns) + "\n")
 
         results_file.write("Recommended Products:\n")
