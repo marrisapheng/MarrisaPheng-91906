@@ -316,22 +316,51 @@ class SkincareGUI:
 
         heading = self.make_label("Tell us about yourself", 20)
 
+        # Fixed area for the images and user info
+        about_you_area = tk.Frame(self.main_frame, bg="#FFF4F6", width=1100, height=500)
+        about_you_area.pack(pady=10)
+        about_you_area.pack_propagate(False)
+
+        # About you image on the left side
+        left_about_image = Image.open("images/about_you.png")
+        left_about_image = resize_decorative_image(left_about_image, 250, 300)
+        # Convert image into a format tkinter can display
+        left_about_photo = ImageTk.PhotoImage(left_about_image)
+        # Display left about you image
+        left_about_label = tk.Label(about_you_area, image = left_about_photo, bg="#FFF4F6")
+        left_about_label.image = left_about_photo
+        left_about_label.place(x=150, y=250, anchor="center")
+
+        # About you image on the right
+        right_about_image = Image.open("images/about_you.png")
+        right_about_image = resize_decorative_image(right_about_image, 250, 300)
+        # Convert image into a format tkinter can displau
+        right_about_photo = ImageTk.PhotoImage(right_about_image)
+        # Display right about you image
+        right_about_label = tk.Label(about_you_area, image=right_about_photo, bg="#FFF4F6")
+        right_about_label.image = right_about_photo
+        right_about_label.place(x=950, y=250, anchor="center")
+
+        # Frame to hold user info
+        information_frame = tk.Frame(about_you_area, bg="#FFF4F6", width=500, height=400)
+        information_frame.place(x=550, y=250, anchor="center")
+
         # Enter name input
-        name_label = tk.Label(self.main_frame, text="Name:", bg="#FFF4F6", fg="#3B2929", font=("Verdana", 22))
+        name_label = tk.Label(information_frame, text="Name:", bg="#FFF4F6", fg="#3B2929", font=("Verdana", 22))
         name_label.pack(pady=5)
 
-        self.name_entry = tk.Entry(self.main_frame, bg="#FCE4EA", fg="#3B2929", font=("Verdana", 22), highlightbackground="white", highlightcolor="white", highlightthickness=2) # Added white widget border
+        self.name_entry = tk.Entry(information_frame, bg="#FCE4EA", fg="#3B2929", font=("Verdana", 22), highlightbackground="white", highlightcolor="white", highlightthickness=2) # Added white widget border
         self.name_entry.pack(pady=5)
 
         # Enter age input
-        age_label = tk.Label(self.main_frame, text="Age:", bg="#FFF4F6", fg="#3B2929", font=("Verdana", 22))
+        age_label = tk.Label(information_frame, text="Age:", bg="#FFF4F6", fg="#3B2929", font=("Verdana", 22))
         age_label.pack(pady=5)
 
-        self.age_entry = tk.Entry(self.main_frame, bg="#FCE4EA", fg="#3B2929", font=("Verdana", 22), highlightbackground="white", highlightcolor="white", highlightthickness=2) # Added white widget border
+        self.age_entry = tk.Entry(information_frame, bg="#FCE4EA", fg="#3B2929", font=("Verdana", 22), highlightbackground="white", highlightcolor="white", highlightthickness=2) # Added white widget border
         self.age_entry.pack(pady=5)
 
         # Budget selection
-        budget_label = tk.Label(self.main_frame, text="Budget:", bg="#FFF4F6", fg="#3B2929", font=("Verdana", 22))
+        budget_label = tk.Label(information_frame, text="Budget:", bg="#FFF4F6", fg="#3B2929", font=("Verdana", 22))
         budget_label.pack(pady=5)
 
         # Variable used to store selected budget
@@ -339,7 +368,7 @@ class SkincareGUI:
         self.budget_var.set("Select a budget") # Sets the default value displayed in the budget dropdown menu
 
         # Create dropdown menu for budget options
-        budget_menu = tk.OptionMenu(self.main_frame, self.budget_var, * budget_options)
+        budget_menu = tk.OptionMenu(information_frame, self.budget_var, * budget_options)
         # Set the bg colour, fg colour, font, and width of dropdown menu
         budget_menu.config(bg="#FCE4EA", fg="#3B2929", font=("Verdana", 18), width=18)
         # Appearence of list of budget options in dropdown menu
