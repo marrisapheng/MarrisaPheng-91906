@@ -18,7 +18,7 @@ skin_concern_options = [
     "loose skin",
 ]
 # Budget options list
-budget_options = ["Under $20", "$20 - $40", "$40 - $60", "Over $60"]
+budget_options = ["Under $20", "$20 - $40", "Over $40"]
 
 # Class for storing user info
 class SkincareChecker:
@@ -116,12 +116,8 @@ class SkincareChecker:
             elif self.selected_budget == "$20 - $40" and 20 <= price <=40:
                 filtered_products.append(product)
 
-            # Checks if the product is within the $40-$60 budget
-            elif self.selected_budget == "$40 - $60" and 40 < price <= 60:
-                filtered_products.append(product)
-
-            # Checks if the product is over the $60 budget
-            elif self.selected_budget == "Over $60" and price > 60:
+            # Checks if the product is over $40
+            elif self.selected_budget == "Over $40" and price > 40:
                 filtered_products.append(product)
         
         # Returns only the products that are within the user;s selected budget
@@ -131,37 +127,43 @@ class SkincareChecker:
     def filter_products_by_age(self, products):
 
         age = int(self.user_age) # Converts user's age from string to integer
+        filtered_products = [] # List to store suitable products based on age
+    
+    # If user is under 18, dont recommend products containing retinol
+        if age < 18:   
+            for product in products:
+                # Converts product ingredients to lowercase
+                product_ingredients = str(product["key_ingredients"]).lower()
 
-        for product in products:
-            # Converts product ingredients to lowercase
-            product_ingredients = str(product["key_ingredients"]).lower()
-            # if user age is under 18, do not recommend products containing retinol
-            if age < 18:
-                filtered_products = [] # List to store suitable products based on age
+                # Only add products that donts contain retinol
                 if "retinol" not in product_ingredients:
                     filtered_products.append(product)
-            # if the user is 18-24 allow any products to be recommended
-            elif age < 25:
-                filtered_products.append(product)
-            # if the user is 25 or older, recommend products containing retinol
-            else:
-                retinol_products = [] # products containing retinol list
-                other_products = [] # products that dont contain retinol list
 
-                for product in products:
-                    # Converts the product's ingredients to lowercase
-                    product_ingredients = str(product["key_ingredients"]).lower()
-                    # Checks if the product contains retinol
-                    if "retinol" in product_ingredients:
-                        # adds the retinol product to retinol products list
-                        retinol_products.append(product)
-                    else:
-                        # add products without retinol to other products list
-                        other_products.append(product)
+                # if the user is 18-24 allow any products to be recommended
+        elif age < 25:
+            filtered_products = products
+
+                # if the user is 25 or older, prioritise products containing retinol
+        else:
+            retinol_products = [] # products containing retinol list
+            other_products = [] # products that dont contain retinol list
+
+            for product in products:
+                # Converts the product's ingredients to lowercase
+                product_ingredients = str(product["key_ingredients"]).lower()
+                # Checks if the product contains retinol
+                if "retinol" in product_ingredients:
+                    # adds the retinol product to retinol products list
+                    retinol_products.append(product)
+                else:
+                    # add products without retinol to other products list
+                    other_products.append(product)
+            
+            # Combines both lists
+            filtered_products= retinol_products+other_products
+
+        return filtered_products
         
-        # Combines both lists
-        return retinol_products+other_products
-    
     def get_recommended_products(self, selected_skin_type, selected_concerns):
         # Search through product_database to find suitable match
         products = self.load_products() # Loads product from the product_database
