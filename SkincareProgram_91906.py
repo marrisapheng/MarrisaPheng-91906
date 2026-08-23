@@ -521,8 +521,33 @@ class SkincareGUI:
         instruction_label = self.make_label("Let us know if you want to avoid certain ingredients", 20)
         instruction_label.pack(pady=5)
 
+        # Fixed area for the images and preference options
+        preferences_area = tk.Frame(self.main_frame, bg="#FFF4F6", width=1100, height=500)
+        preferences_area.pack(pady=10)
+        preferences_area.pack_propagate(False)
+
+        # Preference image on the left side
+        left_preferences_image = Image.open("images/preferences.png")
+        left_preferences_image = resize_decorative_image(left_preferences_image, 250, 300)
+        # Convert image into a format tkinter can display
+        left_preferences_photo = ImageTk.PhotoImage(left_preferences_image)
+        # Display the left preferences image
+        left_preferences_label = tk.Label(preferences_area, image=left_preferences_photo, bg="#FFF4F6")
+        left_preferences_label.image = left_preferences_photo
+        left_preferences_label.place(x=150, y=250, anchor="center")
+
+        # Preference image on the right side
+        right_preferences_image = Image.open("images/preferences.png")
+        right_preferences_image = resize_decorative_image(right_preferences_image, 250, 300)
+        # Convert image into a format tkinter can display
+        right_preferences_photo = ImageTk.PhotoImage(right_preferences_image)
+        # Display the left preferences image
+        right_preferences_label = tk.Label(preferences_area, image=right_preferences_photo, bg="#FFF4F6")
+        right_preferences_label.image = right_preferences_photo
+        right_preferences_label.place(x=950, y=250, anchor="center")
+        
         # Create a frame to hold the preference options
-        preferences_frame = tk.Frame(self.main_frame, bg="#FFF4F6")
+        preferences_frame = tk.Frame(preferences_area, bg="#FFF4F6")
         preferences_frame.pack(pady=10)
 
         # List of ingredient warning preferences
