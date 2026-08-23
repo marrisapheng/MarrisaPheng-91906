@@ -217,13 +217,26 @@ class SkincareGUI:
         for widget in self.main_frame.winfo_children():
             widget.destroy()
 
-
     # GUI functions
     # Create MyGlow header for every page
     def make_header(self):
-        header = tk.Label(self.main_frame, text="MyGlow", bg="#FFF4F6", fg="#3B2929", font=("Verdana", 32, "bold"))
-        header.pack(pady=10)
-        return header
+
+        # Pink coloured strip across the top of the page
+        header_strip = tk.Frame(self.main_frame, bg="#E493A9", width=1160, height=70)
+        header_strip.pack(fill=tk.X)
+        header_strip.pack_propagate(False)
+
+        header = tk.Label(header_strip, text="MyGlow", bg="#E493A9", fg="#3B2929", font=("Verdana", 32, "bold"))
+        header.place(relx=0.5, rely=0.5, anchor="center") # Position "MyGlow" in the centre of header strip
+
+        #Create the "X" button on the right side of header strip
+        close_button = tk.Label(header_strip, text="X", bg="#E493A9", fg="#3B2929", font=("Verdana", 24, "bold"), padx=15, pady=5)
+        # Position the X button on the right of the header strip
+        close_button.place(relx=1, rely=0.5, anchor="e")
+        # Makes the "X" button clickable
+        close_button.bind("<Button-1>", lambda event: self.window.destroy())
+
+        return header_strip
 
     # Create a consistent label for every page
     def make_label(self, text, size):
