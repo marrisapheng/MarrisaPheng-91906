@@ -544,16 +544,6 @@ class SkincareGUI:
         heading = tk.Label(top_frame, text="Your Recommended Products", bg="#FFF4F6", fg="#3B2929", font=("Verdana", 28, "bold"))
         heading.place(relx=0.5, rely=0.5, anchor="center")
 
-        # Add the pink flower to the top left of the results page
-        flower_image = Image.open("images/pink_flower.png")
-        flower_image = resize_decorative_image(flower_image,170,170)
-        # Convert the flower image into a format Tkinter can display
-        flower_photo = ImageTk.PhotoImage(flower_image)
-        # Display the flower on the top lef side of the results page
-        flower_label = tk.Label(main_frame, image=flower_photo, bg="#FFF4F6")
-        flower_label.image = flower_photo # Reference
-        flower_label.place(x=5, y=7)
-
         # Frame to hold the canvas and scrollbar
         scroll_area = tk.Frame(self.main_frame, bg="#FFF4F6", width=1100, height=430)
         scroll_area.pack(padx=10, pady=5)
