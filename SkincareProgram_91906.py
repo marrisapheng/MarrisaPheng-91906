@@ -451,7 +451,7 @@ class SkincareGUI:
         options_frame.place(x=550, y=145, anchor="center")
         # Creates radio buttons for skin types
         for option in skin_type_options:
-            radio_button = tk.Radiobutton(options_frame, text=option, value=option, variable=self.checker.skin_type_var, bg="#FFF4F6", fg="#3B2929", font=("Verdana", 22), anchor="w")
+            radio_button = tk.Radiobutton(options_frame, text=option, value=option, variable=self.checker.skin_type_var, bg="#FFF4F6", fg="#3B2929", font=("Verdana", 25), anchor="w")
             radio_button.pack(anchor="w", pady=5)
 
         make_navigation(self.show_about_you, "Next >", self.check_skin_type)
@@ -497,7 +497,7 @@ class SkincareGUI:
         # Creates checkboxes for skin concerns
         for concern in skin_concern_options:
             self.checker.skin_concerns_var[concern] = tk.BooleanVar() # Creates a BooleanVar for each skin concern to track if it is selected or not
-            checkbox = tk.Checkbutton(concerns_frame, text=concern, variable=self.checker.skin_concerns_var[concern], bg="#FFF4F6", fg="#3B2929", font=("Verdana", 22), anchor="w")
+            checkbox = tk.Checkbutton(concerns_frame, text=concern, variable=self.checker.skin_concerns_var[concern], bg="#FFF4F6", fg="#3B2929", font=("Verdana", 25), anchor="w")
             checkbox.pack(anchor="w", padx=4)
 
         make_navigation(self.show_skin_type, "Next >", self.check_skin_concerns)
@@ -545,7 +545,7 @@ class SkincareGUI:
         right_preferences_label = tk.Label(preferences_area, image=right_preferences_photo, bg="#FFF4F6")
         right_preferences_label.image = right_preferences_photo
         right_preferences_label.place(x=950, y=250, anchor="center")
-        
+
         # Create a frame to hold the preference options
         preferences_frame = tk.Frame(preferences_area, bg="#FFF4F6")
         preferences_frame.pack(pady=10)
@@ -564,7 +564,7 @@ class SkincareGUI:
         for ingredient in ingredient_options:
             self.checker.ingredient_preferences_var[ingredient] = tk.BooleanVar() # Boolean to store whether the ingredient is selected
             # Checkbox for preferences
-            checkbox = tk.Checkbutton(preferences_frame, text=ingredient, variable=self.checker.ingredient_preferences_var[ingredient], bg="#FFF4F6", fg="#3B2929", font=("Verdana", 22), anchor="w")
+            checkbox = tk.Checkbutton(preferences_frame, text=ingredient, variable=self.checker.ingredient_preferences_var[ingredient], bg="#FFF4F6", fg="#3B2929", font=("Verdana", 25), anchor="w")
             checkbox.pack(anchor="w", pady=3)
         
         # Navigation buttons
@@ -592,91 +592,115 @@ class SkincareGUI:
         self.clear_screen()
         self.make_header()
 
-        # Fixed area at the top of the page for the decorative flower
-        top_frame = tk.Frame(self.main_frame, bg="#FFF4F6", width=1100, height=130)
-        top_frame.pack(pady=5)
-        top_frame.pack_propagate(False)
-
-        heading = tk.Label(top_frame, text="Your Recommended Products", bg="#FFF4F6", fg="#3B2929", font=("Verdana", 28, "bold"))
-        heading.place(relx=0.5, rely=0.5, anchor="center")
+        heading = self.make_label("Your Recommended Products", 20)
 
         # Frame to hold the canvas and scrollbar
-        scroll_area = tk.Frame(self.main_frame, bg="#FFF4F6", width=1100, height=430)
+        scroll_area = tk.Frame(self.main_frame, bg="#FFF4F6", width=1100, height=600)
         scroll_area.pack(padx=10, pady=5)
         scroll_area.pack_propagate(False)  # Prevent the frame from resizing to fit the canvas
 
         # Creates a canvas to display all recommended products
-        canvas = tk.Canvas(scroll_area, bg="#FFF4F6", height=500)
+        canvas = tk.Canvas(scroll_area, bg="#FFF4F6", height=600)
         canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
 
         # Creates a scrollbar for the canvas
         scrollbar = tk.Scrollbar(scroll_area, orient=tk.VERTICAL, command=canvas.yview, bg="#E493A9")
         scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
-
+        # Connect scrollbar to canvas
         canvas.configure(yscrollcommand=scrollbar.set)
+        
+        # Frame inside canvas to hold categories
+        results_frame = tk.Frame(canvas, bg="#FFF4F6")
+        # Put the results frame inside canvas
+        results_window = canvas.create_window((0, 0), window=results_frame, anchor="nw")
 
-        product_frame = tk.Frame(canvas, bg="#FFF4F6")
-        # Put the product_frame inside the canvas
-        canvas_window = canvas.create_window((0, 0), window=product_frame, anchor="nw")
-
-    # Function to make the product boxes automatically stretch to the width of the canvas
-        def resize_product_frame(event):
-            # Changes the width of the product frame to match the width of the canvas
-            canvas.itemconfig(canvas_window, width=event.width)
+        # Function to make the results frame automatically stretch to the width of the canvas
+        def resize_results(event):
+            # Set the results frame width to the current width of the canvas
+            canvas.itemconfig(results_window, width=event.width)
         # Calls the resize_product_frame function whenever the canvas is resized
-        canvas.bind("<Configure>", resize_product_frame)
+        canvas.bind("<Configure>", resize_results)
 
-        # Displays each product in a simple box
-        for product in self.checker.recommended_products:
+        # Update the scrollbar when the results frame changes size
+        def update_scroll(event):
+            canvas.configure(scrollregion=canvas.bbox("all"))   # Update the scrollbar to include all content inside the results frame
+        results_frame.bind("<Configure>", update_scroll) # Call update_scroll whenever the results frame changes size
 
-            product_box = tk.Frame(product_frame, bg="#F7BAC9", height=170, padx=15, pady=15)
-            product_box.pack(padx=5, pady=5, fill=tk.X)
-            product_box.pack_propagate(False)  # Prevent the frame from resizing to fit the content
-            product_box.grid_columnconfigure(1, weight=1)  # Make the product info expand to fill available space
+        # List of skincare product categories
+        categories = [
+            "Cleanser",
+            "Serum",
+            "Ampoule",
+            "Essence",
+            "Moisturiser",
+            "Sunscreen",
+            "Pimple Patch",
+            "Eye Cream"
+        ]
 
-            # Frame for product image on the left
-            image_frame = tk.Frame(product_box, bg="#F7EAE6", width=130, height=130)
-            image_frame.grid(row=0, column=0, padx=5, pady=15, sticky="n")
-            image_frame.grid_propagate(False)  # Prevent the frame from resizing to fit the image
+        # Go through each product category
+        for category in categories:
+            # Find products that belong to the current categoru
+            products = [product for product in self.checker.recommended_products if product["category"] == category]
+            # Skip category if there are no recommended products in it
+            if not products:
+                continue
 
-            # Display specific product image
-            self.make_product_image(image_frame, product["image"])
+            # Pink box to contain the category and its products
+            category_box = tk.Frame(results_frame, bg="#F7BAC9", padx=15, pady=10)
+            category_box.pack(fill=tk.X, padx=10, pady=8)
 
-            # Frame for product info on the left
-            information_frame = tk.Frame(product_box, bg="#F7BAC9")
-            information_frame.grid(row=0, column=1, padx=5, pady=15, sticky="nsew")
-            information_frame.grid_propagate(False)
-            
-            product_name = tk.Label(information_frame, text=product["name"], bg="#F7BAC9", fg="#3B2929", font=("Verdana", 19, "bold"), wraplength=600, justify="left")
-            product_name.pack(anchor="w", pady=5)
+            # Display name of category
+            tk.Label(category_box, text=category, bg="#F7BAC9", fg="#3B2929", font=("Verdana", 22, "bold")).pack(anchor="w", pady=5)
 
-            product_description = tk.Label(information_frame, text=product["description"], bg="#F7BAC9", fg="#3B2929", font=("Verdana", 17), wraplength=600, justify="left")
-            product_description.pack(anchor="w", pady=5)
+            # Displays each product in the category
+            for product in products:
+                
+                # Box for each individual product
+                product_box = tk.Frame(category_box, bg="#F7BAC9", padx=15, pady=15)
+                product_box.pack(pady=5, fill=tk.X)
 
-            product_ingredients = tk.Label(information_frame, text="Key ingredients: " + str(product["key_ingredients"]), bg="#F7BAC9", fg="#3B2929", font=("Verdana", 17), wraplength=600, justify="left")
-            product_ingredients.pack(anchor="w", pady=5)
+                # Frame for product image on the left
+                image_frame = tk.Frame(product_box, bg="#F7EAE6", width=130, height=130)
+                image_frame.pack(side=tk.LEFT, padx=10)
+                image_frame.pack_propagate(False)  # Prevent the frame from resizing to fit the image
 
-            product_price = tk.Label(information_frame, text="Price: $" + str(product["price"]), bg="#F7BAC9", fg="#3B2929", font=("Verdana", 17), justify="left")
-            product_price.pack(anchor="w", pady=5)
+                # Display specific product image
+                self.make_product_image(image_frame, product["image"])
+                
+                # Frame for product info on the left
+                information_frame = tk.Frame(product_box, bg="#F7BAC9")
+                information_frame.pack(side=tk.LEFT, fill=tk.BOTH, expand=True, padx=10, pady=10)
+                
+                product_name = tk.Label(information_frame, text=product["name"], bg="#F7BAC9", fg="#3B2929", font=("Verdana", 18, "bold"), wraplength=550, justify="left")
+                product_name.pack(anchor="w", pady=5)
 
-            # Frame for where to buy button for each product on the right
-            button_frame = tk.Frame(product_box, bg="#F7BAC9", width=180, height=140)
-            button_frame.grid(row=0, column=2, padx=10, pady=15, sticky="nsew")
-            button_frame.grid_propagate(False)
+                product_ingredients = tk.Label(information_frame, text="Key ingredients: " + str(product["key_ingredients"]), bg="#F7BAC9", fg="#3B2929", font=("Verdana", 16), wraplength=550, justify="left")
+                product_ingredients.pack(anchor="w", pady=5)
 
-            # White border around the "Buy" button
-            buy_border = tk.Frame(button_frame, bg="white", padx=1, pady=1)
-            buy_border.place(relx=0.5, rely=0.5, anchor="center")
-            # Buy button
-            buy_button = tk.Label(buy_border, text="Buy", bg="#E493A9", fg="#3B2929", font=("Verdana", 30)) # Changed buy button to a label for consistency with other buttons
-            buy_button.pack(pady=5, padx=5)
-            # Makes the buy button clickable
-            buy_button.bind("<Button-1>", lambda event, selected_product=product: self.show_where_to_buy(selected_product))
+                product_price = tk.Label(information_frame, text="Price: $" + str(product["price"]), bg="#F7BAC9", fg="#3B2929", font=("Verdana", 16), justify="left")
+                product_price.pack(anchor="w", pady=5)
 
-        # Updates the scrollbar to match the size of the canvas
-        product_frame.update_idletasks()
+                # Frame for where to buy button for each product on the right
+                button_frame = tk.Frame(product_box, bg="#F7BAC9", width=130, height=130)
+                button_frame.pack(side=tk.RIGHT, padx=10)
+                button_frame.pack_propagate(False)
+
+                # White border around the "Buy" button
+                buy_border = tk.Frame(button_frame, bg="white", padx=1, pady=1)
+                buy_border.place(relx=0.5, rely=0.5, anchor="center")
+                # Buy button
+                buy_button = tk.Label(buy_border, text="Buy", bg="#E493A9", fg="#3B2929", font=("Verdana", 22), padx=15, pady=5) # Changed buy button to a label for consistency with other buttons
+                buy_button.pack()
+                # Makes the buy button clickable
+                buy_button.bind("<Button-1>", lambda event, selected_product=product: self.show_where_to_buy(selected_product))
+
+        # Updates the results frame after all products have been added
+        results_frame.update_idletasks()
+
+        # Set scrollbar area to the same size of all category boxes
         canvas.configure(scrollregion=canvas.bbox("all"))
-            
+                
         # Navigation buttons to go back or save results
         make_navigation(self.show_ingredient_preferences, "Save results", self.save_results)
 

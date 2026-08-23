@@ -1,6 +1,7 @@
 product_database = [
 {
         "name": "Beauty of Joseon Relief Sun: Rice + Probiotics SPF50+",
+        "category": "Sunscreen",
         "description": "A lightweight sunscreen that moisturises and protects the skin.",
         "detailed_description": "A lightweight, hydrating sunscreen that provides high SPF50+ protection while helping to moisturise and nourish the skin. It contains rice extract and fermented grain extracts, which help support a healthy-looking complexion, while niacinamide helps brighten the appearance of dull skin. Its moisturising formula makes it suitable for a range of skin types, including dry, combination, sensitive, and oily skin.",
         "suitable_skin_types": ["normal", "dry", "combination", "sensitive", "oily"],
@@ -13,6 +14,7 @@ product_database = [
     },
     {
         "name": "COSRX Acne Pimple Master Patch",
+        "category": "Pimple Patch",
         "description": "Pimple patches that protect spots and help reduce breakouts.",
         "detailed_description": "Hydrocolloid pimple patches designed to cover and protect blemishes from dirt and external irritation. The patches help absorb fluid from spots while creating a protective barrier over the affected area. They are a simple, targeted option for people who experience occasional breakouts and want to help protect individual blemishes.",
         "suitable_skin_types": ["normal", "dry", "combination", "sensitive", "oily"],
@@ -25,6 +27,7 @@ product_database = [
     },
     {
         "name": "Dr.Althea 345 Relief Cream",
+        "category": "Moisturiser",
         "description": "A soothing cream for irritated, dry, or sensitive skin.",
         "detailed_description": "A soothing moisturiser designed to provide hydration and comfort to dry, irritated, and sensitive-looking skin. The formula contains niacinamide, panthenol, and centella asiatica, which help support the skin barrier and calm the appearance of redness and irritation. Its nourishing texture makes it particularly suitable for dry and sensitive skin types.",
         "suitable_skin_types": ["normal", "dry", "combination", "sensitive"],
@@ -37,6 +40,7 @@ product_database = [
     },
     {
         "name": "ANUA Heartleaf Quercetinol Pore Deep Cleansing Foam",
+        "category": "Cleanser",
         "description": "A cleanser that helps remove oil, dirt, and pore buildup.",
         "detailed_description": "A gentle foaming cleanser designed to remove excess oil, dirt, and impurities that can build up within pores. It contains heartleaf extract and quercetinol to help soothe the skin, while hyaluronic acid helps maintain hydration during cleansing. It is particularly suited to oily, combination, and sensitive skin types and can be useful for skin concerned with clogged pores and texture.",
         "suitable_skin_types": ["oily", "combination", "sensitive"],
@@ -49,6 +53,7 @@ product_database = [
     },
     {
         "name": "ANUA Niacinamide 10% + TXA 4% Serum",
+        "category": "Serum",
         "description": "A serum that helps brighten uneven and dull-looking skin.",
         "detailed_description": "A brightening serum formulated with 10% niacinamide and 4% tranexamic acid to help improve the appearance of dull and uneven-looking skin. Niacinamide can help support the skin barrier and improve the appearance of pores, while tranexamic acid is commonly used in skincare targeting uneven pigmentation. The lightweight formula is suitable for normal, oily, and combination skin types.",
         "suitable_skin_types": ["normal", "oily", "combination"],
@@ -61,6 +66,7 @@ product_database = [
     },
     {
         "name": "COSRX Low pH Good Morning Gel Cleanser",
+        "category": "Cleanser",
         "description": "A gentle everyday cleanser for keeping skin balanced.",
         "detailed_description": "A low-pH gel cleanser designed for gentle everyday cleansing while helping maintain the skin's natural balance. It contains tea tree leaf oil and betaine salicylate, which help remove excess oil and impurities from the skin. The cleanser is suitable for normal, oily, combination, and sensitive skin types and can be useful for skin experiencing breakouts or uneven texture.",
         "suitable_skin_types": ["normal", "oily", "combination", "sensitive"],
@@ -73,6 +79,7 @@ product_database = [
     },
     {
         "name": "ROUND LAB 1025 Dokdo Cleanser",
+        "category": "Cleanser",
         "description": "A gentle cleanser that cleans skin without stripping moisture.",
         "detailed_description": "A gentle facial cleanser designed to remove dirt, excess oil, and impurities without leaving the skin feeling excessively dry or stripped. It contains deep sea water along with panthenol and allantoin to help maintain hydration and comfort. Its mild formula makes it suitable for normal, dry, combination, and sensitive skin types.",
         "suitable_skin_types": ["normal", "dry", "combination", "sensitive"],
@@ -85,6 +92,7 @@ product_database = [
     },
     {
         "name": "COSRX Advanced Snail 96 Mucin Power Essence",
+        "category": "Essence",
         "description": "A hydrating essence that helps smooth texture and support the skin barrier.",
         "detailed_description": "A hydrating essence containing 96% snail secretion filtrate to help moisturise and improve the appearance of dry or uneven skin. The formula also contains betaine and allantoin, which help support hydration and soothe the skin. Its lightweight texture can be layered into a skincare routine and is suitable for all skin types, including sensitive and oily skin.",
         "suitable_skin_types": ["normal", "dry", "combination", "sensitive", "oily"],
@@ -97,6 +105,7 @@ product_database = [
     },
     {
         "name": "Torriden Dive-In Low Molecule Hyaluronic Acid Serum",
+        "category": "Serum",
         "description": "A lightweight hydrating serum for dry or dehydrated skin.",
         "detailed_description": "A lightweight hydrating serum formulated with low molecular hyaluronic acid to help replenish moisture and improve the appearance of dehydrated skin. Panthenol and allantoin provide additional soothing and moisturising support. The lightweight texture makes it suitable for all skin types and particularly useful for skin experiencing dryness, dullness, or sensitivity.",
         "suitable_skin_types": ["normal", "dry", "combination", "sensitive", "oily"],
@@ -109,6 +118,7 @@ product_database = [
     },
     {
         "name": "Skin1004 Madagascar Centella Ampoule",
+        "category": "Ampoule",
         "description": "A calming ampoule that helps soothe sensitive or irritated skin.",
         "detailed_description": "A lightweight calming ampoule centred around centella asiatica extract, an ingredient commonly used to soothe and support sensitive-looking skin. The simple formula is designed to provide hydration while helping the skin feel calmer and more comfortable. It is suitable for all skin types and can be particularly useful for people concerned with sensitivity, blemishes, and uneven texture.",
         "suitable_skin_types": ["normal", "dry", "combination", "sensitive", "oily"],
@@ -121,6 +131,7 @@ product_database = [
     },
     {
         "name": "Beauty of Joseon Dynasty Cream",
+        "category": "Moisturiser",
         "description": "A moisturising cream that helps with dryness and dull skin.",
         "detailed_description": "A nourishing moisturising cream designed to hydrate the skin and improve the appearance of dryness and dullness. It contains rice bran water, ginseng root water, and niacinamide, which help support a moisturised and healthy-looking complexion. The richer formula is particularly suitable for normal, dry, combination, and sensitive skin types.",
         "suitable_skin_types": ["normal", "dry", "combination", "sensitive"],
@@ -133,6 +144,7 @@ product_database = [
     },
     {
         "name": "Beauty of Joseon Glow Serum: Propolis + Niacinamide",
+        "category": "Serum",
         "description": "A glow serum that helps with dullness, texture, and blemish-prone skin.",
         "detailed_description": "A lightweight glow-focused serum formulated with propolis extract and niacinamide to help improve the appearance of dull, uneven, and blemish-prone skin. Propolis helps provide a nourishing feel, while niacinamide supports the skin barrier and helps improve the appearance of pores. The serum is suitable for normal, oily, combination, and sensitive skin types.",
         "suitable_skin_types": ["normal", "oily", "combination", "sensitive"],
@@ -145,6 +157,7 @@ product_database = [
     },
         {
         "name": "Medicube Deep Vita A Retinol Serum",
+        "category": "Serum",
         "description": "A retinol serum designed to improve the appearance of fine lines, uneven texture, and signs of skin ageing.",
         "detailed_description": "A retinol-based serum designed to target the appearance of fine lines, uneven texture, visible pores, and signs of skin ageing. It combines retinol with niacinamide, hyaluronic acid, and ceramides to provide skincare benefits alongside hydration and barrier support. It is suitable for normal, dry, combination, and oily skin types.",
         "suitable_skin_types": ["normal", "dry", "combination", "oily"],
@@ -157,6 +170,7 @@ product_database = [
     },
     {
         "name": "Anua Retinol 0.3% + Niacin Renewing Serum",
+        "category": "Serum",
         "description": "A renewing serum combining retinol and niacinamide to improve the appearance of pores, uneven texture, and fine lines.",
         "detailed_description": "A renewing serum containing 0.3% retinol and niacinamide to target the appearance of fine lines, visible pores, uneven texture, and dullness. Ceramides and hyaluronic acid help provide additional hydration and support for the skin barrier. The formula is designed for normal, oily, and combination skin types.",
         "suitable_skin_types": ["normal", "oily", "combination"],
@@ -169,6 +183,7 @@ product_database = [
     },
     {
         "name": "celimax The Vita-A Retinol Shot Tightening Serum",
+        "category": "Serum",
         "description": "A targeted retinol serum designed to improve the appearance of pores, fine lines, and uneven skin texture.",
         "detailed_description": "A targeted retinol serum designed to improve the appearance of pores, fine lines, uneven texture, and dull-looking skin. It combines retinol with niacinamide, peptides, and hyaluronic acid to provide a combination of smoothing and hydrating skincare benefits. It is suitable for normal, oily, and combination skin types.",
         "suitable_skin_types": ["normal", "oily", "combination"],
@@ -181,6 +196,7 @@ product_database = [
     },
     {
         "name": "Innisfree Retinol Cica Repair Ampoule",
+        "category": "Ampoule",
         "description": "A soothing retinol ampoule designed to improve uneven texture while helping support the skin barrier.",
         "detailed_description": "A retinol ampoule designed to target uneven texture and the appearance of fine lines while providing soothing and barrier-supporting ingredients. The formula combines retinol with cica, niacinamide, and hyaluronic acid to help moisturise and comfort the skin. It is suitable for normal, dry, combination, and sensitive skin types.",
         "suitable_skin_types": ["normal", "dry", "combination", "sensitive"],
@@ -193,6 +209,7 @@ product_database = [
     },
     {
         "name": "Haruharu Wonder Black Rice Bakuchiol Eye Cream",
+        "category": "Eye Cream",
         "description": "A nourishing eye cream designed to improve the appearance of fine lines and dryness around the eye area.",
         "detailed_description": "A nourishing eye cream formulated with fermented black rice extract, bakuchiol, and adenosine to care for the delicate skin around the eyes. It helps moisturise the eye area while targeting the appearance of fine lines, dryness, and dullness. Its nourishing formula is suitable for normal, dry, combination, and sensitive skin types.",
         "suitable_skin_types": ["normal", "dry", "combination", "sensitive"],
@@ -205,6 +222,7 @@ product_database = [
     },
     {
         "name": "Purito SEOUL Retinol Retinal 2000 NAD+ Serum",
+        "category": "Serum",
         "description": "An anti-ageing serum containing retinol and retinal designed to improve the appearance of fine lines and uneven texture.",
         "detailed_description": "An anti-ageing focused serum combining retinol, retinal, NAD+, peptides, and niacinamide to target the appearance of fine lines, uneven texture, and dull-looking skin. The combination of ingredients is designed to provide smoothing and skin-supporting benefits while helping maintain hydration. It is suitable for normal, dry, and combination skin types.",
         "suitable_skin_types": ["normal", "dry", "combination"],
@@ -217,6 +235,7 @@ product_database = [
     },
     {
         "name": "Seoul 1988 Serum: Retinal Liposome 2% + Black Ginseng",
+        "category": "Serum",
         "description": "A retinal serum designed to improve the appearance of fine lines, uneven texture, pores, and dull skin.",
         "detailed_description": "A retinal-focused serum designed to improve the appearance of fine lines, uneven texture, visible pores, and dullness. It combines retinal with black ginseng extract, bakuchiol, niacinamide, and peptides to provide a range of skin-smoothing and nourishing benefits. The formula is suitable for normal, dry, combination, oily, and sensitive skin types.",
         "suitable_skin_types": ["normal", "dry", "combination", "oily", "sensitive"],
@@ -229,6 +248,7 @@ product_database = [
     },
     {
         "name": "APLB Spicule Retinol Shot 180 Serum",
+        "category": "Serum",
         "description": "A retinol serum with centella and soothing ingredients designed to improve the appearance of texture and signs of ageing.",
         "detailed_description": "A retinol serum formulated with centella asiatica, panthenol, squalane, and beta-glucan to target the appearance of fine lines and uneven texture while providing soothing and moisturising support. The combination of retinol and skin-conditioning ingredients is designed for normal, dry, combination, and sensitive skin types.",
         "suitable_skin_types": ["normal", "dry", "combination", "sensitive"],
@@ -240,6 +260,7 @@ product_database = [
     },
     {
         "name": "APLB Coenzyme Q10 Retinol Ampoule Serum",
+        "category": "Serum",
         "description": "A retinol ampoule designed to improve the appearance of dullness, pores, and fine lines while providing hydration.",
         "detailed_description": "A retinol ampoule designed to target the appearance of fine lines, dullness, visible pores, and uneven texture. It combines retinol with coenzyme Q10, squalane, and hyaluronic acid to provide smoothing and hydrating skincare benefits. The formula is suitable for normal, dry, combination, and oily skin types.",
         "suitable_skin_types": ["normal", "dry", "combination", "oily"],
@@ -251,6 +272,7 @@ product_database = [
     },
     {
         "name": "APLB Retinol Vitamin C Vitamin E Ampoule Serum",
+        "category": "Serum",
         "description": "A brightening and anti-ageing ampoule containing retinol, vitamin C, and vitamin E.",
         "detailed_description": "A brightening and anti-ageing focused ampoule combining retinol, vitamin C, vitamin E, and centella asiatica. The formula is designed to improve the appearance of dullness, uneven texture, and fine lines while providing antioxidant and soothing skincare benefits. It is suitable for normal, dry, and combination skin types.",
         "suitable_skin_types": ["normal", "dry", "combination"],
@@ -263,6 +285,7 @@ product_database = [
     },
     {
         "name": "Bellflower Retinol 0.3% Serum",
+        "category": "Serum",
         "description": "A Korean retinol serum designed to improve the appearance of fine lines, uneven texture, and signs of skin ageing.",
         "detailed_description": "A retinol serum containing 0.3% retinol and additional plant extracts and hyaluronic acid to target the appearance of fine lines, uneven texture, and dull-looking skin. The formula combines retinol's smoothing properties with hydrating ingredients to help maintain a moisturised complexion. It is suitable for normal, dry, combination, and oily skin types.",
         "suitable_skin_types": ["normal", "dry", "combination", "oily"],
