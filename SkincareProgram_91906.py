@@ -642,13 +642,13 @@ class SkincareGUI:
 
         # Add the pink flower to the top right of the page
         flower_image = Image.open("images/pink_flower.png")
-        flower_image = resize_decorative_image(flower_image,160,160)
+        flower_image = resize_decorative_image(flower_image,130,130)
         # Convert the flower image into a format Tkinter can display
         flower_photo = ImageTk.PhotoImage(flower_image)
         # Display the flower near the top right of the page
         flower_label = tk.Label(self.main_frame, image=flower_photo, bg="#FFF4F6")
         flower_label.image = flower_photo # Reference
-        flower_label.place(x=1050,y=5, anchor="ne")
+        flower_label.place(x=1050,y=80, anchor="ne")
         # Frame to hold the product image and information
         product_area = tk.Frame(self.main_frame, bg="#FFF4F6", width=1000, height=360)
         product_area.pack(padx=20, pady=10)
@@ -676,7 +676,7 @@ class SkincareGUI:
         information_frame.grid_propagate(False)
 
         # Display product name
-        product_name = tk.Label(information_frame, text=product["name"], bg="#FFF4F6", fg="#3B2929", font=("Verdana", 18, "bold"), wraplength=600, justify="left")
+        product_name = tk.Label(information_frame, text=product["name"], bg="#FFF4F6", fg="#3B2929", font=("Verdana", 20, "bold"), wraplength=600, justify="left")
         product_name.pack(anchor="w")
 
         # Display product description
@@ -688,7 +688,7 @@ class SkincareGUI:
         product_price.pack(anchor="w")
 
         # Display product key ingredients
-        product_ingredients = tk.Label(information_frame, text="Key ingredients: " + str(product["key_ingredients"]), bg="#FFF4F6", fg="#3B2929", font=("Verdana", 17), wraplength=600, justify="left")
+        product_ingredients = tk.Label(information_frame, text="Key ingredients: " + str(product["key_ingredients"]), bg="#FFF4F6", fg="#3B2929", font=("Verdana", 19), wraplength=600, justify="left")
         product_ingredients.pack(anchor="w")
 
         # Where to buy
