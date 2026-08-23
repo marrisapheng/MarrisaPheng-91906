@@ -572,6 +572,15 @@ class SkincareGUI:
     
     # Check ingredient preferences and filters the recommended products
     def check_ingredient_preferences(self):
+
+        # Gets the list of ingredients the user wants to avoid
+        selected_preferences = self.checker.get_ingredient_preferences()
+
+        # Checks if the user has selected at least one preference
+        if len(selected_preferences) == 0:
+            messagebox.showerror("Error", "Please select at least on ingredient preference.") # Displays an error message 
+            return
+        
         # Find products matching the user's skin type and skin concerns
         recommended_products = self.checker.get_recommended_products(self.checker.selected_skin_type, self.checker.selected_skin_concerns)
         
