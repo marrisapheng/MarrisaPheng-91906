@@ -602,7 +602,15 @@ class SkincareGUI:
         self.make_header()
 
         heading = self.make_label("Your Recommended Products", 20)
+        
+        # Navigation buttons to go back or save results
+        make_navigation(self.show_ingredient_preferences, "Save results", self.save_results)
 
+        # Checks if there are no results and displays an error message
+        if len(self.checker.recommended_products) == 0:
+            messagebox.showerror("No products found", "Please go back and change your selections.") # Displays an error message informing user that no products match
+            return # User remains on results page
+        
         # Frame to hold the canvas and scrollbar
         scroll_area = tk.Frame(self.main_frame, bg="#FFF4F6", width=1100, height=600)
         scroll_area.pack(padx=10, pady=5)
@@ -684,6 +692,9 @@ class SkincareGUI:
                 product_name = tk.Label(information_frame, text=product["name"], bg="#F7BAC9", fg="#3B2929", font=("Verdana", 18, "bold"), wraplength=550, justify="left")
                 product_name.pack(anchor="w", pady=5)
 
+                product_description = tk.Label(information_frame, text=product["description"], bg="#F7BAC9", fg="#3B2929", font=("Verdana", 16), wraplength=550, justify="left")
+                product_description.pack(anchor="w", pady=5)
+
                 product_ingredients = tk.Label(information_frame, text="Key ingredients: " + str(product["key_ingredients"]), bg="#F7BAC9", fg="#3B2929", font=("Verdana", 16), wraplength=550, justify="left")
                 product_ingredients.pack(anchor="w", pady=5)
 
@@ -710,9 +721,6 @@ class SkincareGUI:
         # Set scrollbar area to the same size of all category boxes
         canvas.configure(scrollregion=canvas.bbox("all"))
                 
-        # Navigation buttons to go back or save results
-        make_navigation(self.show_ingredient_preferences, "Save results", self.save_results)
-
     # Where to buy page
     def show_where_to_buy(self, product):
         self.clear_screen()
