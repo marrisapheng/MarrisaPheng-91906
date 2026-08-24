@@ -563,10 +563,27 @@ class SkincareGUI:
         # Create checkboxes for each preference
         for ingredient in ingredient_options:
             self.checker.ingredient_preferences_var[ingredient] = tk.BooleanVar() # Boolean to store whether the ingredient is selected
-            # Checkbox for preferences
-            checkbox = tk.Checkbutton(preferences_frame, text=ingredient, variable=self.checker.ingredient_preferences_var[ingredient], bg="#FFF4F6", fg="#3B2929", font=("Verdana", 25), anchor="w")
-            checkbox.pack(anchor="w", pady=3)
+
+        # Function to control conflicting ingredient selections
+        def update_ingredient_preferences(selected_ingredient):
+            # Checks if "None of the above" has been selected
+            if selected_ingredient == "None of the above":
+                # If "None of the above" is selected, deselect all other ingredients
+                if self.checker.ingredient_preferences_var["None of the above"].get():
+                    for ingredient in ingredient_options:
+                        if ingredient!= "None of the above":
+                            self.checker.ingredient_preferences_var[ingredient].set(False)
+            else:
+                # If another ingredient is selected, deselect "None of the above"
+                if self.checker.ingredient_preferences_var[selected_ingredient].get():
+                    self.checker.ingredient_preferences_var["None of the above"].set(False)
         
+        # Create checkboxes for each ingredient preference
+        for ingredient in ingredient_options:
+            # Checkbox for ingredient preferences 
+            checkbox = tk.Checkbutton(preferences_frame, text=ingredient, variable=self.checker.ingredient_preferences_var[ingredient],bg="#FFF4F6", fg="#3B2929", font=("Verdana", 25), anchor="w", command=lambda selected=ingredient: update_ingredient_preferences(selected))
+            checkbox.pack(anchor="w", pady=3)
+
         # Navigation buttons
         make_navigation(self.show_skin_concerns, "Next >", self.check_ingredient_preferences)
     
@@ -602,7 +619,7 @@ class SkincareGUI:
         self.make_header()
 
         heading = self.make_label("Your Recommended Products", 20)
-        
+
         # Navigation buttons to go back or save results
         make_navigation(self.show_ingredient_preferences, "Save results", self.save_results)
 
